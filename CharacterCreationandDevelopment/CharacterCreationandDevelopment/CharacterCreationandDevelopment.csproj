@@ -44,12 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character Creation.cs">
+    <Compile Include="Characters\Character Creation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Character Creation.Designer.cs">
+    <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
+    <Compile Include="World.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,10 +58,21 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClass\HelperClass.cs" />
-    <Compile Include="PlayerCharacter.cs" />
+    <Compile Include="Characters\ICharacter.cs" />
+    <Compile Include="Events and Conversations\IEvent.cs" />
+    <Compile Include="Moods\Happy.cs" />
+    <Compile Include="Moods\IMoodBehaviour.cs" />
+    <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Characters\PlayerCharacter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Character Creation.resx">
+    <Compile Include="WorldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorldForm.Designer.cs">
+      <DependentUpon>WorldForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Characters\Character Creation.resx">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -75,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WorldForm.resx">
+      <DependentUpon>WorldForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
