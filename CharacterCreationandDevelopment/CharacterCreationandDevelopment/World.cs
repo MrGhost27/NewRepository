@@ -10,7 +10,12 @@ namespace CharacterCreationandDevelopment
     {
         private string Year;
         private string Month;
+        private PlayerCharacter player;
         
+        public World(PlayerCharacter playerInWorld)
+        {
+            this.player = playerInWorld;
+        }
 
     }
 }
