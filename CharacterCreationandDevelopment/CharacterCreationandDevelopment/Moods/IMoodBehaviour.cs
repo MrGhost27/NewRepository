@@ -8,7 +8,8 @@ namespace CharacterCreationandDevelopment
 {
     public interface IMoodBehaviour
     {
-        void MoodEffectsandModifiers(PlayerCharacter player);
+        void SetMoodEffectsandModifiers(PlayerCharacter player);
+        void RemoveMoodEffectsandModifiers(PlayerCharacter player);
         //Image moodImage { get; set; }
     }
 }

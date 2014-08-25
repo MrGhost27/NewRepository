@@ -17,12 +17,12 @@ namespace CharacterCreationandDevelopment
         #endregion  
 
         #region Attributes
-        private int _Strength { get; set; }
-        private int _Dexterity { get; set; }
-        private int _Constitution { get; set; }
-        private int _Intelligence { get; set; }
-        private int _Wisom { get; set; }
-        private int _Charisma { get; set; }
+        public int _Strength { get; set; }
+        public int _Dexterity { get; set; }
+        public int _Constitution { get; set; }
+        public int _Intelligence { get; set; }
+        public int _Wisom { get; set; }
+        public int _Charisma { get; set; }
         #endregion
 
         public IMoodBehaviour CurrentMood;
@@ -43,7 +43,9 @@ namespace CharacterCreationandDevelopment
 
         public void SetMood (IMoodBehaviour newMood)
         {
+            this.CurrentMood.RemoveMoodEffectsandModifiers(this);
             this.CurrentMood = newMood;
+            this.CurrentMood.SetMoodEffectsandModifiers(this);
         }
  
 

@@ -8,8 +8,14 @@ namespace CharacterCreationandDevelopment
 {
     class Happy : IMoodBehaviour
     {
-        public void MoodEffectsandModifiers(PlayerCharacter Player)
+        public void SetMoodEffectsandModifiers(PlayerCharacter player)
         {
+            player._Charisma += 3;
+        }
+
+        public void RemoveMoodEffectsandModifiers(PlayerCharacter player)
+        {
+            player._Charisma -= 3;
         }
     }
 }
