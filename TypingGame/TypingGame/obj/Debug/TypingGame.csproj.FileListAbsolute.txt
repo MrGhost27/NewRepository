@@ -1,0 +1,5 @@
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\bin\Debug\TypingGame.exe.config
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.csprojResolveAssemblyReference.cache
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.Form1.resources
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.Properties.Resources.resources
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.csproj.GenerateResource.Cache
