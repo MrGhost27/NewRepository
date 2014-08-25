@@ -141,7 +141,6 @@ namespace CharacterCreationandDevelopment
             }
            HelperClass.Images().Remove(pBoxImage.Image);
            player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, pBoxImage.Image);
-           World newWorld = new World(player);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
