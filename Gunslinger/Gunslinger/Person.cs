@@ -9,15 +9,15 @@ namespace Gunslinger
     public class Person
     {
         public bool isAlive;
-        public bool friend;
+        public bool isFriend;
         public string name;
         public bool diedThisTurn;
         public bool hasAmmo;
 
-        public Person(bool isAlive, bool isFriend, string name)
+        public Person(bool isAlive, bool Friendly, string name)
         {
             this.isAlive = isAlive;
-            this.friend = isFriend;
+            this.isFriend = Friendly;
             this.name = name;
             this.diedThisTurn = false;
             this.hasAmmo = true;
