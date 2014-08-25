@@ -50,6 +50,7 @@
             this.pBoxImage = new System.Windows.Forms.PictureBox();
             this.btnPreviousPic = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -111,7 +112,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(89, 308);
+            this.panel1.Size = new System.Drawing.Size(89, 317);
             this.panel1.TabIndex = 3;
             // 
             // label8
@@ -278,7 +279,7 @@
             // 
             this.txtRemainingPoints.BackColor = System.Drawing.SystemColors.ControlText;
             this.txtRemainingPoints.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtRemainingPoints.Location = new System.Drawing.Point(95, 268);
+            this.txtRemainingPoints.Location = new System.Drawing.Point(95, 256);
             this.txtRemainingPoints.Name = "txtRemainingPoints";
             this.txtRemainingPoints.ReadOnly = true;
             this.txtRemainingPoints.Size = new System.Drawing.Size(44, 20);
@@ -324,12 +325,23 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(95, 282);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(44, 23);
+            this.btnReset.TabIndex = 16;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // Character_Creation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
-            this.ClientSize = new System.Drawing.Size(347, 308);
+            this.ClientSize = new System.Drawing.Size(347, 317);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPreviousPic);
             this.Controls.Add(this.pBoxImage);
@@ -383,5 +395,6 @@
         private System.Windows.Forms.PictureBox pBoxImage;
         private System.Windows.Forms.Button btnPreviousPic;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnReset;
     }
 }

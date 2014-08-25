@@ -141,7 +141,8 @@ namespace CharacterCreationandDevelopment
             }
             if (remainingPoints >= 0)
             {
-                player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma);
+                HelperClass.Images().Remove(pBoxImage.Image);
+                player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, pBoxImage.Image);
             }
         }
 
@@ -169,6 +170,17 @@ namespace CharacterCreationandDevelopment
                 imageNumber--;
             }
             pBoxImage.Image = HelperClass.Images()[imageNumber];
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            numericUpDown1.Value = 10;
+            numericUpDown2.Value = 10;
+            numericUpDown3.Value = 10;
+            numericUpDown4.Value = 10;
+            numericUpDown5.Value = 10;
+            numericUpDown6.Value = 10;
+            remainingPoints = 10;
         }
 
 
