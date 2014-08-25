@@ -46,3 +46,4 @@ C:\Users\Matt\Documents\GitHub\NewRepository\CharacterCreationandDevelopment\Cha
 C:\Users\Matt\Documents\GitHub\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Form1.resources
 C:\Users\Matt\Documents\GitHub\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Properties.Resources.resources
 C:\Users\Matt\Documents\GitHub\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.csproj.GenerateResource.Cache
+F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.WorldForm.resources

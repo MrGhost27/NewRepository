@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    class NPC : ICharacter
+    public class NPC : ICharacter
     {
         public Image Portrait { get; set; }
         public string Name { get; set; }

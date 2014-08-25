@@ -15,13 +15,12 @@ namespace CharacterCreationandDevelopment
         private int remainingPoints;
         private int _strength;
         private int _dexterity;
-        private int _consitution;
+        private int _constitution;
         private int _intelligence;
         private int _wisdom;
         private int _charisma;
         private string _name;
         private int imageNumber;
-        public PlayerCharacter player;
 
         public Character_Creation()
         {
@@ -33,7 +32,7 @@ namespace CharacterCreationandDevelopment
 
             _strength = (int)numericUpDown1.Value;
             _dexterity = (int)numericUpDown2.Value;
-            _consitution = (int)numericUpDown3.Value;
+            _constitution = (int)numericUpDown3.Value;
             _intelligence = (int)numericUpDown4.Value;
             _wisdom = (int)numericUpDown5.Value;
             _charisma = (int)numericUpDown6.Value;
@@ -78,8 +77,8 @@ namespace CharacterCreationandDevelopment
                 numericUpDown3.Value = 5;
             }
 
-            remainingPoints += _consitution - (int)numericUpDown3.Value;
-            _consitution = (int)numericUpDown3.Value;
+            remainingPoints += _constitution - (int)numericUpDown3.Value;
+            _constitution = (int)numericUpDown3.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
@@ -139,11 +138,19 @@ namespace CharacterCreationandDevelopment
             {
                 _name = HelperClass.RandomName();
             }
-            if (remainingPoints >= 0)
-            {
-                HelperClass.Images().Remove(pBoxImage.Image);
-                player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, pBoxImage.Image);
-            }
+           HelperClass.Images().Remove(pBoxImage.Image);
+
+           PlayerCharacter.name = _name;
+           PlayerCharacter.portrait = pBoxImage.Image;
+           PlayerCharacter.maxHP = 100;
+           PlayerCharacter.currentHP = PlayerCharacter.maxHP;
+           PlayerCharacter.strength = _strength;
+           PlayerCharacter.dexterity = _dexterity;
+           PlayerCharacter.constitution = _constitution;
+           PlayerCharacter.intelligence = _intelligence;
+           PlayerCharacter.wisdom = _wisdom;
+           PlayerCharacter.charisma = _charisma;
+           this.Close();
         }
 
         private void btnNext_Click(object sender, EventArgs e)

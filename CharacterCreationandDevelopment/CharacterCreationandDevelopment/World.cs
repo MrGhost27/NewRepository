@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    interface IEvent
+    public class World
     {
-        string EventText { get; set; }
-        PlayerCharacter Character { get; set; }
-        NPC NPC { get; set; }
+        private string Year;
+        private string Month;
 
     }
 }

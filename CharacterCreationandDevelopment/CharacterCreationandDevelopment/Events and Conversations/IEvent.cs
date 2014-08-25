@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public interface IMoodBehaviour
+    public interface IEvent
     {
-        void SetMoodEffectsandModifiers();
-        void RemoveMoodEffectsandModifiers();
-        //Image moodImage { get; set; }
+        string RunEvent(PlayerCharacter player, NPC npc);
     }
 }
