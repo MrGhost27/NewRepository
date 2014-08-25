@@ -1,9 +1,0 @@
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\bin\Debug\DrawingIDE.exe.config
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\bin\Debug\DrawingIDE.exe
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\bin\Debug\DrawingIDE.pdb
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\obj\Debug\DrawingIDE.csprojResolveAssemblyReference.cache
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\obj\Debug\DrawingIDE.Form1.resources
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\obj\Debug\DrawingIDE.Properties.Resources.resources
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\obj\Debug\DrawingIDE.csproj.GenerateResource.Cache
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\obj\Debug\DrawingIDE.exe
-C:\Users\Matt\Documents\GitHub\NewRepository\DrawingIDE\DrawingIDE\obj\Debug\DrawingIDE.pdb
