@@ -7,31 +7,45 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public static class PlayerCharacter
+    public class PlayerCharacter : ICharacter
     {
         #region InterfaceFields
-        public static  string name { get; set; }
-        public static Image portrait { get; set; }
-        public static int currentHP { get; set; }
-        public static int maxHP { get; set; }
+        public string Name { get; set; }
+        public Image Portrait { get; set; }
+        public int CurrentHP { get; set; }
+        public int MaxHP { get; set; }
         #endregion  
 
         #region Attributes
-        public static int strength { get; set; }
-        public static int dexterity { get; set; }
-        public static int constitution { get; set; }
-        public static int intelligence { get; set; }
-        public static int wisdom { get; set; }
-        public static int charisma { get; set; }
+        public int _Strength { get; set; }
+        public int _Dexterity { get; set; }
+        public int _Constitution { get; set; }
+        public int _Intelligence { get; set; }
+        public int _Wisom { get; set; }
+        public int _Charisma { get; set; }
         #endregion
 
-        public static IMoodBehaviour CurrentMood;
+        public IMoodBehaviour CurrentMood;
 
-        public static void SetMood (IMoodBehaviour newMood)
+
+        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, Image Portrait)
         {
-            CurrentMood.RemoveMoodEffectsandModifiers();
-            CurrentMood = newMood;
-            CurrentMood.SetMoodEffectsandModifiers();
+            this.Name = Name;
+            this._Strength = Str;
+            this._Dexterity = Dex;
+            this._Constitution = Const;
+            this._Intelligence = Int;
+            this._Wisom = Wis;
+            this._Charisma = Char;
+            this.Portrait = Portrait;
+            CurrentMood = new Happy();
+        }
+
+        public void SetMood (IMoodBehaviour newMood)
+        {
+            this.CurrentMood.RemoveMoodEffectsandModifiers(this);
+            this.CurrentMood = newMood;
+            this.CurrentMood.SetMoodEffectsandModifiers(this);
         }
  
 
