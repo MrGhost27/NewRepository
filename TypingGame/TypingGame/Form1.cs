@@ -12,10 +12,12 @@ namespace TypingGame
 {
     public partial class Form1 : Form
     {
+        Random randomSeed;
+        Stats statsHolder;
         public Form1()
         {
-            Stats statsHolder = new Stats();
-            Random randomSeed = new Random();
+            statsHolder = new Stats();
+            randomSeed = new Random();
             InitializeComponent();
         }
 
