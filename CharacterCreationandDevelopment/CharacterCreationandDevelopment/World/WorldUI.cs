@@ -10,18 +10,24 @@ using System.Windows.Forms;
 
 namespace CharacterCreationandDevelopment
 {
-    public partial class WorldForm : Form
+    public partial class WorldUI : Form
     {
-        World newWorld;
-        public WorldForm()
+        PlayerCharacter player;
+        Character_Creation CharacterSheet;
+
+        public WorldUI()
         {
             InitializeComponent();
-            newWorld = new World(playerInWorld);
+            //this.player = playerinWorld;
+            //this.CharacterSheet = CharSheet;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            newWorld.EndTurn();
+            //textBox1.Text = player.Name;
+            //this.CharacterSheet.Show();
+            HelperClass.LoadPlayerDetailsFromFile(player.Name);
         }
     }
 }

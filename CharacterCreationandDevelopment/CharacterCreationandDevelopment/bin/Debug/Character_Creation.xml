@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Layla</Name>
+  <Strength>Layla</Strength>
+  <Dexterity>10</Dexterity>
+  <Constitution>20</Constitution>
+  <Intelligence>10</Intelligence>
+  <Wisdom>10</Wisdom>
+  <Charisma>10</Charisma>
+  <Image>0</Image>
+</Player>

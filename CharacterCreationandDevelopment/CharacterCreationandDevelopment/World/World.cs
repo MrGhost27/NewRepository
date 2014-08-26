@@ -6,35 +6,14 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public class World
+    class World
     {
-        private string Year;
-        private string Month;
-        private int monthNumber;
-        private Months currentMonth { get; private set; }
+        WorldUI newWorld;
 
-        private PlayerCharacter player;
-        
-        public World(PlayerCharacter playerInWorld)
+        public World (PlayerCharacter playerinWorld, Character_Creation CharacterSheet)
         {
-            monthNumber = 0;
-            this.player = playerInWorld;
-            WorldForm WorldUI = new WorldForm();
-            WorldUI.Show();
-        }
-
-        public void EndTurn()
-        {
-            if (monthNumber == 11)
-            {
-                monthNumber = 0;
-            }
-            else
-            {
-                monthNumber++;
-            }
-
-            label1.text = currentMonth.GetMonth(monthNumber);
+            //newWorld = new WorldUI(playerinWorld, CharacterSheet);
+            //newWorld.Show();
         }
     }
 }
