@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Isla</Name>
+  <Strength>13</Strength>
+  <Dexterity>13</Dexterity>
+  <Constitution>15</Constitution>
+  <Intelligence>9</Intelligence>
+  <Wisdom>10</Wisdom>
+  <Charisma>10</Charisma>
+  <Portrait>14</Portrait>
+</Player>

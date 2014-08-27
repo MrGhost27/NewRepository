@@ -18,6 +18,7 @@ namespace CharacterCreationandDevelopment
         {
             InitializeComponent();
             this.player = playerInWorld;
+            pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
 
         }
 
@@ -26,11 +27,23 @@ namespace CharacterCreationandDevelopment
             //textBox1.Text = player.Name;
             //this.CharacterSheet.Show();
             this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
-            textBox1.Text = player.name;
-            Character_Creation CharacterSheet = new Character_Creation(player, 2);
+            Character_Creation CharacterSheet = new Character_Creation(player, 0);
             CharacterSheet.Show();
 
 
+        }
+
+        private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form1 x = new Form1();
+            x.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
+            Character_Creation CharacterSheet = new Character_Creation(player, 0);
+            CharacterSheet.ShowDialog();
         }
     }
 }

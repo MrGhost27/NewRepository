@@ -48,34 +48,34 @@ namespace CharacterCreationandDevelopment
             buttonRandomName.Visible = false;
 
 
-            numericUpDown1.Value = player.strength;
-            numericUpDown2.Value = player.dexterity;
-            numericUpDown3.Value = player.constitution;
-            numericUpDown4.Value = player.intelligence;
-            numericUpDown5.Value = player.wisdom;
-            numericUpDown6.Value = player.charisma;
+            numericStr.Value = player.strength;
+            numericDex.Value = player.dexterity;
+            numericCon.Value = player.constitution;
+            numericInt.Value = player.intelligence;
+            numericWis.Value = player.wisdom;
+            numericCha.Value = player.charisma;
             imageNumber = player.portraitNumber;
             pBoxImage.Image = HelperClass.Images()[player.portraitNumber];
 
             if (PointsToAllocate == 0)
             {
-                numericUpDown1.Enabled = false;
-                numericUpDown2.Enabled = false;
-                numericUpDown3.Enabled = false;
-                numericUpDown4.Enabled = false;
-                numericUpDown5.Enabled = false;
-                numericUpDown6.Enabled = false;
+                numericStr.Enabled = false;
+                numericDex.Enabled = false;
+                numericCon.Enabled = false;
+                numericInt.Enabled = false;
+                numericWis.Enabled = false;
+                numericCha.Enabled = false;
                 remainingPoints = 0;
                 btnCreateCharacter.Visible = false;
             }
             else
             {
-                numericUpDown1.Enabled = true;
-                numericUpDown2.Enabled = true;
-                numericUpDown3.Enabled = true;
-                numericUpDown4.Enabled = true;
-                numericUpDown5.Enabled = true;
-                numericUpDown6.Enabled = true;
+                numericStr.Enabled = true;
+                numericDex.Enabled = true;
+                numericCon.Enabled = true;
+                numericInt.Enabled = true;
+                numericWis.Enabled = true;
+                numericCha.Enabled = true;
                 remainingPoints = PointsToAllocate;
                 btnCreateCharacter.Visible = true;
             }
@@ -84,12 +84,12 @@ namespace CharacterCreationandDevelopment
 
         private void SetAttributes()
         {
-            _strength = (int)numericUpDown1.Value;
-            _dexterity = (int)numericUpDown2.Value;
-            _consitution = (int)numericUpDown3.Value;
-            _intelligence = (int)numericUpDown4.Value;
-            _wisdom = (int)numericUpDown5.Value;
-            _charisma = (int)numericUpDown6.Value;
+            _strength = (int)numericStr.Value;
+            _dexterity = (int)numericDex.Value;
+            _consitution = (int)numericCon.Value;
+            _intelligence = (int)numericInt.Value;
+            _wisdom = (int)numericWis.Value;
+            _charisma = (int)numericCha.Value;
             _name = txtName.Text;
         }
 
@@ -108,73 +108,73 @@ namespace CharacterCreationandDevelopment
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown1.Value < 5)
+            if (numericStr.Value < 5)
             {
-                numericUpDown1.Value = 5;
+                numericStr.Value = 5;
             }
 
-            remainingPoints += _strength - (int)numericUpDown1.Value;
-            _strength = (int)numericUpDown1.Value;
+            remainingPoints += _strength - (int)numericStr.Value;
+            _strength = (int)numericStr.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown2.Value < 5)
+            if (numericDex.Value < 5)
             {
-                numericUpDown2.Value = 5;
+                numericDex.Value = 5;
             }
 
-            remainingPoints += _dexterity - (int)numericUpDown2.Value;
-            _dexterity = (int)numericUpDown2.Value;
+            remainingPoints += _dexterity - (int)numericDex.Value;
+            _dexterity = (int)numericDex.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown3.Value < 5)
+            if (numericCon.Value < 5)
             {
-                numericUpDown3.Value = 5;
+                numericCon.Value = 5;
             }
 
-            remainingPoints += _consitution - (int)numericUpDown3.Value;
-            _consitution = (int)numericUpDown3.Value;
+            remainingPoints += _consitution - (int)numericCon.Value;
+            _consitution = (int)numericCon.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown4.Value < 5)
+            if (numericInt.Value < 5)
             {
-                numericUpDown4.Value = 5;
+                numericInt.Value = 5;
             }
 
-            remainingPoints += _intelligence - (int)numericUpDown4.Value;
-            _intelligence = (int)numericUpDown4.Value;
+            remainingPoints += _intelligence - (int)numericInt.Value;
+            _intelligence = (int)numericInt.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown5.Value < 5)
+            if (numericWis.Value < 5)
             {
-                numericUpDown5.Value = 5;
+                numericWis.Value = 5;
             }
 
-            remainingPoints += _wisdom - (int)numericUpDown5.Value;
-            _wisdom = (int)numericUpDown5.Value;
+            remainingPoints += _wisdom - (int)numericWis.Value;
+            _wisdom = (int)numericWis.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
         private void numericUpDown6_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown6.Value < 5)
+            if (numericCha.Value < 5)
             {
-                numericUpDown6.Value = 5;
+                numericCha.Value = 5;
             }
 
-            remainingPoints += _charisma - (int)numericUpDown6.Value;
-            _charisma = (int)numericUpDown6.Value;
+            remainingPoints += _charisma - (int)numericCha.Value;
+            _charisma = (int)numericCha.Value;
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
@@ -210,8 +210,12 @@ namespace CharacterCreationandDevelopment
 
             HelperClass.SavePlayerDetailsToFile(player);
             this.Close();
-            WorldUI newVisibleWorld = new WorldUI(player);
-            newVisibleWorld.Show();
+            if (txtName.Enabled)
+            {
+                WorldUI newVisibleWorld = new WorldUI(player);
+                newVisibleWorld.Show();
+            }
+        
 
         }
 
@@ -243,12 +247,12 @@ namespace CharacterCreationandDevelopment
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            numericUpDown1.Value = 10;
-            numericUpDown2.Value = 10;
-            numericUpDown3.Value = 10;
-            numericUpDown4.Value = 10;
-            numericUpDown5.Value = 10;
-            numericUpDown6.Value = 10;
+            numericStr.Value = 10;
+            numericDex.Value = 10;
+            numericCon.Value = 10;
+            numericInt.Value = 10;
+            numericWis.Value = 10;
+            numericCha.Value = 10;
             remainingPoints = 10;
         }
 

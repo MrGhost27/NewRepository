@@ -1,10 +1,10 @@
 <Player ID="001">
-  <Name>Colin</Name>
-  <Strength>17</Strength>
+  <Name>Jasmine</Name>
+  <Strength>8</Strength>
   <Dexterity>10</Dexterity>
   <Constitution>10</Constitution>
   <Intelligence>10</Intelligence>
   <Wisdom>10</Wisdom>
   <Charisma>10</Charisma>
-  <Portrait>3</Portrait>
+  <Portrait>1</Portrait>
 </Player>

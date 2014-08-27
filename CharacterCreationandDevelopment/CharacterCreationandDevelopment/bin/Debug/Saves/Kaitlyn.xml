@@ -1,10 +1,10 @@
 <Player ID="001">
-  <Name>Gianna</Name>
+  <Name>Kaitlyn</Name>
   <Strength>10</Strength>
   <Dexterity>10</Dexterity>
   <Constitution>10</Constitution>
   <Intelligence>10</Intelligence>
-  <Wisdom>10</Wisdom>
-  <Charisma>10</Charisma>
-  <Portrait>0</Portrait>
+  <Wisdom>16</Wisdom>
+  <Charisma>14</Charisma>
+  <Portrait>21</Portrait>
 </Player>

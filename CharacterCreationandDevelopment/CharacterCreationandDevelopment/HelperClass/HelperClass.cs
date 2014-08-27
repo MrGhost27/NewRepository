@@ -67,15 +67,15 @@ namespace CharacterCreationandDevelopment
             new XElement("Wisdom", Player.wisdom),
             new XElement("Charisma", Player.charisma),
             new XElement("Portrait", Player.portraitNumber)));
-
-            File.WriteAllText(Player.name + ".xml", doc.ToString());
+            Directory.CreateDirectory(@".\Saves\");
+            File.WriteAllText(@".\Saves\" + Player.name + ".xml", doc.ToString());
         }
         
 
      
         public static PlayerCharacter LoadPlayerDetailsFromFile(string filename)
         {
-            var doc = XDocument.Load(filename + ".xml");
+            var doc = XDocument.Load(filename);
             string PlayerName = doc.Descendants("Name").Single().Value;
             int strength = Int32.Parse(doc.Descendants("Strength").Single().Value);
             int dexterity = Int32.Parse(doc.Descendants("Dexterity").Single().Value);
