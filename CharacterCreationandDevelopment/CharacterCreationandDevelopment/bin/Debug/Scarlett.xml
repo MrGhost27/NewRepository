@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Scarlett</Name>
+  <Strength>13</Strength>
+  <Dexterity>12</Dexterity>
+  <Constitution>13</Constitution>
+  <Intelligence>14</Intelligence>
+  <Wisdom>10</Wisdom>
+  <Charisma>10</Charisma>
+  <Portrait>5</Portrait>
+</Player>

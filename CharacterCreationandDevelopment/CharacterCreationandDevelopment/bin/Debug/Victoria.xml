@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Victoria</Name>
+  <Strength>10</Strength>
+  <Dexterity>13</Dexterity>
+  <Constitution>7</Constitution>
+  <Intelligence>10</Intelligence>
+  <Wisdom>10</Wisdom>
+  <Charisma>12</Charisma>
+  <Portrait>24</Portrait>
+</Player>

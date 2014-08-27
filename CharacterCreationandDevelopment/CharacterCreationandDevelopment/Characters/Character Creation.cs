@@ -27,23 +27,17 @@ namespace CharacterCreationandDevelopment
         public Character_Creation()
         {
             InitializeComponent();
+            SetAttributes();
             imageNumber = 0;
             pBoxImage.Image = HelperClass.Images()[imageNumber];
             remainingPoints = 10;
             txtRemainingPoints.Text = remainingPoints.ToString();
-
-            _strength = (int)numericUpDown1.Value;
-            _dexterity = (int)numericUpDown2.Value;
-            _consitution = (int)numericUpDown3.Value;
-            _intelligence = (int)numericUpDown4.Value;
-            _wisdom = (int)numericUpDown5.Value;
-            _charisma = (int)numericUpDown6.Value;
-            _name = txtName.Text;
-        }
+       }
 
         public Character_Creation(PlayerCharacter player, int PointsToAllocate)
         {
             InitializeComponent();
+            SetAttributes();
             this.Text = "Character Sheet";
             btnCreateCharacter.Text = "Level Up";
             txtName.Text = player.name;
@@ -88,6 +82,16 @@ namespace CharacterCreationandDevelopment
             txtRemainingPoints.Text = remainingPoints.ToString();
         }
 
+        private void SetAttributes()
+        {
+            _strength = (int)numericUpDown1.Value;
+            _dexterity = (int)numericUpDown2.Value;
+            _consitution = (int)numericUpDown3.Value;
+            _intelligence = (int)numericUpDown4.Value;
+            _wisdom = (int)numericUpDown5.Value;
+            _charisma = (int)numericUpDown6.Value;
+            _name = txtName.Text;
+        }
 
         private void buttonRandomName_Click(object sender, EventArgs e)
         {
@@ -183,7 +187,7 @@ namespace CharacterCreationandDevelopment
             }
             else
             {
-                btnCreateCharacter.Text = "Create Character";
+                btnCreateCharacter.Text = "Save";
                 btnCreateCharacter.Enabled = true;
             }
         }
@@ -196,8 +200,14 @@ namespace CharacterCreationandDevelopment
             {
                 _name = HelperClass.RandomName();
             }
-            
+            else
+            {
+                _name = txtName.Text;
+            }
+
             player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber);
+
+
             HelperClass.SavePlayerDetailsToFile(player);
             this.Close();
             WorldUI newVisibleWorld = new WorldUI(player);
