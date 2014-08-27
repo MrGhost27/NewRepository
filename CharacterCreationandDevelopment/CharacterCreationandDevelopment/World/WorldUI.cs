@@ -13,13 +13,11 @@ namespace CharacterCreationandDevelopment
     public partial class WorldUI : Form
     {
         PlayerCharacter player;
-        Character_Creation CharacterSheet;
 
-        public WorldUI()
+        public WorldUI(PlayerCharacter playerInWorld)
         {
             InitializeComponent();
-            //this.player = playerinWorld;
-            //this.CharacterSheet = CharSheet;
+            this.player = playerInWorld;
 
         }
 
@@ -27,7 +25,12 @@ namespace CharacterCreationandDevelopment
         {
             //textBox1.Text = player.Name;
             //this.CharacterSheet.Show();
-            HelperClass.LoadPlayerDetailsFromFile(player.Name);
+            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
+            textBox1.Text = player.name;
+            Character_Creation CharacterSheet = new Character_Creation(player, 2);
+            CharacterSheet.Show();
+
+
         }
     }
 }

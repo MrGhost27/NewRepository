@@ -264,6 +264,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(173, 20);
             this.txtName.TabIndex = 9;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // buttonRandomName
             // 
@@ -294,7 +295,6 @@
             this.btnCreateCharacter.TabIndex = 12;
             this.btnCreateCharacter.Text = "Create Character";
             this.btnCreateCharacter.UseVisualStyleBackColor = true;
-            this.btnCreateCharacter.Visible = false;
             this.btnCreateCharacter.Click += new System.EventHandler(this.btnCreateCharacter_Click);
             // 
             // pBoxImage

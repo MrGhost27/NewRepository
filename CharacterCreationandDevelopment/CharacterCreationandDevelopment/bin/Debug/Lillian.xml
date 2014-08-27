@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Lillian</Name>
+  <Strength>10</Strength>
+  <Dexterity>10</Dexterity>
+  <Constitution>10</Constitution>
+  <Intelligence>10</Intelligence>
+  <Wisdom>10</Wisdom>
+  <Charisma>10</Charisma>
+  <Portrait>1</Portrait>
+</Player>

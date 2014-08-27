@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Logan</Name>
+  <Strength>10</Strength>
+  <Dexterity>10</Dexterity>
+  <Constitution>10</Constitution>
+  <Intelligence>10</Intelligence>
+  <Wisdom>10</Wisdom>
+  <Charisma>20</Charisma>
+  <Portrait>23</Portrait>
+</Player>

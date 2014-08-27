@@ -22,6 +22,7 @@ namespace CharacterCreationandDevelopment
         public int _charisma { get; private set; }
         public string _name { get; private set; }
         public int imageNumber { get; private set; }
+        public PlayerCharacter player;
 
         public Character_Creation()
         {
@@ -40,6 +41,53 @@ namespace CharacterCreationandDevelopment
             _name = txtName.Text;
         }
 
+        public Character_Creation(PlayerCharacter player, int PointsToAllocate)
+        {
+            InitializeComponent();
+            this.Text = "Character Sheet";
+            btnCreateCharacter.Text = "Level Up";
+            txtName.Text = player.name;
+            txtName.Enabled = false;
+            btnPreviousPic.Enabled = false;
+            btnNext.Enabled = false;
+            btnReset.Visible = false;
+            buttonRandomName.Visible = false;
+
+
+            numericUpDown1.Value = player.strength;
+            numericUpDown2.Value = player.dexterity;
+            numericUpDown3.Value = player.constitution;
+            numericUpDown4.Value = player.intelligence;
+            numericUpDown5.Value = player.wisdom;
+            numericUpDown6.Value = player.charisma;
+            imageNumber = player.portraitNumber;
+            pBoxImage.Image = HelperClass.Images()[player.portraitNumber];
+
+            if (PointsToAllocate == 0)
+            {
+                numericUpDown1.Enabled = false;
+                numericUpDown2.Enabled = false;
+                numericUpDown3.Enabled = false;
+                numericUpDown4.Enabled = false;
+                numericUpDown5.Enabled = false;
+                numericUpDown6.Enabled = false;
+                remainingPoints = 0;
+                btnCreateCharacter.Visible = false;
+            }
+            else
+            {
+                numericUpDown1.Enabled = true;
+                numericUpDown2.Enabled = true;
+                numericUpDown3.Enabled = true;
+                numericUpDown4.Enabled = true;
+                numericUpDown5.Enabled = true;
+                numericUpDown6.Enabled = true;
+                remainingPoints = PointsToAllocate;
+                btnCreateCharacter.Visible = true;
+            }
+            txtRemainingPoints.Text = remainingPoints.ToString();
+        }
+
 
         private void buttonRandomName_Click(object sender, EventArgs e)
         {
@@ -48,6 +96,12 @@ namespace CharacterCreationandDevelopment
         }
 
         #region ValueChanged
+        
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            _name = txtName.Text;
+        }
+
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (numericUpDown1.Value < 5)
@@ -124,11 +178,13 @@ namespace CharacterCreationandDevelopment
         {
             if (remainingPoints < 0)
             {
-                btnCreateCharacter.Visible = false;
+                btnCreateCharacter.Text = "Spent too many Points!";
+                btnCreateCharacter.Enabled = false;
             }
             else
             {
-                btnCreateCharacter.Visible = true;
+                btnCreateCharacter.Text = "Create Character";
+                btnCreateCharacter.Enabled = true;
             }
         }
 
@@ -140,12 +196,13 @@ namespace CharacterCreationandDevelopment
             {
                 _name = HelperClass.RandomName();
             }
-           /*Probably correct
-            * HelperClass.Images().Remove(pBoxImage.Image);
-            */
+            
+            player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber);
+            HelperClass.SavePlayerDetailsToFile(player);
+            this.Close();
+            WorldUI newVisibleWorld = new WorldUI(player);
+            newVisibleWorld.Show();
 
-            HelperClass.SavePlayerDetailsToFile(_name, this);
-            HelperClass.LoadPlayerDetailsFromFile(_name);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -184,6 +241,8 @@ namespace CharacterCreationandDevelopment
             numericUpDown6.Value = 10;
             remainingPoints = 10;
         }
+
+
 
 
 
