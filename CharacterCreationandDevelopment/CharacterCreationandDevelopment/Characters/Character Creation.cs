@@ -7,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace CharacterCreationandDevelopment
 {
     public partial class Character_Creation : Form
     {
-        private int remainingPoints;
-        private int _strength;
-        private int _dexterity;
-        private int _consitution;
-        private int _intelligence;
-        private int _wisdom;
-        private int _charisma;
-        private string _name;
-        private int imageNumber;
-        public PlayerCharacter player;
+        public int remainingPoints { get; private set; }
+        public int _strength { get; private set; }
+        public int _dexterity { get; private set; }
+        public int _consitution { get; private set; }
+        public int _intelligence { get; private set; }
+        public int _wisdom { get; private set; }
+        public int _charisma { get; private set; }
+        public string _name { get; private set; }
+        public int imageNumber { get; private set; }
 
         public Character_Creation()
         {
@@ -39,6 +39,7 @@ namespace CharacterCreationandDevelopment
             _charisma = (int)numericUpDown6.Value;
             _name = txtName.Text;
         }
+
 
         private void buttonRandomName_Click(object sender, EventArgs e)
         {
@@ -135,13 +136,16 @@ namespace CharacterCreationandDevelopment
 
         private void btnCreateCharacter_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == null)
+            if (txtName.Text == "")
             {
                 _name = HelperClass.RandomName();
             }
-           HelperClass.Images().Remove(pBoxImage.Image);
-           player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, pBoxImage.Image);
-           World newWorld = new World(player);
+           /*Probably correct
+            * HelperClass.Images().Remove(pBoxImage.Image);
+            */
+
+            HelperClass.SavePlayerDetailsToFile(_name, this);
+            HelperClass.LoadPlayerDetailsFromFile(_name);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
