@@ -12,3 +12,7 @@ F:\NewRepository\TypingGame\TypingGame\bin\Debug\TypingGame.exe
 F:\NewRepository\TypingGame\TypingGame\bin\Debug\TypingGame.pdb
 F:\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.exe
 F:\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.pdb
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\bin\Debug\TypingGame.exe
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\bin\Debug\TypingGame.pdb
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.exe
+C:\Users\Matt\Documents\GitHub\NewRepository\TypingGame\TypingGame\obj\Debug\TypingGame.pdb
