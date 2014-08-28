@@ -23,9 +23,11 @@ namespace CharacterCreationandDevelopment
         {
             string[] filePaths = Directory.GetFiles(@".\Saves\", "*.xml");
 
-            for (int i =0; i < filePaths.Count(); i++)
+            foreach (string filePath in filePaths)
             {
-                comboBox1.Items.Add(filePaths[i].ToString());
+                string newFiles = Path.GetFileNameWithoutExtension(filePath);
+
+                comboBox1.Items.Add(newFiles);
             }
             
         }

@@ -8,6 +8,8 @@ namespace CharacterCreationandDevelopment
 {
     public interface IEvent
     {
-        string RunEvent();
+        NPC eventNPC { get; set; }
+        string EventConversation();
+        string MakeChoice(string choice);
     }
 }

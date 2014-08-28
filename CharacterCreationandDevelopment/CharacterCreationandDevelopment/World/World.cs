@@ -10,12 +10,19 @@ namespace CharacterCreationandDevelopment
     {
         public int monthNumber { get; private set; }
         public int year { get; private set; }
+        public IEvent newevent;
 
         public World()
         {
             monthNumber = 12;
             year = 1050;
         }
+
+        public void SetEvent(IEvent thisevent)
+        {
+            this.newevent = thisevent;
+        }
+
 
         public string NewTurn()
         {

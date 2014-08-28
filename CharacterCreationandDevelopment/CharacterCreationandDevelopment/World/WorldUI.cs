@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterCreationandDevelopment.Events_and_Conversations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,21 +19,28 @@ namespace CharacterCreationandDevelopment
         public WorldUI(PlayerCharacter playerInWorld)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.player = playerInWorld;
             world = new World();
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
-
+            lblDate.Text = world.NewTurn();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void RunEvent(IEvent thisevent)
         {
-            //textBox1.Text = player.Name;
-            //this.CharacterSheet.Show();
-            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
-            Character_Creation CharacterSheet = new Character_Creation(player, 0);
-            CharacterSheet.Show();
+            MessageBox.Show("Suddenly someone comes over to you...");
+            world.SetEvent(thisevent);
+            pBoxNPC.Image = world.newevent.eventNPC.portrait;
+            btnNextTurn.Enabled = false;
+            txtConversation.AppendText(world.newevent.EventConversation());
+            DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
+            txtConversation.AppendText(world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
 
-
+        }
+        private void CloseEvent()
+        {
+            pBoxNPC.Visible = false;
+            btnNextTurn.Enabled = true;
         }
 
         private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
@@ -51,6 +59,10 @@ namespace CharacterCreationandDevelopment
         private void btnNextTurn_Click(object sender, EventArgs e)
         {
             lblDate.Text = world.NewTurn();
+            if (world.monthNumber == 3)
+            {
+                RunEvent((new GameStart(player)));
+            }
         }
     }
 }
