@@ -49,7 +49,7 @@ namespace CharacterCreationandDevelopment.Lessons
             }
             else if (_player.weapons.IsBetween(60, 75))
             {
-                return _player.name + " learns that a man cannot push a button, if you disable his hand";
+                return _player.name + " learns that the sword is mighter than the quill. Usually.";
             }
             else if (_player.weapons.IsBetween(75, 90))
             {
