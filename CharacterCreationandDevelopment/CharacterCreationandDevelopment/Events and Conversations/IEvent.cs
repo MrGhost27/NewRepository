@@ -8,6 +8,6 @@ namespace CharacterCreationandDevelopment
 {
     public interface IEvent
     {
-        string RunEvent(PlayerCharacter player, NPC npc);
+        string RunEvent();
     }
 }
