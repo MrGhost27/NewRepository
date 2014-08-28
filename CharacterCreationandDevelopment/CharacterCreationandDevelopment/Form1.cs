@@ -62,9 +62,8 @@ namespace CharacterCreationandDevelopment
 
         private void label2_Click(object sender, EventArgs e)
         {
-            SelectGame loadgame = new SelectGame();
+            SelectGame loadgame = new SelectGame(this);
             loadgame.Show();
-            this.Hide();
             //PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(player.name);
            // WorldUI world = new WorldUI(player);
         }

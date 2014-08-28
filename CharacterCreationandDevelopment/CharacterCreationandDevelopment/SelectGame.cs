@@ -13,11 +13,13 @@ namespace CharacterCreationandDevelopment
 {
     public partial class SelectGame : Form
     {
-        public SelectGame()
+        Form parentForm;
+        public SelectGame(Form parentForm)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             GetSaves();
+            this.parentForm = parentForm;
         }
 
         private void GetSaves()
@@ -35,10 +37,18 @@ namespace CharacterCreationandDevelopment
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(comboBox1.Text);
-            WorldUI world = new WorldUI(player);
-            world.Show();
-            this.Close();
+            try
+            {
+                PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(comboBox1.Text);
+                WorldUI world = new WorldUI(player);
+                world.Show();
+                this.Close();
+                parentForm.Hide();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Unable to load the selected save game");
+            }
         }
     }
 }

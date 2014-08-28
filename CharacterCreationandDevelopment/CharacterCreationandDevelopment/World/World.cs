@@ -13,11 +13,22 @@ namespace CharacterCreationandDevelopment
         public int year { get; private set; }
         public IEvent newevent;
         public ILesson lesson;
+        PlayerCharacter player;
 
-        public World()
+        public World(PlayerCharacter player)
         {
-            monthNumber = 12;
-            year = 1050;
+            this.player = player;
+
+            try
+            {
+                monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[1]);
+                year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[2]);
+            }
+            catch (Exception E)
+            {
+                monthNumber = 12;
+                year = 1050;
+            }
         }
 
         public void SetEvent(IEvent thisevent)

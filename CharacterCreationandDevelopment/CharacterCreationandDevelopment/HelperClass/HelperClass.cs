@@ -18,7 +18,9 @@ namespace CharacterCreationandDevelopment
 
         public static List<Image> Images()
         {
+            //feels WRONG
             string[] images = System.IO.Directory.GetFiles(@"Images");
+            imageList.Clear();
             foreach (string Img in images)
             {
                 Bitmap bmp = new Bitmap(Img);
@@ -54,6 +56,34 @@ namespace CharacterCreationandDevelopment
             return cityNames[GenerateRandomNumber(1, cityNames.Count())];
         }
 
+        public static void SaveWorldDetailsToFile(PlayerCharacter player, World world)
+        {
+            var doc = new XDocument(
+            new XElement("World",
+            new XAttribute("ID", "001"),
+            new XElement("Month", world.monthNumber),
+            new XElement("Year", world.year),
+            new XElement("Name", player.name)));
+
+            Directory.CreateDirectory(@".\Worlds\");
+            File.WriteAllText(@".\Worlds\" + player.name + ".xml", doc.ToString());
+        }
+
+        public static List<String> LoadWorldDetailsFromFile(string filename)
+        {
+            List<String> worldDetails = new List<String>();
+            worldDetails.Clear();
+            var doc = XDocument.Load(@".\Worlds\" + filename + ".xml");
+            string PlayerName = doc.Descendants("Name").Single().Value;
+            worldDetails.Add(PlayerName);
+            string Month = doc.Descendants("Month").Single().Value;
+            worldDetails.Add(Month);
+            string Year = doc.Descendants("Year").Single().Value;
+            worldDetails.Add(Year);
+
+            return worldDetails;
+        }
+
         public static void SavePlayerDetailsToFile(PlayerCharacter Player)
         {
             var doc = new XDocument(
@@ -66,7 +96,9 @@ namespace CharacterCreationandDevelopment
             new XElement("Intelligence", Player.intelligence),
             new XElement("Wisdom", Player.wisdom),
             new XElement("Charisma", Player.charisma),
-            new XElement("Portrait", Player.portraitNumber)));
+            new XElement("Portrait", Player.portraitNumber),
+            new XElement("Weapons", Player.weapons)));
+
             Directory.CreateDirectory(@".\Saves\");
             File.WriteAllText(@".\Saves\" + Player.name + ".xml", doc.ToString());
         }
@@ -84,11 +116,14 @@ namespace CharacterCreationandDevelopment
             int wisdom = Int32.Parse(doc.Descendants("Wisdom").Single().Value);
             int charisma = Int32.Parse(doc.Descendants("Charisma").Single().Value);
             int portrait = Int32.Parse(doc.Descendants("Portrait").Single().Value);
+            int weapons = Int32.Parse(doc.Descendants("Weapons").Single().Value);
 
             //etc
 
-            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait);
+            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait, weapons);
         }
+
+
 
         public static bool IsBetween(this int val, int low, int high)
         {

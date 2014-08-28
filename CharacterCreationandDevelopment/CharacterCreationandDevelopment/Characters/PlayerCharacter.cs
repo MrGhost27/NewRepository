@@ -33,7 +33,7 @@ namespace CharacterCreationandDevelopment
         public IMoodBehaviour CurrentMood;
 
 
-        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber)
+        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, int weapons)
         {
             this.name = Name;
             this.strength = Str;
@@ -43,7 +43,7 @@ namespace CharacterCreationandDevelopment
             this.wisdom = Wis;
             this.charisma = Char;
             this.portraitNumber = imageNumber;
-            weapons = 0;
+            this.weapons = weapons;
             CurrentMood = new Happy();
         }
 

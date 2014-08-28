@@ -24,7 +24,7 @@ namespace CharacterCreationandDevelopment.Lessons
 
         public string LessonEffects()
         {
-            _player.weapons += 10;
+            _player.weapons += _player.intelligence /2;
 
             if (_player.weapons > 100)
             {

@@ -22,9 +22,12 @@ namespace CharacterCreationandDevelopment
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.player = playerInWorld;
-            world = new World();
+            world = new World(player);
+            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
-            lblDate.Text = world.NewTurn();
+            lblDate.Text = world.GetDate();
+            label1.Text = "Weapons: " + player.weapons;
+            progressBar1.Value = player.weapons;
         }
 
         private void RunEvent(IEvent thisevent)
@@ -56,6 +59,8 @@ namespace CharacterCreationandDevelopment
 
         private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
         {
+            HelperClass.SavePlayerDetailsToFile(player);
+            HelperClass.SaveWorldDetailsToFile(player, world);
             Form1 x = new Form1();
             x.Show();
         }

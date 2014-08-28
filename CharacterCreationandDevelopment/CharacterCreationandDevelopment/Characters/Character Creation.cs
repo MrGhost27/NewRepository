@@ -206,7 +206,7 @@ namespace CharacterCreationandDevelopment
                 _name = txtName.Text;
             }
 
-            player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber);
+            player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 0);
 
 
             HelperClass.SavePlayerDetailsToFile(player);
@@ -237,7 +237,7 @@ namespace CharacterCreationandDevelopment
         {
             if (imageNumber == 0)
             {
-                imageNumber = HelperClass.Images().Count();
+                imageNumber = HelperClass.Images().Count()-1;
             }
             else
             {

@@ -3,8 +3,9 @@
   <Strength>10</Strength>
   <Dexterity>10</Dexterity>
   <Constitution>10</Constitution>
-  <Intelligence>10</Intelligence>
-  <Wisdom>10</Wisdom>
-  <Charisma>10</Charisma>
-  <Portrait>5</Portrait>
+  <Intelligence>13</Intelligence>
+  <Wisdom>13</Wisdom>
+  <Charisma>14</Charisma>
+  <Portrait>15</Portrait>
+  <Weapons>18</Weapons>
 </Player>
