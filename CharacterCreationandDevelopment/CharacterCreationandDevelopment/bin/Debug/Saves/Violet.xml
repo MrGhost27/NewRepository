@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Violet</Name>
+  <Strength>8</Strength>
+  <Dexterity>14</Dexterity>
+  <Constitution>7</Constitution>
+  <Intelligence>12</Intelligence>
+  <Wisdom>14</Wisdom>
+  <Charisma>15</Charisma>
+  <Portrait>0</Portrait>
+</Player>

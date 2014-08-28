@@ -1,0 +1,10 @@
+<Player ID="001">
+  <Name>Aria</Name>
+  <Strength>8</Strength>
+  <Dexterity>12</Dexterity>
+  <Constitution>8</Constitution>
+  <Intelligence>16</Intelligence>
+  <Wisdom>14</Wisdom>
+  <Charisma>12</Charisma>
+  <Portrait>0</Portrait>
+</Player>
