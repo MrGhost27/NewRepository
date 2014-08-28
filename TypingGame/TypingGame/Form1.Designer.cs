@@ -79,30 +79,30 @@
             // 
             this.correctLabel.Name = "correctLabel";
             this.correctLabel.Size = new System.Drawing.Size(58, 17);
-            this.correctLabel.Text = "Correct: 0";
+            this.correctLabel.Text = "Correct: " + statsHolder.Correct;
             // 
             // missedLabel
             // 
             this.missedLabel.Name = "missedLabel";
             this.missedLabel.Size = new System.Drawing.Size(56, 17);
-            this.missedLabel.Text = "Missed: 0";
+            this.missedLabel.Text = "Missed: " + statsHolder.Missed;
             // 
             // totalLabel
             // 
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(46, 17);
-            this.totalLabel.Text = "Total: 0";
+            this.totalLabel.Text = "Total: " + statsHolder.Total;
             // 
             // accuracyLabel
             // 
             this.accuracyLabel.Name = "accuracyLabel";
             this.accuracyLabel.Size = new System.Drawing.Size(78, 17);
-            this.accuracyLabel.Text = "Accuracy: 0%";
+            this.accuracyLabel.Text = "Accuracy: " + statsHolder.Accuracy;
             // 
             // difficultyLabel
             // 
             this.difficultyLabel.Name = "difficultyLabel";
-            this.difficultyLabel.Size = new System.Drawing.Size(501, 17);
+            this.difficultyLabel.Size = new System.Drawing.Size(470, 17);
             this.difficultyLabel.Spring = true;
             this.difficultyLabel.Text = "Difficulty";
             this.difficultyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

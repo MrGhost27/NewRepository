@@ -43,7 +43,7 @@ namespace TypingGame
                 if (timer1.Interval > 250)
                     timer1.Interval -= 7;
                 if (timer1.Interval > 100)
-                    timer1.Interval-= 2;
+                    timer1.Interval -= 2;
                 difficultyProgressBar.Value = 800 - timer1.Interval;
             }
             else
