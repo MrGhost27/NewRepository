@@ -10,12 +10,12 @@ namespace CharacterCreationandDevelopment
     {
         public void SetMoodEffectsandModifiers(PlayerCharacter player)
         {
-            player._Charisma += 3;
+            player.charisma += 3;
         }
 
         public void RemoveMoodEffectsandModifiers(PlayerCharacter player)
         {
-            player._Charisma -= 3;
+            player.charisma -= 3;
         }
     }
 }

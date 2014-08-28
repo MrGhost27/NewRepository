@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericStr = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,11 +38,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numericDex = new System.Windows.Forms.NumericUpDown();
+            this.numericCon = new System.Windows.Forms.NumericUpDown();
+            this.numericInt = new System.Windows.Forms.NumericUpDown();
+            this.numericWis = new System.Windows.Forms.NumericUpDown();
+            this.numericCha = new System.Windows.Forms.NumericUpDown();
             this.txtName = new System.Windows.Forms.TextBox();
             this.buttonRandomName = new System.Windows.Forms.Button();
             this.txtRemainingPoints = new System.Windows.Forms.TextBox();
@@ -51,30 +51,30 @@
             this.btnPreviousPic = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericStr)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericCon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericWis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericCha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // numericUpDown1
+            // numericStr
             // 
-            this.numericUpDown1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown1.Location = new System.Drawing.Point(95, 52);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericStr.BackColor = System.Drawing.SystemColors.ControlText;
+            this.numericStr.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericStr.Location = new System.Drawing.Point(95, 52);
+            this.numericStr.Name = "numericStr";
+            this.numericStr.Size = new System.Drawing.Size(44, 20);
+            this.numericStr.TabIndex = 0;
+            this.numericStr.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericStr.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label1
             // 
@@ -182,81 +182,81 @@
             this.label3.Text = "Constitution";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // numericUpDown2
+            // numericDex
             // 
-            this.numericUpDown2.BackColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown2.Location = new System.Drawing.Point(95, 82);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown2.TabIndex = 4;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numericDex.BackColor = System.Drawing.SystemColors.ControlText;
+            this.numericDex.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericDex.Location = new System.Drawing.Point(95, 82);
+            this.numericDex.Name = "numericDex";
+            this.numericDex.Size = new System.Drawing.Size(44, 20);
+            this.numericDex.TabIndex = 4;
+            this.numericDex.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.numericDex.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
-            // numericUpDown3
+            // numericCon
             // 
-            this.numericUpDown3.BackColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown3.Location = new System.Drawing.Point(95, 113);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown3.TabIndex = 5;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.numericCon.BackColor = System.Drawing.SystemColors.ControlText;
+            this.numericCon.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericCon.Location = new System.Drawing.Point(95, 113);
+            this.numericCon.Name = "numericCon";
+            this.numericCon.Size = new System.Drawing.Size(44, 20);
+            this.numericCon.TabIndex = 5;
+            this.numericCon.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            this.numericCon.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
-            // numericUpDown4
+            // numericInt
             // 
-            this.numericUpDown4.BackColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown4.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown4.Location = new System.Drawing.Point(95, 146);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown4.TabIndex = 6;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.numericInt.BackColor = System.Drawing.SystemColors.ControlText;
+            this.numericInt.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericInt.Location = new System.Drawing.Point(95, 146);
+            this.numericInt.Name = "numericInt";
+            this.numericInt.Size = new System.Drawing.Size(44, 20);
+            this.numericInt.TabIndex = 6;
+            this.numericInt.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+            this.numericInt.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
-            // numericUpDown5
+            // numericWis
             // 
-            this.numericUpDown5.BackColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown5.Location = new System.Drawing.Point(95, 177);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown5.TabIndex = 7;
-            this.numericUpDown5.Value = new decimal(new int[] {
+            this.numericWis.BackColor = System.Drawing.SystemColors.ControlText;
+            this.numericWis.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericWis.Location = new System.Drawing.Point(95, 177);
+            this.numericWis.Name = "numericWis";
+            this.numericWis.Size = new System.Drawing.Size(44, 20);
+            this.numericWis.TabIndex = 7;
+            this.numericWis.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            this.numericWis.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
-            // numericUpDown6
+            // numericCha
             // 
-            this.numericUpDown6.BackColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown6.Location = new System.Drawing.Point(95, 209);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.ReadOnly = true;
-            this.numericUpDown6.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown6.TabIndex = 8;
-            this.numericUpDown6.Value = new decimal(new int[] {
+            this.numericCha.BackColor = System.Drawing.SystemColors.ControlText;
+            this.numericCha.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericCha.Location = new System.Drawing.Point(95, 209);
+            this.numericCha.Name = "numericCha";
+            this.numericCha.ReadOnly = true;
+            this.numericCha.Size = new System.Drawing.Size(44, 20);
+            this.numericCha.TabIndex = 8;
+            this.numericCha.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown6.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
+            this.numericCha.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
             // 
             // txtName
             // 
@@ -264,6 +264,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(173, 20);
             this.txtName.TabIndex = 9;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // buttonRandomName
             // 
@@ -294,7 +295,6 @@
             this.btnCreateCharacter.TabIndex = 12;
             this.btnCreateCharacter.Text = "Create Character";
             this.btnCreateCharacter.UseVisualStyleBackColor = true;
-            this.btnCreateCharacter.Visible = false;
             this.btnCreateCharacter.Click += new System.EventHandler(this.btnCreateCharacter_Click);
             // 
             // pBoxImage
@@ -349,22 +349,22 @@
             this.Controls.Add(this.txtRemainingPoints);
             this.Controls.Add(this.buttonRandomName);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.numericUpDown5);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericCha);
+            this.Controls.Add(this.numericWis);
+            this.Controls.Add(this.numericInt);
+            this.Controls.Add(this.numericCon);
+            this.Controls.Add(this.numericDex);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericStr);
             this.Name = "Character_Creation";
-            this.Text = "Character";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Text = "Create a Character";
+            ((System.ComponentModel.ISupportInitialize)(this.numericStr)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericCon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericWis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericCha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -373,7 +373,7 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericStr;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
@@ -382,11 +382,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown numericDex;
+        private System.Windows.Forms.NumericUpDown numericCon;
+        private System.Windows.Forms.NumericUpDown numericInt;
+        private System.Windows.Forms.NumericUpDown numericWis;
+        private System.Windows.Forms.NumericUpDown numericCha;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button buttonRandomName;
         private System.Windows.Forms.Label label8;

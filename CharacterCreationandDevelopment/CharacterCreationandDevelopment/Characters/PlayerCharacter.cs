@@ -7,37 +7,37 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public class PlayerCharacter : ICharacter
+    public class PlayerCharacter
     {
         #region InterfaceFields
-        public string Name { get; set; }
-        public Image Portrait { get; set; }
-        public int CurrentHP { get; set; }
-        public int MaxHP { get; set; }
+        public string name { get; set; }
+        public int portraitNumber { get; set; }
+        public int currentHP { get; set; }
+        public int maxHP { get; set; }
         #endregion  
 
         #region Attributes
-        public int _Strength { get; set; }
-        public int _Dexterity { get; set; }
-        public int _Constitution { get; set; }
-        public int _Intelligence { get; set; }
-        public int _Wisom { get; set; }
-        public int _Charisma { get; set; }
+        public int strength { get; set; }
+        public int dexterity { get; set; }
+        public int constitution { get; set; }
+        public int intelligence { get; set; }
+        public int wisdom { get; set; }
+        public int charisma { get; set; }
         #endregion
 
         public IMoodBehaviour CurrentMood;
 
 
-        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, Image Portrait)
+        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber)
         {
-            this.Name = Name;
-            this._Strength = Str;
-            this._Dexterity = Dex;
-            this._Constitution = Const;
-            this._Intelligence = Int;
-            this._Wisom = Wis;
-            this._Charisma = Char;
-            this.Portrait = Portrait;
+            this.name = Name;
+            this.strength = Str;
+            this.dexterity = Dex;
+            this.constitution = Const;
+            this.intelligence = Int;
+            this.wisdom = Wis;
+            this.charisma = Char;
+            this.portraitNumber = imageNumber;
             CurrentMood = new Happy();
         }
 

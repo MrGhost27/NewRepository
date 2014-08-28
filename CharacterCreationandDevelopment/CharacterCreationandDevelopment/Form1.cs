@@ -33,5 +33,39 @@ namespace CharacterCreationandDevelopment
         {
             label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label3_MouseLeave(object sender, EventArgs e)
+        {
+            label3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
+
+        private void label3_MouseMove(object sender, MouseEventArgs e)
+        {
+            label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        }
+
+        private void label2_MouseLeave(object sender, EventArgs e)
+        {
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
+
+        private void label2_MouseMove(object sender, MouseEventArgs e)
+        {
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            SelectGame loadgame = new SelectGame();
+            loadgame.Show();
+            this.Hide();
+            //PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(player.name);
+           // WorldUI world = new WorldUI(player);
+        }
     }
 }

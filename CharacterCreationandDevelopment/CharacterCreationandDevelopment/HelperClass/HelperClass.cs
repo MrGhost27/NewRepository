@@ -54,32 +54,40 @@ namespace CharacterCreationandDevelopment
             return cityNames[GenerateRandomNumber(1, cityNames.Count())];
         }
 
-        public static void SavePlayerDetailsToFile(string filename, Character_Creation CreationScreen)
+        public static void SavePlayerDetailsToFile(PlayerCharacter Player)
         {
             var doc = new XDocument(
             new XElement("Player",
             new XAttribute("ID", "001"),
-            new XElement("Name", CreationScreen._name),
-            new XElement("Strength", CreationScreen._strength),
-            new XElement("Dexterity", CreationScreen._dexterity),
-            new XElement("Constitution", CreationScreen._consitution),
-            new XElement("Intelligence", CreationScreen._intelligence),
-            new XElement("Wisdom", CreationScreen._wisdom),
-            new XElement("Charisma", CreationScreen._charisma),
-            new XElement("Image", CreationScreen.imageNumber)));
-
-            File.WriteAllText(filename + ".xml", doc.ToString());
+            new XElement("Name", Player.name),
+            new XElement("Strength", Player.strength),
+            new XElement("Dexterity", Player.dexterity),
+            new XElement("Constitution", Player.constitution),
+            new XElement("Intelligence", Player.intelligence),
+            new XElement("Wisdom", Player.wisdom),
+            new XElement("Charisma", Player.charisma),
+            new XElement("Portrait", Player.portraitNumber)));
+            Directory.CreateDirectory(@".\Saves\");
+            File.WriteAllText(@".\Saves\" + Player.name + ".xml", doc.ToString());
         }
         
 
      
-        public static void LoadPlayerDetailsFromFile(string filename)
+        public static PlayerCharacter LoadPlayerDetailsFromFile(string filename)
         {
-            var doc = XDocument.Load(filename + ".xml");
+            var doc = XDocument.Load(filename);
             string PlayerName = doc.Descendants("Name").Single().Value;
-            string Strength = doc.Descendants("Strength").Single().Value;
+            int strength = Int32.Parse(doc.Descendants("Strength").Single().Value);
+            int dexterity = Int32.Parse(doc.Descendants("Dexterity").Single().Value);
+            int constitution = Int32.Parse(doc.Descendants("Constitution").Single().Value);
+            int intelligence = Int32.Parse(doc.Descendants("Intelligence").Single().Value);
+            int wisdom = Int32.Parse(doc.Descendants("Wisdom").Single().Value);
+            int charisma = Int32.Parse(doc.Descendants("Charisma").Single().Value);
+            int portrait = Int32.Parse(doc.Descendants("Portrait").Single().Value);
+
             //etc
-            Console.WriteLine("Player Name = " + PlayerName);
+
+            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait);
         }
         
 
