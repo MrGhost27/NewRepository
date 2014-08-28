@@ -33,7 +33,7 @@ namespace CharacterCreationandDevelopment
             world.SetEvent(thisevent);
             pBoxNPC.Image = world.newevent.eventNPC.portrait;
             btnNextTurn.Enabled = false;
-            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.EventConversation());
+            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.EventConversation() + Environment.NewLine);
             DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
             txtConversation.AppendText(world.GetDate() + ": " + world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
             CloseEvent();

@@ -33,7 +33,7 @@ namespace CharacterCreationandDevelopment.Lessons
             
             if (_player.weapons.IsBetween(0,15))
             {
-                return _player.name + " learns to look with hands, not with eyes";
+                return _player.name + " learns to look with eyes, not with hands";
             }
             else if (_player.weapons.IsBetween(15,30))
             {
