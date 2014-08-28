@@ -9,9 +9,9 @@ namespace CharacterCreationandDevelopment
 {
     interface ICharacter
     {
-        Image Portrait { get; set; }
-        string Name { get; set; }
-        int CurrentHP { get; set; }
-        int MaxHP { get; set; }
+        Image portrait { get; set; }
+        string name { get; set; }
+        int currentHP { get; set; }
+        int maxHP { get; set; }
     }
 }

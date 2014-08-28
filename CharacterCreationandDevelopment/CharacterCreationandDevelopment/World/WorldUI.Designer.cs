@@ -32,7 +32,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnNextTurn = new System.Windows.Forms.Button();
+            this.pBoxNPC = new System.Windows.Forms.PictureBox();
+            this.txtConversation = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -65,6 +68,25 @@
             this.btnNextTurn.UseVisualStyleBackColor = true;
             this.btnNextTurn.Click += new System.EventHandler(this.btnNextTurn_Click);
             // 
+            // pBoxNPC
+            // 
+            this.pBoxNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pBoxNPC.Location = new System.Drawing.Point(487, 24);
+            this.pBoxNPC.Name = "pBoxNPC";
+            this.pBoxNPC.Size = new System.Drawing.Size(100, 101);
+            this.pBoxNPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBoxNPC.TabIndex = 5;
+            this.pBoxNPC.TabStop = false;
+            // 
+            // txtConversation
+            // 
+            this.txtConversation.Location = new System.Drawing.Point(148, 26);
+            this.txtConversation.Multiline = true;
+            this.txtConversation.Name = "txtConversation";
+            this.txtConversation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtConversation.Size = new System.Drawing.Size(323, 99);
+            this.txtConversation.TabIndex = 6;
+            // 
             // WorldUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -72,6 +94,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(737, 490);
+            this.Controls.Add(this.txtConversation);
+            this.Controls.Add(this.pBoxNPC);
             this.Controls.Add(this.btnNextTurn);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.pictureBox1);
@@ -79,6 +103,7 @@
             this.Text = "WorldUI";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WorldUI_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,5 +114,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Button btnNextTurn;
+        private System.Windows.Forms.PictureBox pBoxNPC;
+        private System.Windows.Forms.TextBox txtConversation;
     }
 }
