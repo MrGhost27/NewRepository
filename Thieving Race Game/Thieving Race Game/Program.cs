@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TypingGame
+namespace Thieving_Race_Game
 {
     static class Program
     {
