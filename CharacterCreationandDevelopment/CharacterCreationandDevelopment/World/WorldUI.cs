@@ -12,12 +12,14 @@ namespace CharacterCreationandDevelopment
 {
     public partial class WorldUI : Form
     {
-        PlayerCharacter player;
+        private PlayerCharacter player;
+        private World world;
 
         public WorldUI(PlayerCharacter playerInWorld)
         {
             InitializeComponent();
             this.player = playerInWorld;
+            world = new World();
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
 
         }
@@ -44,6 +46,11 @@ namespace CharacterCreationandDevelopment
             this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             Character_Creation CharacterSheet = new Character_Creation(player, 0);
             CharacterSheet.ShowDialog();
+        }
+
+        private void btnNextTurn_Click(object sender, EventArgs e)
+        {
+            lblDate.Text = world.NewTurn();
         }
     }
 }
