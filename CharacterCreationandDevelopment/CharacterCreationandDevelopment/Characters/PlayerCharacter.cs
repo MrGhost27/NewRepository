@@ -25,6 +25,11 @@ namespace CharacterCreationandDevelopment
         public int charisma { get; set; }
         #endregion
 
+        #region LearntSkills
+        public int weapons { get; set; }
+
+        #endregion
+
         public IMoodBehaviour CurrentMood;
 
 
@@ -38,6 +43,7 @@ namespace CharacterCreationandDevelopment
             this.wisdom = Wis;
             this.charisma = Char;
             this.portraitNumber = imageNumber;
+            weapons = 0;
             CurrentMood = new Happy();
         }
 

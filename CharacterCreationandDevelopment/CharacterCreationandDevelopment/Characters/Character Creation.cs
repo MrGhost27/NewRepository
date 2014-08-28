@@ -27,6 +27,7 @@ namespace CharacterCreationandDevelopment
         public Character_Creation()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             SetAttributes();
             imageNumber = 0;
             pBoxImage.Image = HelperClass.Images()[imageNumber];

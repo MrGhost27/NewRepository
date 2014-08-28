@@ -16,6 +16,7 @@ namespace CharacterCreationandDevelopment
         public SelectGame()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             GetSaves();
         }
 
@@ -37,6 +38,7 @@ namespace CharacterCreationandDevelopment
             PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(comboBox1.Text);
             WorldUI world = new WorldUI(player);
             world.Show();
+            this.Close();
         }
     }
 }

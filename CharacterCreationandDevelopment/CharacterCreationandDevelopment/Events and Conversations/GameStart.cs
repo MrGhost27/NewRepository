@@ -8,7 +8,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 {
     public class GameStart : IEvent
     {
-        public PlayerCharacter player;
+        private PlayerCharacter player;
         public NPC eventNPC { get; set; }
 
         public GameStart(PlayerCharacter player)

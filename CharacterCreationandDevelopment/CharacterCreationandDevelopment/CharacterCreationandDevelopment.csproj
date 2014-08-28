@@ -60,6 +60,8 @@
     <Compile Include="HelperClass\HelperClass.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Events and Conversations\IEvent.cs" />
+    <Compile Include="Lessons\ILesson.cs" />
+    <Compile Include="Lessons\WeaponsLesson.cs" />
     <Compile Include="Moods\Happy.cs" />
     <Compile Include="Moods\IMoodBehaviour.cs" />
     <Compile Include="Characters\NPC.cs" />

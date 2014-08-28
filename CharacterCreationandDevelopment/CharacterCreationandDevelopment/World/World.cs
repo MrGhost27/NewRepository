@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterCreationandDevelopment.Lessons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace CharacterCreationandDevelopment
         public int monthNumber { get; private set; }
         public int year { get; private set; }
         public IEvent newevent;
+        public ILesson lesson;
 
         public World()
         {
@@ -23,6 +25,11 @@ namespace CharacterCreationandDevelopment
             this.newevent = thisevent;
         }
 
+        public void SetLesson(ILesson todaysLesson)
+        {
+            this.lesson = todaysLesson;
+        }
+
 
         public string NewTurn()
         {
@@ -32,6 +39,11 @@ namespace CharacterCreationandDevelopment
                 monthNumber = 1;
                 year++;
             }
+            return GetDate();
+        }
+
+        public string GetDate()
+        {
             return GetMonth() + " " + year;
         }
 

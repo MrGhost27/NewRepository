@@ -89,8 +89,11 @@ namespace CharacterCreationandDevelopment
 
             return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait);
         }
-        
 
+        public static bool IsBetween(this int val, int low, int high)
+        {
+            return val > low && val < high;
+        }
         
     }
 }

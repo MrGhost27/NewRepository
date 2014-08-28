@@ -34,6 +34,9 @@
             this.btnNextTurn = new System.Windows.Forms.Button();
             this.pBoxNPC = new System.Windows.Forms.PictureBox();
             this.txtConversation = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +90,32 @@
             this.txtConversation.Size = new System.Drawing.Size(323, 99);
             this.txtConversation.TabIndex = 6;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(396, 208);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "TestSchool";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(396, 237);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(393, 263);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Weapons";
+            // 
             // WorldUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,6 +123,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(737, 490);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtConversation);
             this.Controls.Add(this.pBoxNPC);
             this.Controls.Add(this.btnNextTurn);
@@ -116,5 +148,8 @@
         private System.Windows.Forms.Button btnNextTurn;
         private System.Windows.Forms.PictureBox pBoxNPC;
         private System.Windows.Forms.TextBox txtConversation;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label1;
     }
 }

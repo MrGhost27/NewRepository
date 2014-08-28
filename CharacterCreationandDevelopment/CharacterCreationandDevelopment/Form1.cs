@@ -15,6 +15,7 @@ namespace CharacterCreationandDevelopment
         public Form1()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using CharacterCreationandDevelopment.Events_and_Conversations;
+using CharacterCreationandDevelopment.Lessons;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,15 +33,25 @@ namespace CharacterCreationandDevelopment
             world.SetEvent(thisevent);
             pBoxNPC.Image = world.newevent.eventNPC.portrait;
             btnNextTurn.Enabled = false;
-            txtConversation.AppendText(world.newevent.EventConversation());
+            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.EventConversation());
             DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
-            txtConversation.AppendText(world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
-
+            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
+            CloseEvent();
         }
+
+        private void GoToSchool(ILesson todaysLesson)
+        {
+            world.SetLesson(todaysLesson);
+            MessageBox.Show(player.name + " goes to " + world.lesson.GetLessonName());
+            txtConversation.AppendText(world.GetDate() + ": " + world.lesson.LessonEffects() + Environment.NewLine);
+            NextTurn();
+        }
+
         private void CloseEvent()
         {
             pBoxNPC.Visible = false;
             btnNextTurn.Enabled = true;
+            NextTurn();
         }
 
         private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
@@ -56,13 +67,26 @@ namespace CharacterCreationandDevelopment
             CharacterSheet.ShowDialog();
         }
 
-        private void btnNextTurn_Click(object sender, EventArgs e)
+        private void NextTurn()
         {
             lblDate.Text = world.NewTurn();
+            label1.Text = "Weapons: " + player.weapons;
+
             if (world.monthNumber == 3)
             {
                 RunEvent((new GameStart(player)));
             }
+        }
+
+        private void btnNextTurn_Click(object sender, EventArgs e)
+        {
+            NextTurn();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GoToSchool(new WeaponsLesson(player));
+            progressBar1.Value = player.weapons;
         }
     }
 }
