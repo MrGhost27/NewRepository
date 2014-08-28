@@ -50,6 +50,7 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events and Conversations\GameStart.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
