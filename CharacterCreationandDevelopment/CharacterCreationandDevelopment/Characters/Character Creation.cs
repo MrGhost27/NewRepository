@@ -43,8 +43,8 @@ namespace CharacterCreationandDevelopment
             btnCreateCharacter.Text = "Level Up";
             txtName.Text = player.name;
             txtName.Enabled = false;
-            btnPreviousPic.Enabled = false;
-            btnNext.Enabled = false;
+            btnPreviousPic.Visible = false;
+            btnNext.Visible = false;
             btnReset.Visible = false;
             buttonRandomName.Visible = false;
 

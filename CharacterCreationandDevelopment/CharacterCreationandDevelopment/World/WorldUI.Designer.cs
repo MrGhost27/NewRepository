@@ -55,7 +55,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(603, 29);
+            this.lblDate.Location = new System.Drawing.Point(145, 9);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(35, 13);
             this.lblDate.TabIndex = 3;
@@ -63,18 +63,18 @@
             // 
             // btnNextTurn
             // 
-            this.btnNextTurn.Location = new System.Drawing.Point(606, 59);
+            this.btnNextTurn.Location = new System.Drawing.Point(625, 153);
             this.btnNextTurn.Name = "btnNextTurn";
-            this.btnNextTurn.Size = new System.Drawing.Size(75, 23);
+            this.btnNextTurn.Size = new System.Drawing.Size(100, 23);
             this.btnNextTurn.TabIndex = 4;
-            this.btnNextTurn.Text = "button1";
+            this.btnNextTurn.Text = "Do Nothing";
             this.btnNextTurn.UseVisualStyleBackColor = true;
             this.btnNextTurn.Click += new System.EventHandler(this.btnNextTurn_Click);
             // 
             // pBoxNPC
             // 
             this.pBoxNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pBoxNPC.Location = new System.Drawing.Point(487, 24);
+            this.pBoxNPC.Location = new System.Drawing.Point(625, 24);
             this.pBoxNPC.Name = "pBoxNPC";
             this.pBoxNPC.Size = new System.Drawing.Size(100, 101);
             this.pBoxNPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -87,22 +87,22 @@
             this.txtConversation.Multiline = true;
             this.txtConversation.Name = "txtConversation";
             this.txtConversation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtConversation.Size = new System.Drawing.Size(323, 99);
+            this.txtConversation.Size = new System.Drawing.Size(459, 99);
             this.txtConversation.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(396, 208);
+            this.button1.Location = new System.Drawing.Point(625, 182);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 51);
             this.button1.TabIndex = 7;
-            this.button1.Text = "TestSchool";
+            this.button1.Text = "Go To Weapons Class";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(396, 237);
+            this.progressBar1.Location = new System.Drawing.Point(32, 153);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 8;
@@ -110,7 +110,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(393, 263);
+            this.label1.Location = new System.Drawing.Point(29, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 9;
