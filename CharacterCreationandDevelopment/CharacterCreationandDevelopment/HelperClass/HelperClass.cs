@@ -75,7 +75,7 @@ namespace CharacterCreationandDevelopment
      
         public static PlayerCharacter LoadPlayerDetailsFromFile(string filename)
         {
-            var doc = XDocument.Load(filename + ".xml");
+            var doc = XDocument.Load(@".\Saves\" + filename + ".xml");
             string PlayerName = doc.Descendants("Name").Single().Value;
             int strength = Int32.Parse(doc.Descendants("Strength").Single().Value);
             int dexterity = Int32.Parse(doc.Descendants("Dexterity").Single().Value);
