@@ -16,10 +16,10 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             Dad = new NPC();
         }
 
-       /* public string RunEvent()
+        public string RunEvent()
         {
-
+            return "here's your string";
         }
-        */
+        
     }
 }
