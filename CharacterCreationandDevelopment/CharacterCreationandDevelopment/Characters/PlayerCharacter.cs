@@ -27,11 +27,17 @@ namespace CharacterCreationandDevelopment
 
         #region LearntSkills
         public int weapons { get; set; }
+		public int unarmed { get; set; }
 		public int swimming { get; set; }
 		public int athletics { get; set; }
 		public int diplomacy { get; set; }
 		public int survival { get; set; }
 		public int crafting { get; set; }
+		public int faith { get; set; }
+		public int lockpicking { get; set; }
+		public int pickpocketing { get; set; }
+		public int animalEmpathy { get; set; }
+		public int medicine { get; set; }
 
         #endregion
 
@@ -39,7 +45,8 @@ namespace CharacterCreationandDevelopment
 
 
         public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
-			int weapons, int swimming, int athletics, int diplomacy, int survival, int crafting)
+			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
+			int lockpicking, int pickpocketing, int animalEmpathy, int medicine)
         {
             this.name = Name;
             this.strength = Str;
@@ -50,11 +57,17 @@ namespace CharacterCreationandDevelopment
             this.charisma = Char;
             this.portraitNumber = imageNumber;
             this.weapons = weapons;
+			this.unarmed = unarmed;
 			this.swimming = swimming;
 			this.athletics = athletics;
 			this.diplomacy = diplomacy;
 			this.survival = survival;
 			this.crafting = crafting;
+			this.faith = faith;
+			this.lockpicking = lockpicking;
+			this.pickpocketing = pickpocketing;
+			this.animalEmpathy = animalEmpathy;
+			this.medicine = medicine;
 
             CurrentMood = new Happy();
         }

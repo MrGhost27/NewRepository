@@ -98,11 +98,17 @@ namespace CharacterCreationandDevelopment
             new XElement("Charisma", player.charisma),
             new XElement("Portrait", player.portraitNumber),
             new XElement("Weapons", player.weapons),
+			new XElement("Unarmed", player.unarmed),
 			new XElement("Swimming",player.swimming),
 			new XElement("Athletics", player.athletics),
 			new XElement("Diplomacy", player.diplomacy),
 			new XElement("Survival", player.survival),
-			new XElement("Crafting", player.crafting)));
+			new XElement("Crafting", player.crafting),
+			new XElement("Faith", player.faith),
+			new XElement("Lockpicking", player.lockpicking),
+			new XElement("Pickpocketing", player.pickpocketing),
+			new XElement("Animal Empathy", player.animalEmpathy),
+			new XElement("Medicine", player.medicine)));
 
             Directory.CreateDirectory(@".\Saves\");
             File.WriteAllText(@".\Saves\" + player.name + ".xml", doc.ToString());
@@ -122,15 +128,22 @@ namespace CharacterCreationandDevelopment
             int charisma = Int32.Parse(doc.Descendants("Charisma").Single().Value);
             int portrait = Int32.Parse(doc.Descendants("Portrait").Single().Value);
             int weapons = Int32.Parse(doc.Descendants("Weapons").Single().Value);
+			int unarmed = Int32.Parse(doc.Descendants("Unarmed").Single().Value);
 			int swimming = Int32.Parse(doc.Descendants("Swimming").Single().Value);
 			int athletics = Int32.Parse(doc.Descendants("Athletics").Single().Value);
 			int diplomacy = Int32.Parse(doc.Descendants("Diplomacy").Single().Value);
 			int survival = Int32.Parse(doc.Descendants("Survival").Single().Value);
 			int crafting = Int32.Parse(doc.Descendants("Crafting").Single().Value);
+			int faith = Int32.Parse(doc.Descendants("Faith").Single().Value);
+			int lockpicking = Int32.Parse(doc.Descendants("Lockpicking").Single().Value);
+			int pickpocketing = Int32.Parse(doc.Descendants("Pickpocketing").Single().Value);
+			int animalEmpathy = Int32.Parse(doc.Descendants("Animal Empathy").Single().Value);
+			int medicine = Int32.Parse(doc.Descendants("Medicine").Single().Value);
             //etc
 
-            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait, 
-				weapons, swimming, athletics, diplomacy, survival, crafting);
+            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
+				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing, 
+				animalEmpathy, medicine);
         }
 
 
