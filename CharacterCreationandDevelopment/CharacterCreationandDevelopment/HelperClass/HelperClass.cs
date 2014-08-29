@@ -107,8 +107,9 @@ namespace CharacterCreationandDevelopment
 			new XElement("Faith", player.faith),
 			new XElement("Lockpicking", player.lockpicking),
 			new XElement("Pickpocketing", player.pickpocketing),
-			new XElement("Animal Empathy", player.animalEmpathy),
-			new XElement("Medicine", player.medicine)));
+			new XElement("AnimalEmpathy", player.animalEmpathy),
+			new XElement("Medicine", player.medicine),
+            new XElement("Science", player.science)));
 
             Directory.CreateDirectory(@".\Saves\");
             File.WriteAllText(@".\Saves\" + player.name + ".xml", doc.ToString());
@@ -137,13 +138,14 @@ namespace CharacterCreationandDevelopment
 			int faith = Int32.Parse(doc.Descendants("Faith").Single().Value);
 			int lockpicking = Int32.Parse(doc.Descendants("Lockpicking").Single().Value);
 			int pickpocketing = Int32.Parse(doc.Descendants("Pickpocketing").Single().Value);
-			int animalEmpathy = Int32.Parse(doc.Descendants("Animal Empathy").Single().Value);
+			int animalEmpathy = Int32.Parse(doc.Descendants("AnimalEmpathy").Single().Value);
 			int medicine = Int32.Parse(doc.Descendants("Medicine").Single().Value);
+            int science = Int32.Parse(doc.Descendants("Science").Single().Value);
             //etc
 
             return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
 				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing, 
-				animalEmpathy, medicine);
+				animalEmpathy, medicine, science);
         }
 
 

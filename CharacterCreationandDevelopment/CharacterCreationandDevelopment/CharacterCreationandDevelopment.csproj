@@ -69,6 +69,7 @@
     <Compile Include="Lessons\LockpickingLesson.cs" />
     <Compile Include="Lessons\MedicineLesson.cs" />
     <Compile Include="Lessons\PickpocketingLesson.cs" />
+    <Compile Include="Lessons\ScienceLesson.cs" />
     <Compile Include="Lessons\SurvivalLesson.cs" />
     <Compile Include="Lessons\SwimmingLesson.cs" />
     <Compile Include="Lessons\UnarmedLesson.cs" />
@@ -84,6 +85,12 @@
     </Compile>
     <Compile Include="SelectGame.Designer.cs">
       <DependentUpon>SelectGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Skills.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skills.Designer.cs">
+      <DependentUpon>Skills.cs</DependentUpon>
     </Compile>
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldUI.cs">
@@ -109,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="SelectGame.resx">
       <DependentUpon>SelectGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skills.resx">
+      <DependentUpon>Skills.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="World\WorldUI.resx">
       <DependentUpon>WorldUI.cs</DependentUpon>

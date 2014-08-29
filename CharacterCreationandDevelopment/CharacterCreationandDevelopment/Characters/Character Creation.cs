@@ -207,7 +207,7 @@ namespace CharacterCreationandDevelopment
             }
 
             player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 
             HelperClass.SavePlayerDetailsToFile(player);

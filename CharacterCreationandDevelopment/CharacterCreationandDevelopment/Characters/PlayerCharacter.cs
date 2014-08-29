@@ -38,6 +38,7 @@ namespace CharacterCreationandDevelopment
 		public int pickpocketing { get; set; }
 		public int animalEmpathy { get; set; }
 		public int medicine { get; set; }
+        public int science { get; set; }
 
         #endregion
 
@@ -46,7 +47,7 @@ namespace CharacterCreationandDevelopment
 
         public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
-			int lockpicking, int pickpocketing, int animalEmpathy, int medicine)
+			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science)
         {
             this.name = Name;
             this.strength = Str;
@@ -68,6 +69,7 @@ namespace CharacterCreationandDevelopment
 			this.pickpocketing = pickpocketing;
 			this.animalEmpathy = animalEmpathy;
 			this.medicine = medicine;
+            this.science = science;
 
             CurrentMood = new Happy();
         }

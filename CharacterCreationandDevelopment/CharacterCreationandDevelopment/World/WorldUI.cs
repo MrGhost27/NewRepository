@@ -16,6 +16,7 @@ namespace CharacterCreationandDevelopment
     {
         private PlayerCharacter player;
         private World world;
+        private Skills playerSkills;
 
         public WorldUI(PlayerCharacter playerInWorld)
         {
@@ -92,6 +93,23 @@ namespace CharacterCreationandDevelopment
         {
             GoToSchool(new WeaponsLesson(player));
             progressBar1.Value = player.weapons;
+        }
+
+        private void lblSkills_Click(object sender, EventArgs e)
+        {
+            playerSkills = new Skills(player);
+            playerSkills.Show();
+            this.Hide();
+        }
+
+        private void lblSkills_MouseEnter(object sender, EventArgs e)
+        {
+            this.lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void lblSkills_MouseLeave(object sender, EventArgs e)
+        {
+            lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
     }
 }

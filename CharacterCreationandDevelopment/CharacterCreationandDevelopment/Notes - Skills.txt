@@ -17,4 +17,4 @@ Animal Empathy (char)
 Medicine (int)
 Stealth (dex)
 Economics (barter)?
-Science?
+Science (int) ?

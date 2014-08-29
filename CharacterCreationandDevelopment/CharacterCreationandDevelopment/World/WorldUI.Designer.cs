@@ -37,6 +37,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblSkills = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // btnNextTurn
             // 
-            this.btnNextTurn.Location = new System.Drawing.Point(625, 153);
+            this.btnNextTurn.Location = new System.Drawing.Point(625, 188);
             this.btnNextTurn.Name = "btnNextTurn";
             this.btnNextTurn.Size = new System.Drawing.Size(100, 23);
             this.btnNextTurn.TabIndex = 4;
@@ -92,7 +93,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(625, 182);
+            this.button1.Location = new System.Drawing.Point(625, 217);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 51);
             this.button1.TabIndex = 7;
@@ -102,7 +103,8 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(32, 153);
+            this.progressBar1.ForeColor = System.Drawing.Color.DarkRed;
+            this.progressBar1.Location = new System.Drawing.Point(625, 154);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 8;
@@ -110,11 +112,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 137);
+            this.label1.Location = new System.Drawing.Point(622, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Weapons";
+            // 
+            // lblSkills
+            // 
+            this.lblSkills.AutoSize = true;
+            this.lblSkills.BackColor = System.Drawing.SystemColors.Control;
+            this.lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSkills.Location = new System.Drawing.Point(26, 178);
+            this.lblSkills.Name = "lblSkills";
+            this.lblSkills.Size = new System.Drawing.Size(73, 33);
+            this.lblSkills.TabIndex = 10;
+            this.lblSkills.Text = "Skills";
+            this.lblSkills.Click += new System.EventHandler(this.lblSkills_Click);
+            this.lblSkills.MouseEnter += new System.EventHandler(this.lblSkills_MouseEnter);
+            this.lblSkills.MouseLeave += new System.EventHandler(this.lblSkills_MouseLeave);
             // 
             // WorldUI
             // 
@@ -123,6 +139,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(737, 490);
+            this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
@@ -151,5 +168,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSkills;
     }
 }
