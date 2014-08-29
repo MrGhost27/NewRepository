@@ -45,7 +45,7 @@ namespace CharacterCreationandDevelopment
                 this.Close();
                 parentForm.Hide();
             }
-            catch (Exception E)
+            catch (Exception)
             {
                 MessageBox.Show("Unable to load the selected save game");
             }

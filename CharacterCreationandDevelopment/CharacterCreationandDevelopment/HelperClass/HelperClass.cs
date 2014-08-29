@@ -84,23 +84,28 @@ namespace CharacterCreationandDevelopment
             return worldDetails;
         }
 
-        public static void SavePlayerDetailsToFile(PlayerCharacter Player)
+        public static void SavePlayerDetailsToFile(PlayerCharacter player)
         {
             var doc = new XDocument(
             new XElement("Player",
             new XAttribute("ID", "001"),
-            new XElement("Name", Player.name),
-            new XElement("Strength", Player.strength),
-            new XElement("Dexterity", Player.dexterity),
-            new XElement("Constitution", Player.constitution),
-            new XElement("Intelligence", Player.intelligence),
-            new XElement("Wisdom", Player.wisdom),
-            new XElement("Charisma", Player.charisma),
-            new XElement("Portrait", Player.portraitNumber),
-            new XElement("Weapons", Player.weapons)));
+            new XElement("Name", player.name),
+            new XElement("Strength", player.strength),
+            new XElement("Dexterity", player.dexterity),
+            new XElement("Constitution", player.constitution),
+            new XElement("Intelligence", player.intelligence),
+            new XElement("Wisdom", player.wisdom),
+            new XElement("Charisma", player.charisma),
+            new XElement("Portrait", player.portraitNumber),
+            new XElement("Weapons", player.weapons),
+			new XElement("Swimming",player.swimming),
+			new XElement("Athletics", player.athletics),
+			new XElement("Diplomacy", player.diplomacy),
+			new XElement("Survival", player.survival),
+			new XElement("Crafting", player.crafting)));
 
             Directory.CreateDirectory(@".\Saves\");
-            File.WriteAllText(@".\Saves\" + Player.name + ".xml", doc.ToString());
+            File.WriteAllText(@".\Saves\" + player.name + ".xml", doc.ToString());
         }
         
 
@@ -117,17 +122,27 @@ namespace CharacterCreationandDevelopment
             int charisma = Int32.Parse(doc.Descendants("Charisma").Single().Value);
             int portrait = Int32.Parse(doc.Descendants("Portrait").Single().Value);
             int weapons = Int32.Parse(doc.Descendants("Weapons").Single().Value);
-
+			int swimming = Int32.Parse(doc.Descendants("Swimming").Single().Value);
+			int athletics = Int32.Parse(doc.Descendants("Athletics").Single().Value);
+			int diplomacy = Int32.Parse(doc.Descendants("Diplomacy").Single().Value);
+			int survival = Int32.Parse(doc.Descendants("Survival").Single().Value);
+			int crafting = Int32.Parse(doc.Descendants("Crafting").Single().Value);
             //etc
 
-            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait, weapons);
+            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait, 
+				weapons, swimming, athletics, diplomacy, survival, crafting);
         }
 
 
 
-        public static bool IsBetween(this int val, int low, int high)
+        public static bool IsBetween(this int val, int low, int high, int previousval)
         {
-            return val > low && val < high;
+			if (previousval > low && previousval < high)
+			{
+				return false;
+			}
+
+			return val > low && val < high;
         }
         
     }

@@ -1,0 +1,18 @@
+﻿Classes in School
+
+Weapons (int)
+Swimming (str)
+Athletics (con)
+Reflexes
+Social Skills (char, char, char)
+(Diplomacy / Intimidation / bribe)
+Survival (wis)
+Crafting (dex, dex, dex) 
+(metal, wood, cloth)
+Faith (int)
+Lockpicking / Thievery
+Animal Empathy
+Medicine
+Stealth
+Economics (barter)?
+Science?

@@ -24,7 +24,7 @@ namespace CharacterCreationandDevelopment
                 monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[1]);
                 year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[2]);
             }
-            catch (Exception E)
+            catch (Exception)
             {
                 monthNumber = 12;
                 year = 1050;
