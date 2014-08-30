@@ -97,7 +97,7 @@ namespace CharacterCreationandDevelopment
 
         private void lblSkills_Click(object sender, EventArgs e)
         {
-            playerSkills = new Skills(player);
+            playerSkills = new Skills(player,this);
             playerSkills.Show();
             this.Hide();
         }
