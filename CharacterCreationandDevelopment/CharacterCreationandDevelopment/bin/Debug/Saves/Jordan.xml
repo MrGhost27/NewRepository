@@ -1,13 +1,13 @@
 <Player ID="001">
-  <Name>Julian</Name>
+  <Name>Jordan</Name>
   <Strength>14</Strength>
-  <Dexterity>10</Dexterity>
-  <Constitution>10</Constitution>
+  <Dexterity>13</Dexterity>
+  <Constitution>13</Constitution>
   <Intelligence>10</Intelligence>
   <Wisdom>10</Wisdom>
   <Charisma>10</Charisma>
-  <Portrait>0</Portrait>
-  <Weapons>10</Weapons>
+  <Portrait>8</Portrait>
+  <Weapons>0</Weapons>
   <Unarmed>0</Unarmed>
   <Swimming>0</Swimming>
   <Athletics>0</Athletics>

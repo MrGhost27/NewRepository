@@ -26,20 +26,29 @@ namespace CharacterCreationandDevelopment
 
         private void PopulateSkills()
         {
-            lblAnimalEmpathyValue.Text = player.animalEmpathy.ToString();
-            lblAthleticsValue.Text = player.athletics.ToString();
-            lblCraftingValue.Text = player.crafting.ToString();
-            lblDiplomacyValue.Text = player.diplomacy.ToString();
-            lblFaithValue.Text = player.faith.ToString();
-            lblLockpickingValue.Text = player.lockpicking.ToString();
-            lblMedicineValue.Text = player.medicine.ToString();
-            lblPickpocketingValue.Text = player.pickpocketing.ToString();
-            lblScienceValue.Text = player.science.ToString();
-            lblSurvivalValue.Text = player.survival.ToString();
-            lblSwimmingValue.Text = player.swimming.ToString();
-            lblUnarmedValue.Text = player.unarmed.ToString();
-            lblWeaponsValue.Text = player.weapons.ToString();
-            
+            UpdateSkillsAndProgressBars(pBarAnimalEmpathy, lblAnimalEmpathyValue, player.animalEmpathy);
+            UpdateSkillsAndProgressBars(pBarAthletics, lblAthleticsValue, player.athletics);
+            UpdateSkillsAndProgressBars(pBarCrafting, lblCraftingValue, player.crafting);
+            UpdateSkillsAndProgressBars(pBarDiplomacy, lblDiplomacyValue, player.diplomacy);
+            UpdateSkillsAndProgressBars(pBarFaith, lblFaithValue, player.faith);
+            UpdateSkillsAndProgressBars(pBarLockpicking, lblLockpickingValue, player.lockpicking);
+            UpdateSkillsAndProgressBars(pBarMedicine, lblMedicineValue, player.medicine);
+            UpdateSkillsAndProgressBars(pBarPickpocketing, lblPickpocketingValue, player.pickpocketing);
+            UpdateSkillsAndProgressBars(pBarScience, lblScienceValue, player.science);
+            UpdateSkillsAndProgressBars(pBarSurvival, lblSurvivalValue, player.survival);
+            UpdateSkillsAndProgressBars(pBarSwimming, lblSwimmingValue, player.swimming);
+            UpdateSkillsAndProgressBars(pBarUnarmed, lblUnarmedValue, player.unarmed);
+            UpdateSkillsAndProgressBars(pBarWeapons, lblWeaponsValue, player.weapons);
+        }
+
+        private void UpdateSkillsAndProgressBars(ProgressBar progressBar, Label label, int skill)
+        {
+            if (skill > 100)
+            {
+                skill = 100;
+            }
+            progressBar.Value = skill;
+            label.Text = skill.ToString();
         }
 
         private void Skills_FormClosed(object sender, FormClosedEventArgs e)
