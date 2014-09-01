@@ -7,17 +7,17 @@
   <Wisdom>12</Wisdom>
   <Charisma>10</Charisma>
   <Portrait>0</Portrait>
-  <Weapons>0</Weapons>
-  <Unarmed>0</Unarmed>
-  <Swimming>0</Swimming>
-  <Athletics>0</Athletics>
+  <Weapons>97</Weapons>
+  <Unarmed>6</Unarmed>
+  <Swimming>18</Swimming>
+  <Athletics>6</Athletics>
   <Diplomacy>0</Diplomacy>
-  <Survival>0</Survival>
-  <Crafting>0</Crafting>
-  <Faith>10</Faith>
-  <Lockpicking>0</Lockpicking>
-  <Pickpocketing>0</Pickpocketing>
-  <AnimalEmpathy>50</AnimalEmpathy>
-  <Medicine>0</Medicine>
-  <Science>0</Science>
+  <Survival>12</Survival>
+  <Crafting>6</Crafting>
+  <Faith>15</Faith>
+  <Lockpicking>18</Lockpicking>
+  <Pickpocketing>12</Pickpocketing>
+  <AnimalEmpathy>55</AnimalEmpathy>
+  <Medicine>12</Medicine>
+  <Science>6</Science>
 </Player>

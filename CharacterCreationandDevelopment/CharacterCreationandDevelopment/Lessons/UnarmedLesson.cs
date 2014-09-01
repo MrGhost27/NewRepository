@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment.Lessons
 {
-	class UnarmedLesson
+	class UnarmedLesson : ILesson
 	{
 		private PlayerCharacter _player;
 		private string _lessonName;

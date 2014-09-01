@@ -36,11 +36,11 @@ namespace CharacterCreationandDevelopment.Lessons
 		public string LessonEffects()
 		{
 			int previousValue = _player.diplomacy;
-			_player.weapons += _player.charisma / 2;
+			_player.diplomacy += _player.charisma / 2;
 
-			if (_player.weapons > 100)
+            if (_player.diplomacy > 100)
 			{
-				_player.weapons = 100;
+                _player.diplomacy = 100;
 			}
 
 			if (_player.diplomacy.IsBetween(0, 15, previousValue))

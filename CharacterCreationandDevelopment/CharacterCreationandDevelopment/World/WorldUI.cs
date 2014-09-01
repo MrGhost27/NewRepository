@@ -29,6 +29,7 @@ namespace CharacterCreationandDevelopment
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
             lblDate.Text = world.GetDate();
             listofActions = new List<String>();
+            AtHome();
         }
 
         private void RunEvent(IEvent thisevent)
@@ -125,14 +126,22 @@ namespace CharacterCreationandDevelopment
             lblCurrentLocation.Text = "The Church";
             listofActions.Clear();
             listofActions.Add("Go for Prayer");
+            listofActions.Add("Break into the Church");
             PopulateListBox();
         }
 
         private void pBoxFarm_Click(object sender, EventArgs e)
         {
+            AtHome();
+ 
+        }
+
+        private void AtHome()
+        {
             lblCurrentLocation.Text = "Your Home";
             listofActions.Clear();
-            listofActions.Add("Work with the animals");
+            listofActions.Add("Work on the Farm");
+            listofActions.Add("Relax at home");
             PopulateListBox();
         }
 
@@ -142,6 +151,7 @@ namespace CharacterCreationandDevelopment
             listofActions.Clear();
             listofActions.Add("Take Science Class");
             listofActions.Add("Take Medicine Class");
+            listofActions.Add("Break into the School");
             PopulateListBox();
         }
 
@@ -164,6 +174,61 @@ namespace CharacterCreationandDevelopment
             listofActions.Add("Train with Weapons");
             listofActions.Add("Take Survival Training");
             PopulateListBox();
+        }
+
+        private void pBoxMarket_Click(object sender, EventArgs e)
+        {
+            lblCurrentLocation.Text = "The Market";
+            listofActions.Clear();
+            listofActions.Add("Barter for Items");
+            listofActions.Add("Steal food");
+            PopulateListBox();
+        }
+
+        private void pBoxBlacksmith_Click(object sender, EventArgs e)
+        {
+            lblCurrentLocation.Text = "The Blacksmith";
+            listofActions.Clear();
+            listofActions.Add("Barter for Items");
+            listofActions.Add("Steal Items");
+            listofActions.Add("Create Weapons");
+            listofActions.Add("Break in.");
+            PopulateListBox();
+
+        }
+
+        private void TakeAction(string keyword, ILesson lesson)
+        {
+            if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+            {
+                world.SetLesson(lesson);
+                txtConversation.Text = lesson.LessonEffects();
+                NextTurn();
+            }
+
+        }
+
+        private void btnTakeAction_Click(object sender, EventArgs e)
+        {
+            if (lBoxActions.SelectedItem == null)
+            {
+                MessageBox.Show("Select an Action");
+            }
+
+            TakeAction("Farm", new AnimalEmpathyLesson(player));
+            TakeAction("Running", new AthleticsLesson(player));
+            TakeAction("Create", new CraftingLesson(player));
+            TakeAction("Barter", new DiplomacyLesson(player));
+            TakeAction("Prayer", new FaithLesson(player));
+            TakeAction("Break", new LockpickingLesson(player));
+            TakeAction("Medic", new MedicineLesson(player));
+            TakeAction("Steal", new PickpocketingLesson(player));
+            TakeAction("Science", new ScienceLesson(player));
+            TakeAction("Survival", new SurvivalLesson(player));
+            TakeAction("Camping", new SurvivalLesson(player));
+            TakeAction("Swimming", new SwimmingLesson(player));
+            TakeAction("Fist", new UnarmedLesson(player));
+            TakeAction("Weapon", new WeaponsLesson(player));
         }
     }
 }

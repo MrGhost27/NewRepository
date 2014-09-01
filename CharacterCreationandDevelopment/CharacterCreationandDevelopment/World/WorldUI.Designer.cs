@@ -45,6 +45,9 @@
             this.lblCurrentLocation = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pBoxMarket = new System.Windows.Forms.PictureBox();
+            this.pBoxBlacksmith = new System.Windows.Forms.PictureBox();
+            this.btnTakeAction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxSchool)).BeginInit();
@@ -52,6 +55,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBoxChurch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxMarket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxBlacksmith)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -85,6 +90,7 @@
             this.pBoxNPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxNPC.TabIndex = 5;
             this.pBoxNPC.TabStop = false;
+            this.pBoxNPC.Visible = false;
             // 
             // txtConversation
             // 
@@ -100,7 +106,7 @@
             this.lblSkills.AutoSize = true;
             this.lblSkills.BackColor = System.Drawing.SystemColors.Control;
             this.lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSkills.Location = new System.Drawing.Point(12, 333);
+            this.lblSkills.Location = new System.Drawing.Point(12, 369);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(67, 33);
             this.lblSkills.TabIndex = 10;
@@ -112,7 +118,7 @@
             // pBoxSchool
             // 
             this.pBoxSchool.Image = ((System.Drawing.Image)(resources.GetObject("pBoxSchool.Image")));
-            this.pBoxSchool.Location = new System.Drawing.Point(410, 184);
+            this.pBoxSchool.Location = new System.Drawing.Point(495, 445);
             this.pBoxSchool.Name = "pBoxSchool";
             this.pBoxSchool.Size = new System.Drawing.Size(75, 75);
             this.pBoxSchool.TabIndex = 11;
@@ -123,9 +129,10 @@
             // 
             this.pBoxFarm.BackColor = System.Drawing.Color.Transparent;
             this.pBoxFarm.Image = ((System.Drawing.Image)(resources.GetObject("pBoxFarm.Image")));
-            this.pBoxFarm.Location = new System.Drawing.Point(279, 266);
+            this.pBoxFarm.Location = new System.Drawing.Point(339, 168);
             this.pBoxFarm.Name = "pBoxFarm";
             this.pBoxFarm.Size = new System.Drawing.Size(75, 75);
+            this.pBoxFarm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxFarm.TabIndex = 12;
             this.pBoxFarm.TabStop = false;
             this.pBoxFarm.Click += new System.EventHandler(this.pBoxFarm_Click);
@@ -134,7 +141,7 @@
             // 
             this.pBoxChurch.BackColor = System.Drawing.Color.Transparent;
             this.pBoxChurch.Image = ((System.Drawing.Image)(resources.GetObject("pBoxChurch.Image")));
-            this.pBoxChurch.Location = new System.Drawing.Point(149, 194);
+            this.pBoxChurch.Location = new System.Drawing.Point(169, 197);
             this.pBoxChurch.Name = "pBoxChurch";
             this.pBoxChurch.Size = new System.Drawing.Size(75, 75);
             this.pBoxChurch.TabIndex = 13;
@@ -146,7 +153,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 375);
+            this.label1.Location = new System.Drawing.Point(12, 411);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 33);
             this.label1.TabIndex = 14;
@@ -157,7 +164,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 421);
+            this.label2.Location = new System.Drawing.Point(12, 457);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 33);
             this.label2.TabIndex = 15;
@@ -168,7 +175,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 468);
+            this.label3.Location = new System.Drawing.Point(12, 504);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 33);
             this.label3.TabIndex = 16;
@@ -179,15 +186,15 @@
             this.lBoxActions.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lBoxActions.FormattingEnabled = true;
             this.lBoxActions.ItemHeight = 18;
-            this.lBoxActions.Location = new System.Drawing.Point(564, 301);
+            this.lBoxActions.Location = new System.Drawing.Point(295, 269);
             this.lBoxActions.Name = "lBoxActions";
-            this.lBoxActions.Size = new System.Drawing.Size(166, 94);
+            this.lBoxActions.Size = new System.Drawing.Size(166, 112);
             this.lBoxActions.TabIndex = 17;
             // 
             // pBoxLake
             // 
             this.pBoxLake.Image = ((System.Drawing.Image)(resources.GetObject("pBoxLake.Image")));
-            this.pBoxLake.Location = new System.Drawing.Point(410, 358);
+            this.pBoxLake.Location = new System.Drawing.Point(519, 197);
             this.pBoxLake.Name = "pBoxLake";
             this.pBoxLake.Size = new System.Drawing.Size(75, 75);
             this.pBoxLake.TabIndex = 18;
@@ -218,12 +225,42 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(213, 383);
+            this.pictureBox2.Location = new System.Drawing.Point(249, 445);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(75, 75);
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pBoxBarracks_Click);
+            // 
+            // pBoxMarket
+            // 
+            this.pBoxMarket.Image = ((System.Drawing.Image)(resources.GetObject("pBoxMarket.Image")));
+            this.pBoxMarket.Location = new System.Drawing.Point(591, 327);
+            this.pBoxMarket.Name = "pBoxMarket";
+            this.pBoxMarket.Size = new System.Drawing.Size(75, 75);
+            this.pBoxMarket.TabIndex = 22;
+            this.pBoxMarket.TabStop = false;
+            this.pBoxMarket.Click += new System.EventHandler(this.pBoxMarket_Click);
+            // 
+            // pBoxBlacksmith
+            // 
+            this.pBoxBlacksmith.Image = ((System.Drawing.Image)(resources.GetObject("pBoxBlacksmith.Image")));
+            this.pBoxBlacksmith.Location = new System.Drawing.Point(120, 314);
+            this.pBoxBlacksmith.Name = "pBoxBlacksmith";
+            this.pBoxBlacksmith.Size = new System.Drawing.Size(75, 75);
+            this.pBoxBlacksmith.TabIndex = 23;
+            this.pBoxBlacksmith.TabStop = false;
+            this.pBoxBlacksmith.Click += new System.EventHandler(this.pBoxBlacksmith_Click);
+            // 
+            // btnTakeAction
+            // 
+            this.btnTakeAction.Location = new System.Drawing.Point(320, 389);
+            this.btnTakeAction.Name = "btnTakeAction";
+            this.btnTakeAction.Size = new System.Drawing.Size(112, 33);
+            this.btnTakeAction.TabIndex = 24;
+            this.btnTakeAction.Text = "Take Action";
+            this.btnTakeAction.UseVisualStyleBackColor = true;
+            this.btnTakeAction.Click += new System.EventHandler(this.btnTakeAction_Click);
             // 
             // WorldUI
             // 
@@ -231,7 +268,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(737, 510);
+            this.ClientSize = new System.Drawing.Size(737, 546);
+            this.Controls.Add(this.btnTakeAction);
+            this.Controls.Add(this.pBoxBlacksmith);
+            this.Controls.Add(this.pBoxMarket);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblCurrentLocation);
             this.Controls.Add(this.label5);
@@ -258,6 +298,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBoxChurch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxLake)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxMarket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxBlacksmith)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +323,8 @@
         private System.Windows.Forms.Label lblCurrentLocation;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pBoxMarket;
+        private System.Windows.Forms.PictureBox pBoxBlacksmith;
+        private System.Windows.Forms.Button btnTakeAction;
     }
 }
