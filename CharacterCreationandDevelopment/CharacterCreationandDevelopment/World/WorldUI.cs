@@ -17,6 +17,7 @@ namespace CharacterCreationandDevelopment
         private PlayerCharacter player;
         private World world;
         private Skills playerSkills;
+        private List<String> listofActions;
 
         public WorldUI(PlayerCharacter playerInWorld)
         {
@@ -27,6 +28,7 @@ namespace CharacterCreationandDevelopment
             this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
             lblDate.Text = world.GetDate();
+            listofActions = new List<String>();
         }
 
         private void RunEvent(IEvent thisevent)
@@ -40,13 +42,12 @@ namespace CharacterCreationandDevelopment
             CloseEvent();
         }
 
-        private void GainLesson(ILesson todaysLesson)
+        /*private void GainLesson(ILesson todaysLesson)
         {
             world.SetLesson(todaysLesson);
-            MessageBox.Show(player.name + " goes to " + world.lesson.GetLessonName());
             txtConversation.AppendText(world.GetDate() + ": " + world.lesson.LessonEffects() + Environment.NewLine);
             NextTurn();
-        }
+        }*/
 
         private void CloseEvent()
         {
@@ -88,10 +89,10 @@ namespace CharacterCreationandDevelopment
             NextTurn();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void btnStartTraining_Click(object sender, EventArgs e)
         {
             GainLesson(new WeaponsLesson(player));
-        }
+        }*/
 
         private void lblSkills_Click(object sender, EventArgs e)
         {
@@ -110,18 +111,59 @@ namespace CharacterCreationandDevelopment
             lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void PopulateListBox()
         {
-            GainLesson(new FaithLesson(player));
+            lBoxActions.Items.Clear();
+            foreach (string action in listofActions)
+            {
+                lBoxActions.Items.Add(action);
+            }
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void pBoxChurch_Click(object sender, EventArgs e)
         {
-            GainLesson(new AnimalEmpathyLesson(player));
+            lblCurrentLocation.Text = "The Church";
+            listofActions.Clear();
+            listofActions.Add("Go for Prayer");
+            PopulateListBox();
         }
 
-		private void pBoxFarm_MouseEnter(object sender, EventArgs e)
-		{
-		}
+        private void pBoxFarm_Click(object sender, EventArgs e)
+        {
+            lblCurrentLocation.Text = "Your Home";
+            listofActions.Clear();
+            listofActions.Add("Work with the animals");
+            PopulateListBox();
+        }
+
+        private void pBoxSchool_Click(object sender, EventArgs e)
+        {
+            lblCurrentLocation.Text = "The School";
+            listofActions.Clear();
+            listofActions.Add("Take Science Class");
+            listofActions.Add("Take Medicine Class");
+            PopulateListBox();
+        }
+
+        private void pBoxLake_Click(object sender, EventArgs e)
+        {
+            lblCurrentLocation.Text = "The Lake";
+            listofActions.Clear();
+            listofActions.Add("Go Swimming");
+            listofActions.Add("Go Camping");
+            PopulateListBox();
+        }
+
+        private void pBoxBarracks_Click(object sender, EventArgs e)
+        {
+            lblCurrentLocation.Text = "The Barracks";
+            listofActions.Clear();
+            listofActions.Add("Go Running");
+            listofActions.Add("Train with Medics");
+            listofActions.Add("Train with Fists");
+            listofActions.Add("Train with Weapons");
+            listofActions.Add("Take Survival Training");
+            PopulateListBox();
+        }
     }
 }

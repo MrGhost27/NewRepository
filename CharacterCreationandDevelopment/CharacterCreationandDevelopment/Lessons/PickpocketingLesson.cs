@@ -28,6 +28,11 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
+        public string GetAttributeUsed()
+        {
+            return "Dexterity";
+        }
+
         public string LessonEffects()
         {
 			int previousValue = _player.pickpocketing;

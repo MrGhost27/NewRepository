@@ -1,12 +1,12 @@
 <Player ID="001">
-  <Name>Hudson</Name>
-  <Strength>12</Strength>
-  <Dexterity>12</Dexterity>
-  <Constitution>12</Constitution>
-  <Intelligence>12</Intelligence>
-  <Wisdom>12</Wisdom>
-  <Charisma>10</Charisma>
-  <Portrait>0</Portrait>
+  <Name>Sarah</Name>
+  <Strength>14</Strength>
+  <Dexterity>13</Dexterity>
+  <Constitution>10</Constitution>
+  <Intelligence>10</Intelligence>
+  <Wisdom>11</Wisdom>
+  <Charisma>12</Charisma>
+  <Portrait>16</Portrait>
   <Weapons>0</Weapons>
   <Unarmed>0</Unarmed>
   <Swimming>0</Swimming>
@@ -14,10 +14,10 @@
   <Diplomacy>0</Diplomacy>
   <Survival>0</Survival>
   <Crafting>0</Crafting>
-  <Faith>10</Faith>
+  <Faith>0</Faith>
   <Lockpicking>0</Lockpicking>
   <Pickpocketing>0</Pickpocketing>
-  <AnimalEmpathy>50</AnimalEmpathy>
+  <AnimalEmpathy>0</AnimalEmpathy>
   <Medicine>0</Medicine>
   <Science>0</Science>
 </Player>

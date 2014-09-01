@@ -27,6 +27,12 @@ namespace CharacterCreationandDevelopment.Lessons
 			int newSkillValue = _player.athletics;
 			return newSkillValue;
 		}
+
+        public string GetAttributeUsed()
+        {
+            return "Constitution";
+        }
+
 		public string LessonEffects()
 		{
 			int previousvalue = _player.athletics;

@@ -22,6 +22,11 @@ namespace CharacterCreationandDevelopment.Lessons
             return _lessonName;
         }
 
+        public string GetAttributeUsed()
+        {
+            return "Dexterity";
+        }
+
 		public int GetNewSkillValue()
 		{
 			int newSkillValue = _player.lockpicking;

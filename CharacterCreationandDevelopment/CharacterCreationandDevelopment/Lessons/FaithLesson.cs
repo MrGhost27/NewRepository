@@ -29,6 +29,11 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
+        public string GetAttributeUsed()
+        {
+            return "Charisma";
+        }
+
         public string LessonEffects()
         {
 			int previousValue = _player.faith;

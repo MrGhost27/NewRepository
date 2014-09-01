@@ -28,6 +28,11 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
+        public string GetAttributeUsed()
+        {
+            return "Swimming";
+        }
+
 		public string LessonEffects()
 		{
 			int previousvalue = _player.swimming;
