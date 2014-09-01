@@ -22,6 +22,12 @@ namespace CharacterCreationandDevelopment.Lessons
             return _lessonName;
         }
 
+		public int GetNewSkillValue()
+		{
+			int newSkillValue = _player.science;
+			return newSkillValue;
+		}
+
         public string LessonEffects()
         {
 			int previousValue = _player.science;

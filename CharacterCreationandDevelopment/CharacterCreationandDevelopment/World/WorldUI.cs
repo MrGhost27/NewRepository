@@ -27,8 +27,6 @@ namespace CharacterCreationandDevelopment
             this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
             lblDate.Text = world.GetDate();
-            label1.Text = "Weapons: " + player.weapons;
-            progressBar1.Value = player.weapons;
         }
 
         private void RunEvent(IEvent thisevent)
@@ -36,14 +34,13 @@ namespace CharacterCreationandDevelopment
             MessageBox.Show("Suddenly someone comes over to you...");
             world.SetEvent(thisevent);
             pBoxNPC.Image = world.newevent.eventNPC.portrait;
-            btnNextTurn.Enabled = false;
             txtConversation.AppendText(world.GetDate() + ": " + world.newevent.EventConversation() + Environment.NewLine);
             DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
             txtConversation.AppendText(world.GetDate() + ": " + world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
             CloseEvent();
         }
 
-        private void GoToSchool(ILesson todaysLesson)
+        private void GainLesson(ILesson todaysLesson)
         {
             world.SetLesson(todaysLesson);
             MessageBox.Show(player.name + " goes to " + world.lesson.GetLessonName());
@@ -54,14 +51,17 @@ namespace CharacterCreationandDevelopment
         private void CloseEvent()
         {
             pBoxNPC.Visible = false;
-            btnNextTurn.Enabled = true;
             NextTurn();
         }
 
         private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            HelperClass.SavePlayerDetailsToFile(player);
-            HelperClass.SaveWorldDetailsToFile(player, world);
+			DialogResult dialogResult = MessageBox.Show("Would you like to save the game?", "World Closing", MessageBoxButtons.YesNo);
+			if (dialogResult.ToString() == "Yes")
+			{
+				HelperClass.SavePlayerDetailsToFile(player);
+				HelperClass.SaveWorldDetailsToFile(player, world);
+			}
             Form1 x = new Form1();
             x.Show();
         }
@@ -76,7 +76,6 @@ namespace CharacterCreationandDevelopment
         private void NextTurn()
         {
             lblDate.Text = world.NewTurn();
-            label1.Text = "Weapons: " + player.weapons;
 
             if (world.monthNumber == 3)
             {
@@ -91,8 +90,7 @@ namespace CharacterCreationandDevelopment
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GoToSchool(new WeaponsLesson(player));
-            progressBar1.Value = player.weapons;
+            GainLesson(new WeaponsLesson(player));
         }
 
         private void lblSkills_Click(object sender, EventArgs e)
@@ -111,5 +109,19 @@ namespace CharacterCreationandDevelopment
         {
             lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            GainLesson(new FaithLesson(player));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            GainLesson(new AnimalEmpathyLesson(player));
+        }
+
+		private void pBoxFarm_MouseEnter(object sender, EventArgs e)
+		{
+		}
     }
 }

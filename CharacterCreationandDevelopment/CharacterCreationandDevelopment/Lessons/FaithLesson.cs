@@ -10,6 +10,7 @@ namespace CharacterCreationandDevelopment.Lessons
 	{
 		private PlayerCharacter _player;
         private string _lessonName;
+		private int newSkillValue;
 
         public FaithLesson(PlayerCharacter player)
         {
@@ -21,6 +22,12 @@ namespace CharacterCreationandDevelopment.Lessons
         {
             return _lessonName;
         }
+
+		public int GetNewSkillValue()
+		{
+			int newSkillValue = _player.faith;
+			return newSkillValue;
+		}
 
         public string LessonEffects()
         {

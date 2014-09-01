@@ -105,3 +105,5 @@ C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Charact
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\CharacterCreationandDevelopment.exe
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\CharacterCreationandDevelopment.pdb
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Skills.resources
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Skills.resources
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Lessons.LessonLearningForm.resources

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    class World
+    public class World
     {
         public int monthNumber { get; private set; }
         public int year { get; private set; }
