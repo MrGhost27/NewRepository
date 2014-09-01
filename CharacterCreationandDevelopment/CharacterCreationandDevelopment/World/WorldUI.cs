@@ -36,19 +36,13 @@ namespace CharacterCreationandDevelopment
         {
             MessageBox.Show("Suddenly someone comes over to you...");
             world.SetEvent(thisevent);
+            pBoxNPC.Visible = true;
             pBoxNPC.Image = world.newevent.eventNPC.portrait;
-            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.EventConversation() + Environment.NewLine);
+            txtConversation.Text = world.GetDate() + ": " + world.newevent.EventConversation() + Environment.NewLine;
             DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
             txtConversation.AppendText(world.GetDate() + ": " + world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
             CloseEvent();
         }
-
-        /*private void GainLesson(ILesson todaysLesson)
-        {
-            world.SetLesson(todaysLesson);
-            txtConversation.AppendText(world.GetDate() + ": " + world.lesson.LessonEffects() + Environment.NewLine);
-            NextTurn();
-        }*/
 
         private void CloseEvent()
         {
@@ -89,11 +83,6 @@ namespace CharacterCreationandDevelopment
         {
             NextTurn();
         }
-
-        /*private void btnStartTraining_Click(object sender, EventArgs e)
-        {
-            GainLesson(new WeaponsLesson(player));
-        }*/
 
         private void lblSkills_Click(object sender, EventArgs e)
         {

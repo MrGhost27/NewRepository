@@ -1,12 +1,13 @@
 <Player ID="001">
-  <Name>Jordan</Name>
-  <Strength>14</Strength>
-  <Dexterity>13</Dexterity>
-  <Constitution>13</Constitution>
-  <Intelligence>10</Intelligence>
-  <Wisdom>10</Wisdom>
-  <Charisma>10</Charisma>
-  <Portrait>8</Portrait>
+  <Name>Mila</Name>
+  <Location>The Lake</Location>
+  <Strength>12</Strength>
+  <Dexterity>12</Dexterity>
+  <Constitution>12</Constitution>
+  <Intelligence>12</Intelligence>
+  <Wisdom>8</Wisdom>
+  <Charisma>14</Charisma>
+  <Portrait>9</Portrait>
   <Weapons>0</Weapons>
   <Unarmed>0</Unarmed>
   <Swimming>0</Swimming>

@@ -25,7 +25,7 @@ namespace CharacterCreationandDevelopment.Lessons
 
 		public int GetNewSkillValue()
 		{
-			int newSkillValue = _player.faith;
+			newSkillValue = _player.faith;
 			return newSkillValue;
 		}
 

@@ -45,7 +45,7 @@ namespace CharacterCreationandDevelopment.Lessons
 
 			if (_player.swimming.IsBetween(0, 15, previousvalue))
 			{
-				return _player.name + " learns how to hold a breathe";
+				return _player.name + " learns how to hold a breath";
 			}
 			else if (_player.swimming.IsBetween(15, 30, previousvalue))
 			{
