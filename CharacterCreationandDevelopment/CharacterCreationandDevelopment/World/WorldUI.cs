@@ -38,9 +38,9 @@ namespace CharacterCreationandDevelopment
             world.SetEvent(thisevent);
             pBoxNPC.Visible = true;
             pBoxNPC.Image = world.newevent.eventNPC.portrait;
-            txtConversation.Text = world.GetDate() + ": " + world.newevent.EventConversation() + Environment.NewLine;
+            txtConversation.Text = world.newevent.EventConversation() + Environment.NewLine;
             DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
-            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
+            txtConversation.AppendText(world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
             CloseEvent();
         }
 
@@ -190,7 +190,7 @@ namespace CharacterCreationandDevelopment
             listofActions.Clear();
             listofActions.Add("Barter for Items");
             listofActions.Add("Steal Items");
-            listofActions.Add("Create Weapons");
+            listofActions.Add("Create Items");
             listofActions.Add("Break in.");
             PopulateListBox();
 
