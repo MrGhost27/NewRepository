@@ -60,6 +60,13 @@
     <Compile Include="HelperClass\HelperClass.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Events and Conversations\IEvent.cs" />
+    <Compile Include="Journal\Journal.cs" />
+    <Compile Include="Journal\JournalUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Journal\JournalUI.Designer.cs">
+      <DependentUpon>JournalUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lessons\AnimalEmpathyLesson.cs" />
     <Compile Include="Lessons\AthleticsLesson.cs" />
     <Compile Include="Lessons\CraftingLesson.cs" />
@@ -104,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Journal\JournalUI.resx">
+      <DependentUpon>JournalUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

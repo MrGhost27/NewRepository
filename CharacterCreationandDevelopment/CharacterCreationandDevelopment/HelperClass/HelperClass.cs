@@ -63,7 +63,9 @@ namespace CharacterCreationandDevelopment
             new XAttribute("ID", "001"),
             new XElement("Month", world.monthNumber),
             new XElement("Year", world.year),
-            new XElement("Name", player.name)));
+            new XElement("Name", player.name),
+			new XAttribute("Journal", "001"),
+			new XElement("Entry", world.GetJournal())));
 
             Directory.CreateDirectory(@".\Worlds\");
             File.WriteAllText(@".\Worlds\" + player.name + ".xml", doc.ToString());
@@ -80,6 +82,8 @@ namespace CharacterCreationandDevelopment
             worldDetails.Add(Month);
             string Year = doc.Descendants("Year").Single().Value;
             worldDetails.Add(Year);
+			string Journal = doc.Descendants("Entry").Single().Value;
+			worldDetails.Add(Journal);
 
             return worldDetails;
         }

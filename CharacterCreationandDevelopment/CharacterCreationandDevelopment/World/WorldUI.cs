@@ -101,6 +101,16 @@ namespace CharacterCreationandDevelopment
             lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
+		private void lblJournal_MouseEnter(object sender, EventArgs e)
+		{
+			lblJournal.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+		}
+
+		private void lblJournal_MouseLeave(object sender, EventArgs e)
+		{
+			lblJournal.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+		}
+
         private void PopulateListBox()
         {
             lBoxActions.Items.Clear();
@@ -191,7 +201,7 @@ namespace CharacterCreationandDevelopment
             if (lBoxActions.SelectedItem.ToString().Contains(keyword))
             {
                 world.SetLesson(lesson);
-                txtConversation.Text = lesson.LessonEffects();
+				txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
                 NextTurn();
             }
 
@@ -219,5 +229,12 @@ namespace CharacterCreationandDevelopment
             TakeAction("Fist", new UnarmedLesson(player));
             TakeAction("Weapon", new WeaponsLesson(player));
         }
+
+		private void lblJournal_Click(object sender, EventArgs e)
+		{
+			JournalUI journalUI = new JournalUI(world);
+			journalUI.ShowDialog();
+		}
+
     }
 }

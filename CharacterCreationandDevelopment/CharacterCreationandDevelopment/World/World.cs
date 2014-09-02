@@ -14,15 +14,18 @@ namespace CharacterCreationandDevelopment
         public IEvent newevent;
         public ILesson lesson;
         PlayerCharacter player;
+		Journal journal;
 
         public World(PlayerCharacter player)
         {
             this.player = player;
+			journal = new Journal(this, player);
 
             try
             {
                 monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[1]);
                 year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[2]);
+                journal.SetJournal(HelperClass.LoadWorldDetailsFromFile(player.name)[3]);
             }
             catch (Exception)
             {
@@ -30,6 +33,21 @@ namespace CharacterCreationandDevelopment
                 year = 1050;
             }
         }
+
+		public string AddJournalEntry(string entry)
+		{
+			return journal.NewEntry(entry);
+		}
+
+		public string GetJournalPage(int pageNumber, int numberOfCharacters)
+		{
+			return journal.GetPage(pageNumber, numberOfCharacters);
+		}
+
+		public string GetJournal()
+		{
+			return journal.GetJournal();
+		}
 
         public void SetEvent(IEvent thisevent)
         {

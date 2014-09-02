@@ -1,13 +1,12 @@
 <Player ID="001">
-  <Name>Mila</Name>
-  <Location>The Lake</Location>
+  <Name>Sophia</Name>
   <Strength>12</Strength>
-  <Dexterity>12</Dexterity>
-  <Constitution>12</Constitution>
+  <Dexterity>13</Dexterity>
+  <Constitution>10</Constitution>
   <Intelligence>12</Intelligence>
-  <Wisdom>8</Wisdom>
-  <Charisma>14</Charisma>
-  <Portrait>9</Portrait>
+  <Wisdom>13</Wisdom>
+  <Charisma>10</Charisma>
+  <Portrait>0</Portrait>
   <Weapons>0</Weapons>
   <Unarmed>0</Unarmed>
   <Swimming>0</Swimming>
@@ -18,7 +17,7 @@
   <Faith>0</Faith>
   <Lockpicking>0</Lockpicking>
   <Pickpocketing>0</Pickpocketing>
-  <AnimalEmpathy>0</AnimalEmpathy>
+  <AnimalEmpathy>35</AnimalEmpathy>
   <Medicine>0</Medicine>
   <Science>0</Science>
 </Player>
