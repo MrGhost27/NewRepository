@@ -18,6 +18,8 @@ namespace CharacterCreationandDevelopment
         private World world;
         private Skills playerSkills;
         private List<String> listofActions;
+        private EventDecisionBox eventDecisionBox;
+        private IEvent newEvent;
 
         public WorldUI(PlayerCharacter playerInWorld)
         {
@@ -25,6 +27,7 @@ namespace CharacterCreationandDevelopment
             this.StartPosition = FormStartPosition.CenterScreen;
             this.player = playerInWorld;
             world = new World(player);
+
             this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
             lblDate.Text = world.GetDate();
@@ -34,13 +37,27 @@ namespace CharacterCreationandDevelopment
 
         private void RunEvent(IEvent thisevent)
         {
-            MessageBox.Show("Suddenly someone comes over to you...");
             world.SetEvent(thisevent);
+            this.newEvent = world.newevent;
             pBoxNPC.Visible = true;
-            pBoxNPC.Image = world.newevent.eventNPC.portrait;
-            txtConversation.Text = world.newevent.EventConversation() + Environment.NewLine;
-            DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
-            txtConversation.AppendText(world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
+            pBoxNPC.Image = newEvent.eventNPC.portrait;
+            txtConversation.Text = world.AddJournalEntry(newEvent.EventConversation());
+            eventDecisionBox = new EventDecisionBox(newEvent.EventDecisionText(), newEvent.eventChoices[0], newEvent.eventChoices[1]);
+            eventDecisionBox.ShowDialog();
+
+            if (eventDecisionBox.choice == 1)
+            {
+                txtConversation.Text = world.AddJournalEntry(newEvent.ChoiceOne());
+            }
+            if (eventDecisionBox.choice == 2)
+            {
+                txtConversation.Text = world.AddJournalEntry(newEvent.ChoiceTwo());
+            }
+            if (eventDecisionBox.choice == 3)
+            {
+                txtConversation.Text = world.AddJournalEntry(newEvent.ChoiceThree());
+            }
+
             CloseEvent();
         }
 

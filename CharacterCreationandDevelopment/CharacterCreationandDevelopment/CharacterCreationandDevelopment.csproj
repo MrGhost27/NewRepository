@@ -50,6 +50,12 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events and Conversations\EventDecisionBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events and Conversations\EventDecisionBox.Designer.cs">
+      <DependentUpon>EventDecisionBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Events and Conversations\GameStart.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -108,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="Characters\Character Creation.resx">
       <DependentUpon>Character Creation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events and Conversations\EventDecisionBox.resx">
+      <DependentUpon>EventDecisionBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

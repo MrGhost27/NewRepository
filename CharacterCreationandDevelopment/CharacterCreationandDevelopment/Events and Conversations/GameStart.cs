@@ -9,12 +9,31 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
     public class GameStart : IEvent
     {
         private PlayerCharacter player;
+        public List<String> eventChoices { get; set; }
         public NPC eventNPC { get; set; }
 
         public GameStart(PlayerCharacter player)
         {
             this.player = player;
             eventNPC = new NPC();
+            eventChoices = new List<String>();
+            eventChoices.Add("Live");
+            eventChoices.Add("Die");
+        }
+
+        public string ChoiceOne()
+        {
+            return "You chose Live";
+        }
+
+        public string ChoiceTwo()
+        {
+            return "You chose Die";
+        }
+
+        public string ChoiceThree()
+        {
+            return "";
         }
 
         public string EventConversation()
@@ -27,17 +46,12 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             return conversation;
         }
 
-        public string MakeChoice(string choice)
+        public string EventDecisionText()
         {
-            if (choice == "Yes")
-            {
-                return player.name + " said yes";
-            }
-            else
-            {
-                return player.name + " said no"; 
-            }
-        }
-       
+            string eventDecisionText = "";
+            eventDecisionText += "Suddenly you are forced to make a choice! \n Do you want to Die?";
+            eventDecisionText += "\n Do you want to Live? \n Who knows! ...well hopefully you...\n So what's it going to be?";
+            return eventDecisionText;
+        }     
     }
 }
