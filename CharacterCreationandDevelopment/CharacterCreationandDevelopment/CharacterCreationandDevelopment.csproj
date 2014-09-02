@@ -60,7 +60,26 @@
     <Compile Include="HelperClass\HelperClass.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Events and Conversations\IEvent.cs" />
+    <Compile Include="Journal\Journal.cs" />
+    <Compile Include="Journal\JournalUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Journal\JournalUI.Designer.cs">
+      <DependentUpon>JournalUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lessons\AnimalEmpathyLesson.cs" />
+    <Compile Include="Lessons\AthleticsLesson.cs" />
+    <Compile Include="Lessons\CraftingLesson.cs" />
+    <Compile Include="Lessons\DiplomacyLesson.cs" />
+    <Compile Include="Lessons\FaithLesson.cs" />
     <Compile Include="Lessons\ILesson.cs" />
+    <Compile Include="Lessons\LockpickingLesson.cs" />
+    <Compile Include="Lessons\MedicineLesson.cs" />
+    <Compile Include="Lessons\PickpocketingLesson.cs" />
+    <Compile Include="Lessons\ScienceLesson.cs" />
+    <Compile Include="Lessons\SurvivalLesson.cs" />
+    <Compile Include="Lessons\SwimmingLesson.cs" />
+    <Compile Include="Lessons\UnarmedLesson.cs" />
     <Compile Include="Lessons\WeaponsLesson.cs" />
     <Compile Include="Moods\Happy.cs" />
     <Compile Include="Moods\IMoodBehaviour.cs" />
@@ -73,6 +92,12 @@
     </Compile>
     <Compile Include="SelectGame.Designer.cs">
       <DependentUpon>SelectGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Skills.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skills.Designer.cs">
+      <DependentUpon>Skills.cs</DependentUpon>
     </Compile>
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldUI.cs">
@@ -87,6 +112,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Journal\JournalUI.resx">
+      <DependentUpon>JournalUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,6 +126,9 @@
     </Compile>
     <EmbeddedResource Include="SelectGame.resx">
       <DependentUpon>SelectGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skills.resx">
+      <DependentUpon>Skills.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="World\WorldUI.resx">
       <DependentUpon>WorldUI.cs</DependentUpon>
@@ -160,21 +191,51 @@
     <EmbeddedResource Include="Images\NeverwinterNights_13.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Images\NeverwinterNights_14.jpg" />
-    <Content Include="Images\NeverwinterNights_15.jpg" />
-    <Content Include="Images\NeverwinterNights_16.jpg" />
-    <Content Include="Images\NeverwinterNights_17.jpg" />
-    <Content Include="Images\NeverwinterNights_18.jpg" />
-    <Content Include="Images\NeverwinterNights_19.jpg" />
-    <Content Include="Images\NeverwinterNights_20.jpg" />
-    <Content Include="Images\NeverwinterNights_21.jpg" />
-    <Content Include="Images\NeverwinterNights_22.jpg" />
-    <Content Include="Images\NeverwinterNights_23.jpg" />
-    <Content Include="Images\NeverwinterNights_24.jpg" />
-    <Content Include="Images\NeverwinterNights_25.jpg" />
-    <Content Include="Images\NeverwinterNights_26.jpg" />
-    <Content Include="Images\NeverwinterNights_27.jpg" />
-    <Content Include="Images\NeverwinterNights_28.jpg" />
+    <EmbeddedResource Include="Images\NeverwinterNights_14.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_15.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_16.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_17.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_18.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_19.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_20.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_21.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_22.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_23.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_24.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_25.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_26.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_27.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NeverwinterNights_28.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

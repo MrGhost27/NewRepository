@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment.Lessons
 {
-    interface ILesson
+    public interface ILesson
     {
         string GetLessonName();
         string LessonEffects();
+		int GetNewSkillValue();
+        string GetAttributeUsed();
     }
 }

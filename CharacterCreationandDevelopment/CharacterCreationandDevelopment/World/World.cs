@@ -7,18 +7,47 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    class World
+    public class World
     {
         public int monthNumber { get; private set; }
         public int year { get; private set; }
         public IEvent newevent;
         public ILesson lesson;
+        PlayerCharacter player;
+		Journal journal;
 
-        public World()
+        public World(PlayerCharacter player)
         {
-            monthNumber = 12;
-            year = 1050;
+            this.player = player;
+			journal = new Journal(this, player);
+
+            try
+            {
+                monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[1]);
+                year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[2]);
+                journal.SetJournal(HelperClass.LoadWorldDetailsFromFile(player.name)[3]);
+            }
+            catch (Exception)
+            {
+                monthNumber = 12;
+                year = 1050;
+            }
         }
+
+		public string AddJournalEntry(string entry)
+		{
+			return journal.NewEntry(entry);
+		}
+
+		public string GetJournalPage(int pageNumber, int numberOfCharacters)
+		{
+			return journal.GetPage(pageNumber, numberOfCharacters);
+		}
+
+		public string GetJournal()
+		{
+			return journal.GetJournal();
+		}
 
         public void SetEvent(IEvent thisevent)
         {

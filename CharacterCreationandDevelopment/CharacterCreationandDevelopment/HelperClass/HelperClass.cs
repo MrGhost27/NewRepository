@@ -18,7 +18,9 @@ namespace CharacterCreationandDevelopment
 
         public static List<Image> Images()
         {
+            //feels WRONG
             string[] images = System.IO.Directory.GetFiles(@"Images");
+            imageList.Clear();
             foreach (string Img in images)
             {
                 Bitmap bmp = new Bitmap(Img);
@@ -54,21 +56,67 @@ namespace CharacterCreationandDevelopment
             return cityNames[GenerateRandomNumber(1, cityNames.Count())];
         }
 
-        public static void SavePlayerDetailsToFile(PlayerCharacter Player)
+        public static void SaveWorldDetailsToFile(PlayerCharacter player, World world)
+        {
+            var doc = new XDocument(
+            new XElement("World",
+            new XAttribute("ID", "001"),
+            new XElement("Month", world.monthNumber),
+            new XElement("Year", world.year),
+            new XElement("Name", player.name),
+			new XAttribute("Journal", "001"),
+			new XElement("Entry", world.GetJournal())));
+
+            Directory.CreateDirectory(@".\Worlds\");
+            File.WriteAllText(@".\Worlds\" + player.name + ".xml", doc.ToString());
+        }
+
+        public static List<String> LoadWorldDetailsFromFile(string filename)
+        {
+            List<String> worldDetails = new List<String>();
+            worldDetails.Clear();
+            var doc = XDocument.Load(@".\Worlds\" + filename + ".xml");
+            string PlayerName = doc.Descendants("Name").Single().Value;
+            worldDetails.Add(PlayerName);
+            string Month = doc.Descendants("Month").Single().Value;
+            worldDetails.Add(Month);
+            string Year = doc.Descendants("Year").Single().Value;
+            worldDetails.Add(Year);
+			string Journal = doc.Descendants("Entry").Single().Value;
+			worldDetails.Add(Journal);
+
+            return worldDetails;
+        }
+
+        public static void SavePlayerDetailsToFile(PlayerCharacter player)
         {
             var doc = new XDocument(
             new XElement("Player",
             new XAttribute("ID", "001"),
-            new XElement("Name", Player.name),
-            new XElement("Strength", Player.strength),
-            new XElement("Dexterity", Player.dexterity),
-            new XElement("Constitution", Player.constitution),
-            new XElement("Intelligence", Player.intelligence),
-            new XElement("Wisdom", Player.wisdom),
-            new XElement("Charisma", Player.charisma),
-            new XElement("Portrait", Player.portraitNumber)));
+            new XElement("Name", player.name),
+            new XElement("Strength", player.strength),
+            new XElement("Dexterity", player.dexterity),
+            new XElement("Constitution", player.constitution),
+            new XElement("Intelligence", player.intelligence),
+            new XElement("Wisdom", player.wisdom),
+            new XElement("Charisma", player.charisma),
+            new XElement("Portrait", player.portraitNumber),
+            new XElement("Weapons", player.weapons),
+			new XElement("Unarmed", player.unarmed),
+			new XElement("Swimming",player.swimming),
+			new XElement("Athletics", player.athletics),
+			new XElement("Diplomacy", player.diplomacy),
+			new XElement("Survival", player.survival),
+			new XElement("Crafting", player.crafting),
+			new XElement("Faith", player.faith),
+			new XElement("Lockpicking", player.lockpicking),
+			new XElement("Pickpocketing", player.pickpocketing),
+			new XElement("AnimalEmpathy", player.animalEmpathy),
+			new XElement("Medicine", player.medicine),
+            new XElement("Science", player.science)));
+
             Directory.CreateDirectory(@".\Saves\");
-            File.WriteAllText(@".\Saves\" + Player.name + ".xml", doc.ToString());
+            File.WriteAllText(@".\Saves\" + player.name + ".xml", doc.ToString());
         }
         
 
@@ -84,15 +132,36 @@ namespace CharacterCreationandDevelopment
             int wisdom = Int32.Parse(doc.Descendants("Wisdom").Single().Value);
             int charisma = Int32.Parse(doc.Descendants("Charisma").Single().Value);
             int portrait = Int32.Parse(doc.Descendants("Portrait").Single().Value);
-
+            int weapons = Int32.Parse(doc.Descendants("Weapons").Single().Value);
+			int unarmed = Int32.Parse(doc.Descendants("Unarmed").Single().Value);
+			int swimming = Int32.Parse(doc.Descendants("Swimming").Single().Value);
+			int athletics = Int32.Parse(doc.Descendants("Athletics").Single().Value);
+			int diplomacy = Int32.Parse(doc.Descendants("Diplomacy").Single().Value);
+			int survival = Int32.Parse(doc.Descendants("Survival").Single().Value);
+			int crafting = Int32.Parse(doc.Descendants("Crafting").Single().Value);
+			int faith = Int32.Parse(doc.Descendants("Faith").Single().Value);
+			int lockpicking = Int32.Parse(doc.Descendants("Lockpicking").Single().Value);
+			int pickpocketing = Int32.Parse(doc.Descendants("Pickpocketing").Single().Value);
+			int animalEmpathy = Int32.Parse(doc.Descendants("AnimalEmpathy").Single().Value);
+			int medicine = Int32.Parse(doc.Descendants("Medicine").Single().Value);
+            int science = Int32.Parse(doc.Descendants("Science").Single().Value);
             //etc
 
-            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait);
+            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
+				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing, 
+				animalEmpathy, medicine, science);
         }
 
-        public static bool IsBetween(this int val, int low, int high)
+
+
+        public static bool IsBetween(this int val, int low, int high, int previousval)
         {
-            return val > low && val < high;
+			if (previousval > low && previousval < high)
+			{
+				return false;
+			}
+
+			return val > low && val < high;
         }
         
     }
