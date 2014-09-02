@@ -29,34 +29,56 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JournalUI));
-			this.lblLeftPage = new System.Windows.Forms.Label();
-			this.lblRightPage = new System.Windows.Forms.Label();
+			this.lblLeft = new System.Windows.Forms.Label();
+			this.lblRight = new System.Windows.Forms.Label();
+			this.btnPreviousPage = new System.Windows.Forms.Button();
+			this.btnNextPage = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// lblLeftPage
+			// lblLeft
 			// 
-			this.lblLeftPage.AutoSize = true;
-			this.lblLeftPage.BackColor = System.Drawing.Color.Transparent;
-			this.lblLeftPage.Location = new System.Drawing.Point(53, 26);
-			this.lblLeftPage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lblLeftPage.MaximumSize = new System.Drawing.Size(293, 305);
-			this.lblLeftPage.Name = "lblLeftPage";
-			this.lblLeftPage.Size = new System.Drawing.Size(42, 18);
-			this.lblLeftPage.TabIndex = 0;
-			this.lblLeftPage.Text = "label1";
+			this.lblLeft.BackColor = System.Drawing.Color.Transparent;
+			this.lblLeft.Font = new System.Drawing.Font("Monotype Corsiva", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblLeft.Location = new System.Drawing.Point(59, 26);
+			this.lblLeft.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblLeft.MaximumSize = new System.Drawing.Size(293, 305);
+			this.lblLeft.Name = "lblLeft";
+			this.lblLeft.Size = new System.Drawing.Size(263, 305);
+			this.lblLeft.TabIndex = 0;
+			this.lblLeft.Text = "label1";
 			// 
-			// lblRightPage
+			// lblRight
 			// 
-			this.lblRightPage.AutoSize = true;
-			this.lblRightPage.BackColor = System.Drawing.Color.Transparent;
-			this.lblRightPage.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblRightPage.Location = new System.Drawing.Point(317, 26);
-			this.lblRightPage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lblRightPage.MaximumSize = new System.Drawing.Size(293, 305);
-			this.lblRightPage.Name = "lblRightPage";
-			this.lblRightPage.Size = new System.Drawing.Size(42, 18);
-			this.lblRightPage.TabIndex = 1;
-			this.lblRightPage.Text = "label1";
+			this.lblRight.BackColor = System.Drawing.Color.Transparent;
+			this.lblRight.Font = new System.Drawing.Font("Monotype Corsiva", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblRight.Location = new System.Drawing.Point(399, 26);
+			this.lblRight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblRight.MaximumSize = new System.Drawing.Size(293, 305);
+			this.lblRight.Name = "lblRight";
+			this.lblRight.Size = new System.Drawing.Size(280, 305);
+			this.lblRight.TabIndex = 1;
+			this.lblRight.Text = "label1";
+			// 
+			// btnPreviousPage
+			// 
+			this.btnPreviousPage.Enabled = false;
+			this.btnPreviousPage.Location = new System.Drawing.Point(12, 173);
+			this.btnPreviousPage.Name = "btnPreviousPage";
+			this.btnPreviousPage.Size = new System.Drawing.Size(40, 28);
+			this.btnPreviousPage.TabIndex = 2;
+			this.btnPreviousPage.Text = "<<";
+			this.btnPreviousPage.UseVisualStyleBackColor = true;
+			this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
+			// 
+			// btnNextPage
+			// 
+			this.btnNextPage.Location = new System.Drawing.Point(686, 173);
+			this.btnNextPage.Name = "btnNextPage";
+			this.btnNextPage.Size = new System.Drawing.Size(40, 28);
+			this.btnNextPage.TabIndex = 3;
+			this.btnNextPage.Text = ">>";
+			this.btnNextPage.UseVisualStyleBackColor = true;
+			this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
 			// 
 			// JournalUI
 			// 
@@ -64,21 +86,24 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(579, 570);
-			this.Controls.Add(this.lblRightPage);
-			this.Controls.Add(this.lblLeftPage);
+			this.ClientSize = new System.Drawing.Size(738, 389);
+			this.Controls.Add(this.btnNextPage);
+			this.Controls.Add(this.btnPreviousPage);
+			this.Controls.Add(this.lblRight);
+			this.Controls.Add(this.lblLeft);
 			this.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "JournalUI";
 			this.Text = "Journal";
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Label lblLeftPage;
-		private System.Windows.Forms.Label lblRightPage;
+		private System.Windows.Forms.Label lblLeft;
+		private System.Windows.Forms.Label lblRight;
+		private System.Windows.Forms.Button btnPreviousPage;
+		private System.Windows.Forms.Button btnNextPage;
 	}
 }

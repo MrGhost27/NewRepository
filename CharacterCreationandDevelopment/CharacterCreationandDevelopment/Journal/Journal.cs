@@ -31,21 +31,22 @@ namespace CharacterCreationandDevelopment
 
 		public string GetPage(int pageNumber, int numberOfCharacters)
 		{
-			int startindex = 0;
-			int endIndex = startindex + numberOfCharacters;
-			if (endIndex > journal.Length)
+			int startIndex = numberOfCharacters * (pageNumber-1);
+			string pageText = "";
+
+			if (numberOfCharacters > (journal.Length - startIndex))
 			{
-				endIndex = journal.Length;
+				numberOfCharacters = (journal.Length - startIndex);
 			}
 
-			string pageText = "";
-			for (int i = 0; i < pageNumber; i++)
+			if (startIndex < journal.Length)
 			{
-				pageText = journal.Substring(startindex, endIndex);
-                startindex = pageText.Length;
+				pageText = journal.Substring(startIndex, numberOfCharacters);
 			}
+
 			return pageText;
 		}
+
         public void SetJournal(string journal)
         {
             this.journal = journal;
