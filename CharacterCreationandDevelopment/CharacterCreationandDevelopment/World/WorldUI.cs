@@ -217,7 +217,7 @@ namespace CharacterCreationandDevelopment
         {
             if (lBoxActions.SelectedItem.ToString().Contains(keyword))
             {
-                world.SetLesson(lesson);
+                player.SetLesson(lesson);
 				txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
                 NextTurn();
             }

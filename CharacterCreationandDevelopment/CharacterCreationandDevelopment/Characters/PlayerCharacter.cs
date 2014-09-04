@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterCreationandDevelopment.Lessons;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -43,6 +44,7 @@ namespace CharacterCreationandDevelopment
         #endregion
 
         public IMoodBehaviour CurrentMood;
+        public ILesson lesson;
 
 
         public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
@@ -79,6 +81,11 @@ namespace CharacterCreationandDevelopment
             this.CurrentMood.RemoveMoodEffectsandModifiers(this);
             this.CurrentMood = newMood;
             this.CurrentMood.SetMoodEffectsandModifiers(this);
+        }
+
+        public void SetLesson(ILesson todaysLesson)
+        {
+            this.lesson = todaysLesson;
         }
  
 

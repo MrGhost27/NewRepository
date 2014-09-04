@@ -12,7 +12,6 @@ namespace CharacterCreationandDevelopment
         public int monthNumber { get; private set; }
         public int year { get; private set; }
         public IEvent newevent;
-        public ILesson lesson;
         PlayerCharacter player;
 		Journal journal;
 
@@ -53,12 +52,6 @@ namespace CharacterCreationandDevelopment
         {
             this.newevent = thisevent;
         }
-
-        public void SetLesson(ILesson todaysLesson)
-        {
-            this.lesson = todaysLesson;
-        }
-
 
         public string NewTurn()
         {
