@@ -131,7 +131,11 @@ namespace CharacterCreationandDevelopment
 			new XElement("Medicine", player.medicine),
             new XElement("Science", player.science),
 			new XElement("AgeYears", player.ageYears),
-			new XElement("AgeMonths", player.ageMonths)));
+			new XElement("AgeMonths", player.ageMonths),
+            new XElement("HappyDepressed",player.happyDepressed),
+            new XElement("BoredAngry", player.boredAngry),
+            new XElement("FearlessScared", player.fearlessScared),
+            new XElement ("SaneInsane",player.saneInsane)));
 
             string directory = @".\Saves\" + player.name + @"\";
             Directory.CreateDirectory(directory);
@@ -173,11 +177,15 @@ namespace CharacterCreationandDevelopment
             int science = Int32.Parse(doc.Descendants("Science").Single().Value);
 			int ageYears = Int32.Parse(doc.Descendants("AgeYears").Single().Value);
 			int ageMonths = Int32.Parse(doc.Descendants("AgeMonths").Single().Value);
+            int happyDepressed = Int32.Parse(doc.Descendants("HappyDepressed").Single().Value);
+            int boredAngry = Int32.Parse(doc.Descendants("BoredAngry").Single().Value);
+            int fearlessScared = Int32.Parse(doc.Descendants("FearlessScared").Single().Value);
+            int saneInsane = Int32.Parse(doc.Descendants("SaneInsane").Single().Value);
             //etc
 
             return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
-				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing, 
-				animalEmpathy, medicine, science, ageYears, ageMonths);
+				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
+                animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, boredAngry, fearlessScared, saneInsane);
         }
 
 
@@ -190,7 +198,6 @@ namespace CharacterCreationandDevelopment
 			}
 
 			return val > low && val < high;
-        }
-        
+        }       
     }
 }

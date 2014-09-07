@@ -1,12 +1,12 @@
 <Player ID="001">
-  <Name>Brooke</Name>
-  <Strength>13</Strength>
-  <Dexterity>13</Dexterity>
-  <Constitution>12</Constitution>
-  <Intelligence>12</Intelligence>
+  <Name>Charlie</Name>
+  <Strength>10</Strength>
+  <Dexterity>10</Dexterity>
+  <Constitution>10</Constitution>
+  <Intelligence>10</Intelligence>
   <Wisdom>10</Wisdom>
   <Charisma>10</Charisma>
-  <Portrait>1</Portrait>
+  <Portrait>0</Portrait>
   <Weapons>0</Weapons>
   <Unarmed>0</Unarmed>
   <Swimming>0</Swimming>
@@ -17,9 +17,13 @@
   <Faith>0</Faith>
   <Lockpicking>0</Lockpicking>
   <Pickpocketing>0</Pickpocketing>
-  <AnimalEmpathy>20</AnimalEmpathy>
+  <AnimalEmpathy>0</AnimalEmpathy>
   <Medicine>0</Medicine>
   <Science>0</Science>
   <AgeYears>10</AgeYears>
-  <AgeMonths>5</AgeMonths>
+  <AgeMonths>0</AgeMonths>
+  <HappyDepressed>90</HappyDepressed>
+  <BoredAngry>100</BoredAngry>
+  <FearlessScared>50</FearlessScared>
+  <SaneInsane>-25</SaneInsane>
 </Player>

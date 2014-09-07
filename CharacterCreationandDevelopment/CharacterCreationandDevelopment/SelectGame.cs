@@ -39,10 +39,9 @@ namespace CharacterCreationandDevelopment
             {
                 string selectedGame = comboBox1.Text + @"\" + listOfSaves.SelectedItem.ToString();
                 PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(selectedGame);
-                WorldUI world = new WorldUI(player);
+                WorldUI world = new WorldUI(player, parentForm);
                 world.Show();
                 this.Close();
-                parentForm.Hide();
             }
             catch (Exception)
             {

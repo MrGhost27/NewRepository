@@ -23,11 +23,16 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 
         public string ChoiceOne()
         {
+            player.boredAngry = -100;
+            player.happyDepressed = 0;
+
             return "You chose Live";
         }
 
         public string ChoiceTwo()
         {
+            player.saneInsane = -100;
+            player.happyDepressed = 0;
             return "You chose Die";
         }
 

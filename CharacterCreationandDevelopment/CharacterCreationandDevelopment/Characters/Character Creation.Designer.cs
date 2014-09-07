@@ -358,6 +358,7 @@
             this.Controls.Add(this.numericStr);
             this.Name = "Character_Creation";
             this.Text = "Create a Character";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Character_Creation_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.numericStr)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericDex)).EndInit();

@@ -1,4 +1,5 @@
 ﻿using CharacterCreationandDevelopment.Lessons;
+using CharacterCreationandDevelopment.Moods;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -45,13 +46,25 @@ namespace CharacterCreationandDevelopment
 
         #endregion
 
+        #region Mood
+
+        public int happyDepressed;
+        public int boredAngry;
+        public int fearlessScared;
+        public int saneInsane;
+        public int[] moodValues {get; set;}
+
+
+        #endregion
+
         public IMoodBehaviour CurrentMood;
         public ILesson lesson;
 
 
         public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
-			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths)
+			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
+            int happyDepressed, int boredAngry, int fearlessScared, int saneInsane)
         {
             this.name = Name;
             this.strength = Str;
@@ -61,6 +74,7 @@ namespace CharacterCreationandDevelopment
             this.wisdom = Wis;
             this.charisma = Char;
             this.portraitNumber = imageNumber;
+
             this.weapons = weapons;
 			this.unarmed = unarmed;
 			this.swimming = swimming;
@@ -77,13 +91,63 @@ namespace CharacterCreationandDevelopment
 			this.ageYears = ageYears;
 			this.ageMonths = ageMonths;
 
-            CurrentMood = new Happy();
+            this.happyDepressed = happyDepressed;
+            this.boredAngry = boredAngry;
+            this.fearlessScared = fearlessScared;
+            this.saneInsane = saneInsane;
+            GetMood();
         }
 
-        public void SetMood (IMoodBehaviour newMood)
+        public void GetMood()
         {
-            this.CurrentMood.RemoveMoodEffectsandModifiers(this);
+            moodValues = new int[] {happyDepressed, boredAngry, fearlessScared, saneInsane};
+            int max = moodValues.Max();
+            int min = moodValues.Min();
+
+            if (Math.Abs(min) > Math.Abs(max))
+            {
+                int index = Array.IndexOf(moodValues, moodValues.Min());
+                switch (index)
+                {
+                    case 0:
+                        SetMood(new Depressed());
+                        break;
+                    case 1:
+                        SetMood(new Angry());
+                        break;
+                    case 2:
+                        SetMood(new Scared());
+                        break;
+                    case 3:
+                        SetMood(new Insane());
+                        break;
+                }
+            }
+            else
+            {
+                int index = Array.IndexOf(moodValues, moodValues.Max());
+                switch (index)
+                {
+                    case 0:
+                        SetMood(new Happy());
+                        break;
+                    case 1:
+                        SetMood(new Bored());
+                        break;
+                    case 2:
+                        SetMood(new Fearless());
+                        break;
+                    case 3:
+                        SetMood(new Sane());
+                        break;
+                }
+            }
+        }
+
+        private void SetMood (IMoodBehaviour newMood)
+        {
             this.CurrentMood = newMood;
+            this.CurrentMood.RemoveMoodEffectsandModifiers(this);
             this.CurrentMood.SetMoodEffectsandModifiers(this);
         }
 

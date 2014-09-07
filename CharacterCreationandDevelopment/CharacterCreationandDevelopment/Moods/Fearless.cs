@@ -5,28 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharacterCreationandDevelopment
+namespace CharacterCreationandDevelopment.Moods
 {
-    class Happy : IMoodBehaviour
+    class Fearless: IMoodBehaviour
     {
         public string GetName()
         {
-            return "Happy";
+            return "Fearless";
         }
 
         public void SetMoodEffectsandModifiers(PlayerCharacter player)
         {
-            player.charisma += 3;
+            player.unarmed += 3;
         }
 
         public void RemoveMoodEffectsandModifiers(PlayerCharacter player)
         {
-            player.charisma -= 3;
+            player.unarmed -= 3;
         }
 
         public Image GetMoodImage()
         {
-            Bitmap bmp = new Bitmap(@"Moods\Images\Happy.jpg");
+            Bitmap bmp = new Bitmap(@"Moods\Images\Fearless.jpg");
             return bmp;
         }
     }

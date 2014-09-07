@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,10 +88,23 @@
     <Compile Include="Lessons\SwimmingLesson.cs" />
     <Compile Include="Lessons\UnarmedLesson.cs" />
     <Compile Include="Lessons\WeaponsLesson.cs" />
+    <Compile Include="Moods\Angry.cs" />
+    <Compile Include="Moods\Bored.cs" />
+    <Compile Include="Moods\Depressed.cs" />
+    <Compile Include="Moods\Fearless.cs" />
     <Compile Include="Moods\Happy.cs" />
     <Compile Include="Moods\IMoodBehaviour.cs" />
     <Compile Include="Characters\NPC.cs" />
     <Compile Include="Characters\PlayerCharacter.cs" />
+    <Compile Include="Moods\Insane.cs" />
+    <Compile Include="Moods\MoodUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moods\MoodUI.Designer.cs">
+      <DependentUpon>MoodUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moods\Sane.cs" />
+    <Compile Include="Moods\Scared.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectGame.cs">
@@ -123,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Journal\JournalUI.resx">
       <DependentUpon>JournalUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\MoodUI.resx">
+      <DependentUpon>MoodUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -246,7 +263,32 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Moods\Images\Bored.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\Images\Angry.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\Images\Depressed.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Moods\Images\Fearless.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Moods\Images\Happy.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\Images\Insane.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\Images\Logical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\Images\Scared.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

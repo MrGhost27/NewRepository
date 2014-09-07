@@ -1,5 +1,6 @@
 ﻿using CharacterCreationandDevelopment.Events_and_Conversations;
 using CharacterCreationandDevelopment.Lessons;
+using CharacterCreationandDevelopment.Moods;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +21,10 @@ namespace CharacterCreationandDevelopment
         private List<String> listofActions;
         private EventDecisionBox eventDecisionBox;
 
-        public WorldUI(PlayerCharacter playerInWorld)
+        public WorldUI(PlayerCharacter playerInWorld, Form parentForm)
         {
             InitializeComponent();
+            parentForm.Hide();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.player = playerInWorld;
             world = new World(player);
@@ -79,6 +81,9 @@ namespace CharacterCreationandDevelopment
                 player.ageYears++;
             }
 
+            player.GetMood();
+            pBoxMood.Image = player.CurrentMood.GetMoodImage();
+
             if (world.monthNumber == 3)
             {
                 RunEvent((new GameStart(player)));
@@ -111,6 +116,16 @@ namespace CharacterCreationandDevelopment
 		{
 			lblJournal.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		}
+
+        private void lblMood_MouseEnter(object sender, EventArgs e)
+        {
+            lblMood.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void lblMood_MouseLeave(object sender, EventArgs e)
+        {
+            lblMood.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
 
         private void PopulateListBox()
         {
@@ -213,6 +228,12 @@ namespace CharacterCreationandDevelopment
 			{
 				MessageBox.Show("Select an Action");
 			}
+            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
+            {
+                player.boredAngry += 10;
+                txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
+                NextTurn();
+            }
 			else
 			{
 				TakeAction("Farm", new AnimalEmpathyLesson(player));
@@ -237,6 +258,15 @@ namespace CharacterCreationandDevelopment
 			JournalUI journalUI = new JournalUI(world);
 			journalUI.ShowDialog();
 		}
+
+        private void lblMood_Click(object sender, EventArgs e)
+        {
+            MoodUI moodUI = new MoodUI(player);
+            moodUI.ShowDialog();
+        }
+
+
+
 
     }
 }

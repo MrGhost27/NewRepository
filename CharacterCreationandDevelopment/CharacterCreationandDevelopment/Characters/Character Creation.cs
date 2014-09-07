@@ -23,11 +23,13 @@ namespace CharacterCreationandDevelopment
         public string _name { get; private set; }
         public int imageNumber { get; private set; }
         public PlayerCharacter player;
+        private Form parentForm;
 
-        public Character_Creation()
+        public Character_Creation(Form parentForm)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.parentForm = parentForm;
             SetAttributes();
             imageNumber = 0;
             pBoxImage.Image = HelperClass.Images()[imageNumber];
@@ -207,13 +209,13 @@ namespace CharacterCreationandDevelopment
             }
 
             player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0);
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
 
 			HelperClass.SavePlayerDetailsToFile(player);
             this.Close();
             if (txtName.Enabled)
             {
-                WorldUI newVisibleWorld = new WorldUI(player);
+                WorldUI newVisibleWorld = new WorldUI(player, parentForm);
                 newVisibleWorld.Show();
             }
         
@@ -255,6 +257,11 @@ namespace CharacterCreationandDevelopment
             numericWis.Value = 10;
             numericCha.Value = 10;
             remainingPoints = 10;
+        }
+
+        private void Character_Creation_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                parentForm.Show();
         }
 
 

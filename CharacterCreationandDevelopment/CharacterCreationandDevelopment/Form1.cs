@@ -20,7 +20,7 @@ namespace CharacterCreationandDevelopment
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Character_Creation CharCreation = new Character_Creation();
+            Character_Creation CharCreation = new Character_Creation(this);
             CharCreation.Show();
             this.Hide();
         }
