@@ -19,7 +19,6 @@ namespace CharacterCreationandDevelopment
         private Skills playerSkills;
         private List<String> listofActions;
         private EventDecisionBox eventDecisionBox;
-        private IEvent newEvent;
 
         public WorldUI(PlayerCharacter playerInWorld)
         {
@@ -28,7 +27,6 @@ namespace CharacterCreationandDevelopment
             this.player = playerInWorld;
             world = new World(player);
 
-            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
             lblDate.Text = world.GetDate();
             listofActions = new List<String>();
@@ -38,29 +36,15 @@ namespace CharacterCreationandDevelopment
         private void RunEvent(IEvent thisevent)
         {
             world.SetEvent(thisevent);
-            this.newEvent = world.newevent;
             pBoxNPC.Visible = true;
-            pBoxNPC.Image = newEvent.eventNPC.portrait;
-            txtConversation.Text = world.AddJournalEntry(newEvent.EventConversation());
-            eventDecisionBox = new EventDecisionBox(newEvent.EventDecisionText(), newEvent.eventChoices[0], newEvent.eventChoices[1]);
+			pBoxNPC.Image = thisevent.eventNPC.portrait;
+			txtConversation.Text = world.EventConversation();
+			eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1]);
             eventDecisionBox.ShowDialog();
-
-            if (eventDecisionBox.choice == 1)
-            {
-                txtConversation.Text = world.AddJournalEntry(newEvent.ChoiceOne());
-            }
-            if (eventDecisionBox.choice == 2)
-            {
-                txtConversation.Text = world.AddJournalEntry(newEvent.ChoiceTwo());
-            }
-            if (eventDecisionBox.choice == 3)
-            {
-                txtConversation.Text = world.AddJournalEntry(newEvent.ChoiceThree());
-            }
-
+			txtConversation.Text = world.EventDecision(eventDecisionBox.choice);
             CloseEvent();
         }
-
+		
         private void CloseEvent()
         {
             pBoxNPC.Visible = false;
@@ -81,7 +65,6 @@ namespace CharacterCreationandDevelopment
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
             Character_Creation CharacterSheet = new Character_Creation(player, 0);
             CharacterSheet.ShowDialog();
         }
@@ -89,16 +72,17 @@ namespace CharacterCreationandDevelopment
         private void NextTurn()
         {
             lblDate.Text = world.NewTurn();
+            player.ageMonths++;
+            if (player.ageMonths == 13)
+            {
+                player.ageMonths = 1;
+                player.ageYears++;
+            }
 
             if (world.monthNumber == 3)
             {
                 RunEvent((new GameStart(player)));
             }
-        }
-
-        private void btnNextTurn_Click(object sender, EventArgs e)
-        {
-            NextTurn();
         }
 
         private void lblSkills_Click(object sender, EventArgs e)
@@ -149,8 +133,7 @@ namespace CharacterCreationandDevelopment
         private void pBoxFarm_Click(object sender, EventArgs e)
         {
             AtHome();
- 
-        }
+         }
 
         private void AtHome()
         {
@@ -226,25 +209,27 @@ namespace CharacterCreationandDevelopment
 
         private void btnTakeAction_Click(object sender, EventArgs e)
         {
-            if (lBoxActions.SelectedItem == null)
-            {
-                MessageBox.Show("Select an Action");
-            }
-
-            TakeAction("Farm", new AnimalEmpathyLesson(player));
-            TakeAction("Running", new AthleticsLesson(player));
-            TakeAction("Create", new CraftingLesson(player));
-            TakeAction("Barter", new DiplomacyLesson(player));
-            TakeAction("Prayer", new FaithLesson(player));
-            TakeAction("Break", new LockpickingLesson(player));
-            TakeAction("Medic", new MedicineLesson(player));
-            TakeAction("Steal", new PickpocketingLesson(player));
-            TakeAction("Science", new ScienceLesson(player));
-            TakeAction("Survival", new SurvivalLesson(player));
-            TakeAction("Camping", new SurvivalLesson(player));
-            TakeAction("Swimming", new SwimmingLesson(player));
-            TakeAction("Fist", new UnarmedLesson(player));
-            TakeAction("Weapon", new WeaponsLesson(player));
+			if (lBoxActions.SelectedItem == null)
+			{
+				MessageBox.Show("Select an Action");
+			}
+			else
+			{
+				TakeAction("Farm", new AnimalEmpathyLesson(player));
+				TakeAction("Running", new AthleticsLesson(player));
+				TakeAction("Create", new CraftingLesson(player));
+				TakeAction("Barter", new DiplomacyLesson(player));
+				TakeAction("Prayer", new FaithLesson(player));
+				TakeAction("Break", new LockpickingLesson(player));
+				TakeAction("Medic", new MedicineLesson(player));
+				TakeAction("Steal", new PickpocketingLesson(player));
+				TakeAction("Science", new ScienceLesson(player));
+				TakeAction("Survival", new SurvivalLesson(player));
+				TakeAction("Camping", new SurvivalLesson(player));
+				TakeAction("Swimming", new SwimmingLesson(player));
+				TakeAction("Fist", new UnarmedLesson(player));
+				TakeAction("Weapon", new WeaponsLesson(player));
+			}
         }
 
 		private void lblJournal_Click(object sender, EventArgs e)

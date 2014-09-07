@@ -13,8 +13,10 @@ namespace CharacterCreationandDevelopment
         #region InterfaceFields
         public string name { get; set; }
         public int portraitNumber { get; set; }
-        public int currentHP { get; set; }
-        public int maxHP { get; set; }
+		public int ageYears { get; set; }
+		public int ageMonths { get; set; }
+        //public int currentHP { get; set; }
+        //public int maxHP { get; set; }
         #endregion  
 
         #region Attributes
@@ -49,7 +51,7 @@ namespace CharacterCreationandDevelopment
 
         public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
-			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science)
+			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths)
         {
             this.name = Name;
             this.strength = Str;
@@ -72,6 +74,8 @@ namespace CharacterCreationandDevelopment
 			this.animalEmpathy = animalEmpathy;
 			this.medicine = medicine;
             this.science = science;
+			this.ageYears = ageYears;
+			this.ageMonths = ageMonths;
 
             CurrentMood = new Happy();
         }

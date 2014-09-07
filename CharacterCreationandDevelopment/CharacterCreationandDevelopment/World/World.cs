@@ -11,7 +11,7 @@ namespace CharacterCreationandDevelopment
     {
         public int monthNumber { get; private set; }
         public int year { get; private set; }
-        public IEvent newevent;
+        public IEvent newEvent;
         PlayerCharacter player;
 		Journal journal;
 
@@ -22,9 +22,9 @@ namespace CharacterCreationandDevelopment
 
             try
             {
-                monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[1]);
-                year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player.name)[2]);
-                journal.SetJournal(HelperClass.LoadWorldDetailsFromFile(player.name)[3]);
+				monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player)[1]);
+				year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player)[2]);
+				journal.SetJournal(HelperClass.LoadWorldDetailsFromFile(player)[3]);
             }
             catch (Exception)
             {
@@ -50,17 +50,41 @@ namespace CharacterCreationandDevelopment
 
         public void SetEvent(IEvent thisevent)
         {
-            this.newevent = thisevent;
+            this.newEvent = thisevent;
         }
+
+		public string EventConversation()
+		{
+			return AddJournalEntry(newEvent.EventConversation());
+		}
+
+		public string EventDecision(int eventDecisionChoice)
+		{
+			if (eventDecisionChoice == 1)
+			{
+				return AddJournalEntry(newEvent.ChoiceOne());
+			}
+			if (eventDecisionChoice == 2)
+			{
+				return AddJournalEntry(newEvent.ChoiceTwo());
+			}
+			if (eventDecisionChoice == 3)
+			{
+				return AddJournalEntry(newEvent.ChoiceThree());
+			}
+			return "";
+		}
 
         public string NewTurn()
         {
             monthNumber++;
+
             if (monthNumber == 13)
             {
                 monthNumber = 1;
                 year++;
             }
+
             return GetDate();
         }
 
