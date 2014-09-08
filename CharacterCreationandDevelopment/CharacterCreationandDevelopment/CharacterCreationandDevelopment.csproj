@@ -51,6 +51,7 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events and Conversations\ChildhoodStart.cs" />
     <Compile Include="Events and Conversations\EventDecisionBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +104,12 @@
     <Compile Include="Moods\MoodUI.Designer.cs">
       <DependentUpon>MoodUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moods\MoodUI2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moods\MoodUI2.Designer.cs">
+      <DependentUpon>MoodUI2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moods\Sane.cs" />
     <Compile Include="Moods\Scared.cs" />
     <Compile Include="Program.cs" />
@@ -140,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moods\MoodUI.resx">
       <DependentUpon>MoodUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moods\MoodUI2.resx">
+      <DependentUpon>MoodUI2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

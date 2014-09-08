@@ -11,7 +11,7 @@ namespace CharacterCreationandDevelopment.Moods
     {
         public string GetName()
         {
-            return "Composed";
+            return "Bored";
         }
 
         public void SetMoodEffectsandModifiers(PlayerCharacter player)

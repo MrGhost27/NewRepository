@@ -21,5 +21,13 @@ namespace CharacterCreationandDevelopment
             maxHP = HelperClass.GenerateRandomNumber(0, 100);
             currentHP = maxHP;
         }
+
+        public NPC(string name)
+        {
+            portrait = HelperClass.Images()[HelperClass.GenerateRandomNumber(0, HelperClass.Images().Count())];
+            this.name = name;
+            maxHP = HelperClass.GenerateRandomNumber(0, 100);
+            currentHP = maxHP;
+        }
     }
 }

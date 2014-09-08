@@ -25,12 +25,12 @@ namespace CharacterCreationandDevelopment.Moods
 
         private void MakeChartWork()
         {
-            string[] seriesArray = { "Happiness", "Anger", "Fear", "Sanity" };
+            string[] seriesArray = { "Happy/Depressed", "Bored/Angry", "Fearless/Scared", "Sane/Insane" };
             chart1.Titles[0].Text = ("Your Current Mood: " + player.CurrentMood.GetName());
             this.BackgroundImage = player.CurrentMood.GetMoodImage();
 
            
-            Series series;
+            Series series = new Series();
 
             for (int i = 0; i < seriesArray.Length; i++)
             {
@@ -40,9 +40,7 @@ namespace CharacterCreationandDevelopment.Moods
                 series.IsValueShownAsLabel = true;
                 series.CustomProperties = "DrawingStyle=Wedge, LabelStyle=Bottom";
                 series.Font = new System.Drawing.Font("Monotype Corsiva", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
             }
-
         }
     }
 }

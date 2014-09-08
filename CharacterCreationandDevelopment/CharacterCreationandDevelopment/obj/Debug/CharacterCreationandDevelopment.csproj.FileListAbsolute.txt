@@ -119,3 +119,4 @@ F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Angry.png
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Logical.png
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Bored.png
+F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Moods.MoodUI2.resources

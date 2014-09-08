@@ -32,7 +32,10 @@ namespace CharacterCreationandDevelopment
             pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
             lblDate.Text = world.GetDate();
             listofActions = new List<String>();
+            //Startup
             AtHome();
+            player.GetMood();
+            pBoxMood.Image = player.CurrentMood.GetMoodImage();
         }
 
         private void RunEvent(IEvent thisevent)
@@ -41,7 +44,14 @@ namespace CharacterCreationandDevelopment
             pBoxNPC.Visible = true;
 			pBoxNPC.Image = thisevent.eventNPC.portrait;
 			txtConversation.Text = world.EventConversation();
-			eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1]);
+            if (thisevent.eventChoices.Count == 2)
+            {
+                eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1]);
+            }
+            else
+            {
+                eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1], thisevent.eventChoices[2]);
+            }
             eventDecisionBox.ShowDialog();
 			txtConversation.Text = world.EventDecision(eventDecisionBox.choice);
             CloseEvent();
@@ -84,9 +94,9 @@ namespace CharacterCreationandDevelopment
             player.GetMood();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
 
-            if (world.monthNumber == 3)
+            if ((player.ageYears == 10) && (player.ageMonths == 9))
             {
-                RunEvent((new GameStart(player)));
+                RunEvent((new ChildhoodStart(player)));
             }
         }
 
@@ -261,7 +271,8 @@ namespace CharacterCreationandDevelopment
 
         private void lblMood_Click(object sender, EventArgs e)
         {
-            MoodUI moodUI = new MoodUI(player);
+           // MoodUI moodUI = new MoodUI(player);
+            MoodUI2 moodUI = new MoodUI2(player);
             moodUI.ShowDialog();
         }
 
