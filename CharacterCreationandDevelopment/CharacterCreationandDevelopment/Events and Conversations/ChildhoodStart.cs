@@ -32,23 +32,23 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 
         public string ChoiceOne()
         {
-			player.angryAfraid += 10;
-            choiceText += "You are getting angry (10 points)" + Environment.NewLine;
-            choiceText += "Your unarmed skill is put to the test... (Requires 10 points)" + Environment.NewLine;
+            player.SetAngryAfraid(10);
+            choiceText += "You are getting angry" + Environment.NewLine;
+            choiceText += "Your unarmed skill is put to the test... " + Environment.NewLine;
             
             if (player.unarmed > 9)
             {
                 choiceText += "You beat the bullies" + Environment.NewLine;
-                player.happyDepressed += 30;
-                choiceText += "You are Happy (30 points)" + Environment.NewLine;
+                player.SetHappyDepressed(30);
+                choiceText += "You are Happy" + Environment.NewLine;
             }
             else
             {
                 choiceText += "You fail to beat the bullies who beat you instead" + Environment.NewLine;
-				player.angryAfraid -= 50;
-                choiceText += "You are afraid (50 points)" + Environment.NewLine;
-                player.happyDepressed -= 30;
-                choiceText += "You are Depressed (30 points)" + Environment.NewLine;
+                player.SetAngryAfraid(-50);
+                choiceText += "You are afraid" + Environment.NewLine;
+                player.SetHappyDepressed(-30);
+                choiceText += "You are Depressed" + Environment.NewLine;
             }
 
             return choiceText;
@@ -65,10 +65,10 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             else
             {
                 choiceText += "You cannot convince the bullies to leave and take a beating for your efforts" + Environment.NewLine;
-				player.angryAfraid -= 50;
-                choiceText += "You are scared (50 points)" + Environment.NewLine;
-                player.happyDepressed -= 30;
-                choiceText += "You are Depressed (30 points)" + Environment.NewLine;
+                player.SetAngryAfraid(-50);
+                choiceText += "You are afraid" + Environment.NewLine;
+                player.SetHappyDepressed(-30);
+                choiceText += "You are Depressed" + Environment.NewLine;
             }
 
             return choiceText;
@@ -85,10 +85,10 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             else
             {
                 choiceText += "You cannot outrun the bullies, they catch and beat you" + Environment.NewLine;
-				player.angryAfraid -= 50;
-                choiceText += "You are scared (50 points)" + Environment.NewLine;
-                player.happyDepressed -= 30;
-                choiceText += "You are Depressed (30 points)" + Environment.NewLine;
+                player.SetAngryAfraid(-50);
+                choiceText += "You are afraid" + Environment.NewLine;
+                player.SetHappyDepressed(-30);
+                choiceText += "You are Depressed" + Environment.NewLine;
             }
             return choiceText;
         }

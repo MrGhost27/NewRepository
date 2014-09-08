@@ -29,7 +29,8 @@ namespace CharacterCreationandDevelopment
             this.player = playerInWorld;
             world = new World(player);
 
-            pictureBox1.Image = HelperClass.MaleImages()[player.portraitNumber];
+			//Gender Required.
+            pictureBox1.Image = HelperClass.Images(player.gender)[player.portraitNumber];
             lblDate.Text = world.GetDate();
             listofActions = new List<String>();
             //Startup
@@ -77,7 +78,7 @@ namespace CharacterCreationandDevelopment
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Character_Creation CharacterSheet = new Character_Creation(player, 0);
+            Character_Creation CharacterSheet = new Character_Creation(player, 0, this);
             CharacterSheet.ShowDialog();
         }
 
@@ -229,7 +230,6 @@ namespace CharacterCreationandDevelopment
 				txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
                 NextTurn();
             }
-
         }
 
         private void btnTakeAction_Click(object sender, EventArgs e)
@@ -240,7 +240,7 @@ namespace CharacterCreationandDevelopment
 			}
             else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
             {
-				player.excitedBored -= 10;
+                player.SetExcitedBored(-10);
                 txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
                 NextTurn();
             }
@@ -263,6 +263,25 @@ namespace CharacterCreationandDevelopment
 			}
         }
 
+		//DELEGATE THIS ^^^^^ AND THIS vvvvvvvvv NOW!!!
+		private void lBoxActions_SelectedValueChanged(object sender, EventArgs e)
+		{
+			SetToolTipValue("Farm", new AnimalEmpathyLesson(player));
+			SetToolTipValue("Running", new AthleticsLesson(player));
+			SetToolTipValue("Create", new CraftingLesson(player));
+			SetToolTipValue("Barter", new DiplomacyLesson(player));
+			SetToolTipValue("Prayer", new FaithLesson(player));
+			SetToolTipValue("Break", new LockpickingLesson(player));
+			SetToolTipValue("Medic", new MedicineLesson(player));
+			SetToolTipValue("Steal", new PickpocketingLesson(player));
+			SetToolTipValue("Science", new ScienceLesson(player));
+			SetToolTipValue("Survival", new SurvivalLesson(player));
+			SetToolTipValue("Camping", new SurvivalLesson(player));
+			SetToolTipValue("Swimming", new SwimmingLesson(player));
+			SetToolTipValue("Fist", new UnarmedLesson(player));
+			SetToolTipValue("Weapon", new WeaponsLesson(player));
+		}
+
 		private void lblJournal_Click(object sender, EventArgs e)
 		{
 			JournalUI journalUI = new JournalUI(world);
@@ -271,10 +290,20 @@ namespace CharacterCreationandDevelopment
 
         private void lblMood_Click(object sender, EventArgs e)
         {
-           // MoodUI moodUI = new MoodUI(player);
+           // MoodUI moodUI = new MoodUI(player); HAHA Sigh
             MoodUI2 moodUI = new MoodUI2(player);
             moodUI.ShowDialog();
         }
+
+		private void SetToolTipValue(string keyword, ILesson lesson)
+		{
+			if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+			{
+				this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
+			}
+		}
+
+
 
 
 

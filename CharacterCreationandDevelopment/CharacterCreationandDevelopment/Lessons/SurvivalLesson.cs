@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Wisdom";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Wisdom. Makes you Depressed";
+		}
 
 		public string LessonEffects()
 		{
 			int previousValue = _player.survival;
-			_player.survival += _player.wisdom / 2;
+			_player.survival += 5 + (_player.wisdom / 2);
+            _player.SetHappyDepressed(-20);
 
 			if (_player.survival > 100)
 			{

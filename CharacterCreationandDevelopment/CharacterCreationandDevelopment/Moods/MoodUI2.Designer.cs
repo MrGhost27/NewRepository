@@ -110,9 +110,9 @@
 			this.label2.ForeColor = System.Drawing.Color.Yellow;
 			this.label2.Location = new System.Drawing.Point(236, 28);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(60, 25);
+			this.label2.Size = new System.Drawing.Size(62, 25);
 			this.label2.TabIndex = 5;
-			this.label2.Text = "Bored";
+			this.label2.Text = "Angry";
 			// 
 			// label3
 			// 
@@ -122,9 +122,9 @@
 			this.label3.ForeColor = System.Drawing.Color.Yellow;
 			this.label3.Location = new System.Drawing.Point(368, 28);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 25);
+			this.label3.Size = new System.Drawing.Size(77, 25);
 			this.label3.TabIndex = 6;
-			this.label3.Text = "Fearless";
+			this.label3.Text = "Excited";
 			// 
 			// label4
 			// 
@@ -134,9 +134,9 @@
 			this.label4.ForeColor = System.Drawing.Color.Yellow;
 			this.label4.Location = new System.Drawing.Point(520, 28);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(52, 25);
+			this.label4.Size = new System.Drawing.Size(73, 25);
 			this.label4.TabIndex = 7;
-			this.label4.Text = "Sane";
+			this.label4.Text = "Logical";
 			// 
 			// label5
 			// 
@@ -158,9 +158,9 @@
 			this.label6.ForeColor = System.Drawing.Color.Yellow;
 			this.label6.Location = new System.Drawing.Point(231, 407);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(62, 25);
+			this.label6.Size = new System.Drawing.Size(67, 25);
 			this.label6.TabIndex = 9;
-			this.label6.Text = "Angry";
+			this.label6.Text = "Afraid";
 			// 
 			// label7
 			// 
@@ -170,9 +170,9 @@
 			this.label7.ForeColor = System.Drawing.Color.Yellow;
 			this.label7.Location = new System.Drawing.Point(372, 407);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(66, 25);
+			this.label7.Size = new System.Drawing.Size(60, 25);
 			this.label7.TabIndex = 10;
-			this.label7.Text = "Scared";
+			this.label7.Text = "Bored";
 			// 
 			// label8
 			// 
@@ -182,9 +182,9 @@
 			this.label8.ForeColor = System.Drawing.Color.Yellow;
 			this.label8.Location = new System.Drawing.Point(515, 407);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(69, 25);
+			this.label8.Size = new System.Drawing.Size(60, 25);
 			this.label8.TabIndex = 11;
-			this.label8.Text = "Insane";
+			this.label8.Text = "Crazy";
 			// 
 			// panel1
 			// 

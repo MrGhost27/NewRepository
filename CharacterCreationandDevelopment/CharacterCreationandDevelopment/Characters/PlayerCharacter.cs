@@ -13,6 +13,7 @@ namespace CharacterCreationandDevelopment
     {
         #region InterfaceFields
         public string name { get; set; }
+		public int gender { get; set; }
         public int portraitNumber { get; set; }
 		public int ageYears { get; set; }
 		public int ageMonths { get; set; }
@@ -48,25 +49,26 @@ namespace CharacterCreationandDevelopment
 
         #region Mood
 
-        public int happyDepressed;
-		public int angryAfraid;
-		public int excitedBored;
-		public int logicalCrazy;
+        public int happyDepressed { get; private set; }
+        public int angryAfraid { get; private set; }
+        public int excitedBored { get; private set; }
+        public int logicalCrazy { get; private set; }
         public int[] moodValues {get; set;}
 
 
         #endregion
 
-        public IMoodBehaviour CurrentMood;
+		public IMoodBehaviour CurrentMood;
         public ILesson lesson;
 
 
-        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
+        public PlayerCharacter(string Name, int gender, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
 			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
 			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy)
         {
             this.name = Name;
+			this.gender = gender;
             this.strength = Str;
             this.dexterity = Dex;
             this.constitution = Const;
@@ -97,6 +99,63 @@ namespace CharacterCreationandDevelopment
 			this.logicalCrazy = logicalCrazy;
             GetMood();
         }
+
+        public void SetHappyDepressed(int value)
+        {
+            happyDepressed += value;
+            if (happyDepressed > 100)
+            {
+                happyDepressed = 100;
+            }
+            if (happyDepressed < -100)
+            {
+                happyDepressed = -100;
+            }
+        }
+
+        public void SetAngryAfraid(int value)
+        {
+            {
+                angryAfraid += value;
+                if (angryAfraid > 100)
+                {
+                    angryAfraid = 100;
+                }
+                if (angryAfraid < -100)
+                {
+                    angryAfraid = -100;
+                }
+            }
+        }
+
+        public void SetExcitedBored(int value)
+        {
+            {
+                excitedBored += value;
+                if (excitedBored > 100)
+                {
+                    excitedBored = 100;
+                }
+                if (excitedBored < -100)
+                {
+                    excitedBored = -100;
+                }
+            }
+        }
+
+        public void SetLogicalCrazy(int value)
+        {
+            logicalCrazy += value;
+            if (logicalCrazy > 100)
+            {
+                logicalCrazy = 100;
+            }
+            if (logicalCrazy < -100)
+            {
+                logicalCrazy = -100;
+            }
+        }
+
 
         public void GetMood()
         {
@@ -155,7 +214,5 @@ namespace CharacterCreationandDevelopment
         {
             this.lesson = todaysLesson;
         }
- 
-
     }
 }

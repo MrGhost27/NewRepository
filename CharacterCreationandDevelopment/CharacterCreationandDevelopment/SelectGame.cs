@@ -51,15 +51,23 @@ namespace CharacterCreationandDevelopment
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            string[] saveGames = Directory.GetFiles(comboBox1.Text, "*.xml");
-            listOfSaves.Items.Clear();
-
-            foreach (string saveGame in saveGames)
+            try
             {
-                string thisSave = Path.GetFileNameWithoutExtension(saveGame);
-                listOfSaves.Items.Add(thisSave);
+
+                string[] saveGames = Directory.GetFiles(comboBox1.Text, "*.xml");
+                listOfSaves.Items.Clear();
+
+                foreach (string saveGame in saveGames)
+                {
+                    string thisSave = Path.GetFileNameWithoutExtension(saveGame);
+                    listOfSaves.Items.Add(thisSave);
+                }
+                listOfSaves.SetSelected(0, true);
             }
-            listOfSaves.SetSelected(0, true);
+            catch (Exception)
+            {
+                MessageBox.Show("Unable select save game");
+            }
         }
 
         private void UpdateMiniSkillsBox(PlayerCharacter player)
@@ -85,7 +93,7 @@ namespace CharacterCreationandDevelopment
             {
                 string selectedGame = comboBox1.Text + @"\" + listOfSaves.SelectedItem.ToString();
                 PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(selectedGame);
-                pBoxChar.Image = HelperClass.MaleImages()[player.portraitNumber];
+                pBoxChar.Image = HelperClass.Images(player.gender)[player.portraitNumber];
                 UpdateMiniSkillsBox(player);
             }
         }

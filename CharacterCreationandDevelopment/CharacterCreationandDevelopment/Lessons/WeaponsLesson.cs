@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Intelligence";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Strength. Makes you Afraid";
+		}
 
         public string LessonEffects()
         {
 			int previousValue = _player.weapons;
-            _player.weapons += _player.intelligence /2;
+            _player.weapons += 5 + (_player.strength /2);
+            _player.SetAngryAfraid(-20);
 
             if (_player.weapons > 100)
             {

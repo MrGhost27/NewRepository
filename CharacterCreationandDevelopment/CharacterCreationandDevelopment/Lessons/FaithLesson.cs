@@ -29,15 +29,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Charisma";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Charisma. Makes you Crazy";
+		}
 
         public string LessonEffects()
         {
 			int previousValue = _player.faith;
-			_player.faith += _player.charisma / 2;
+			_player.faith += 5 + (_player.charisma / 2);
+            _player.SetLogicalCrazy(-20);
 
 			if (_player.faith > 100)
             {

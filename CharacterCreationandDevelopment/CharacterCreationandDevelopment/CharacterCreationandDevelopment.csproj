@@ -68,7 +68,6 @@
     <Compile Include="HelperClass\HelperClass.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Events and Conversations\IEvent.cs" />
-    <Compile Include="HelperClass\GetRightImageList.cs" />
     <Compile Include="Journal\Journal.cs" />
     <Compile Include="Journal\JournalUI.cs">
       <SubType>Form</SubType>

@@ -16,9 +16,23 @@ namespace CharacterCreationandDevelopment
         private static Random random = new Random();
         private static List<Image> imageList = new List<Image>();
 
-        public static List<Image> FemaleImages()
+        public static List<Image> Images(int gender)
         {
-            string[] images = System.IO.Directory.GetFiles(@"Images\Female");
+			string imageDirectory = "";
+			switch(gender)
+			{
+				case 0:
+					imageDirectory = @"Images\Female";
+					break;
+				case 1: 
+					imageDirectory = @"Images\Male";
+					break;
+				case 2:
+					imageDirectory = @"Images\Other";
+					break;
+			}
+
+            string[] images = System.IO.Directory.GetFiles(imageDirectory);
             imageList.Clear();
             foreach (string Img in images)
             {
@@ -28,46 +42,24 @@ namespace CharacterCreationandDevelopment
             return imageList;
         }
 
-		public static List<Image> MaleImages()
-		{
-			string[] images = System.IO.Directory.GetFiles(@"Images\Male");
-			imageList.Clear();
-			foreach (string Img in images)
-			{
-				Bitmap bmp = new Bitmap(Img);
-				imageList.Add(bmp);
-			}
-			return imageList;
-		}
-
-		public static List<Image> OtherImages()
-		{
-			string[] images = System.IO.Directory.GetFiles(@"Images\Other");
-			imageList.Clear();
-			foreach (string Img in images)
-			{
-				Bitmap bmp = new Bitmap(Img);
-				imageList.Add(bmp);
-			}
-			return imageList;
-		}
-
-        public static string RandomMaleName()
+        public static string RandomName(int gender)
         {
             /*Ensure you map this correctly in filepath. Also Ensure File properties has "embedded resource"
              * as the build action. Copy to Output directory if newer
              */
-            string filepath = @"HelperClass\ListOfMaleNames.txt";
+			string filepath = "";
+			switch(gender)
+			{
+				case 0:
+					filepath = @"HelperClass\ListOfFemaleNames.txt";
+					break;
+				case 1:
+					filepath = @"HelperClass\ListOfMaleNames.txt";
+					break;
+			}
             string[] names = System.IO.File.ReadAllLines(filepath);
             return names[GenerateRandomNumber(1, names.Count())];
         }
-
-		public static string RandomFemaleName()
-		{
-			string filepath = @"HelperClass\ListOfFemaleNames.txt";
-			string[] names = System.IO.File.ReadAllLines(filepath);
-			return names[GenerateRandomNumber(1, names.Count())];
-		}
 
         public static int GenerateRandomNumber(int min, int max)
         {
@@ -138,6 +130,7 @@ namespace CharacterCreationandDevelopment
             new XElement("Player",
             new XAttribute("ID", "001"),
             new XElement("Name", player.name),
+			new XElement("Gender", player.gender),
             new XElement("Strength", player.strength),
             new XElement("Dexterity", player.dexterity),
             new XElement("Constitution", player.constitution),
@@ -183,6 +176,7 @@ namespace CharacterCreationandDevelopment
         {
             var doc = XDocument.Load(HelperClass.GetSaveFileName(filename));
             string PlayerName = doc.Descendants("Name").Single().Value;
+			int gender = Int32.Parse(doc.Descendants("Gender").Single().Value);
             int strength = Int32.Parse(doc.Descendants("Strength").Single().Value);
             int dexterity = Int32.Parse(doc.Descendants("Dexterity").Single().Value);
             int constitution = Int32.Parse(doc.Descendants("Constitution").Single().Value);
@@ -211,7 +205,7 @@ namespace CharacterCreationandDevelopment
 			int logicalCrazy = Int32.Parse(doc.Descendants("LogicalCrazy").Single().Value);
             //etc
 
-            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
+            return new PlayerCharacter(PlayerName, gender, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
 				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
 				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
         }
