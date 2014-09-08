@@ -94,7 +94,6 @@ namespace CharacterCreationandDevelopment
 
             player.GetMood();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
-            toolTip1.SetToolTip(this, player.CurrentMood.GetName());
 
             if ((player.ageYears == 10) && (player.ageMonths == 9))
             {
@@ -241,7 +240,7 @@ namespace CharacterCreationandDevelopment
 			}
             else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
             {
-                player.SetExcitedBored(-10);
+                player.SetExcitedBored(-50);
                 txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
                 NextTurn();
             }
@@ -267,20 +266,31 @@ namespace CharacterCreationandDevelopment
 		//DELEGATE THIS ^^^^^ AND THIS vvvvvvvvv NOW!!!
 		private void lBoxActions_SelectedValueChanged(object sender, EventArgs e)
 		{
-			SetToolTipValue("Farm", new AnimalEmpathyLesson(player));
-			SetToolTipValue("Running", new AthleticsLesson(player));
-			SetToolTipValue("Create", new CraftingLesson(player));
-			SetToolTipValue("Barter", new DiplomacyLesson(player));
-			SetToolTipValue("Prayer", new FaithLesson(player));
-			SetToolTipValue("Break", new LockpickingLesson(player));
-			SetToolTipValue("Medic", new MedicineLesson(player));
-			SetToolTipValue("Steal", new PickpocketingLesson(player));
-			SetToolTipValue("Science", new ScienceLesson(player));
-			SetToolTipValue("Survival", new SurvivalLesson(player));
-			SetToolTipValue("Camping", new SurvivalLesson(player));
-			SetToolTipValue("Swimming", new SwimmingLesson(player));
-			SetToolTipValue("Fist", new UnarmedLesson(player));
-			SetToolTipValue("Weapon", new WeaponsLesson(player));
+            if (lBoxActions.SelectedItem == null)
+            {
+
+            }
+            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
+            {
+                this.toolTip1.SetToolTip(lBoxActions, "Skill Bonus: What Skill?. Makes you Bored. Very Bored.");
+            }
+            else
+            {
+                SetToolTipValue("Farm", new AnimalEmpathyLesson(player));
+                SetToolTipValue("Running", new AthleticsLesson(player));
+                SetToolTipValue("Create", new CraftingLesson(player));
+                SetToolTipValue("Barter", new DiplomacyLesson(player));
+                SetToolTipValue("Prayer", new FaithLesson(player));
+                SetToolTipValue("Break", new LockpickingLesson(player));
+                SetToolTipValue("Medic", new MedicineLesson(player));
+                SetToolTipValue("Steal", new PickpocketingLesson(player));
+                SetToolTipValue("Science", new ScienceLesson(player));
+                SetToolTipValue("Survival", new SurvivalLesson(player));
+                SetToolTipValue("Camping", new SurvivalLesson(player));
+                SetToolTipValue("Swimming", new SwimmingLesson(player));
+                SetToolTipValue("Fist", new UnarmedLesson(player));
+                SetToolTipValue("Weapon", new WeaponsLesson(player));
+            }
 		}
 
 		private void lblJournal_Click(object sender, EventArgs e)
@@ -303,6 +313,12 @@ namespace CharacterCreationandDevelopment
 				this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
 			}
 		}
+
+        private void pBoxMood_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(this.pBoxMood, player.CurrentMood.GetName());
+        }
+
 
 
 
