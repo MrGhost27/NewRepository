@@ -1,5 +1,6 @@
 ﻿using CharacterCreationandDevelopment.Events_and_Conversations;
 using CharacterCreationandDevelopment.Lessons;
+using CharacterCreationandDevelopment.Moods;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,32 +19,45 @@ namespace CharacterCreationandDevelopment
         private World world;
         private Skills playerSkills;
         private List<String> listofActions;
+        private EventDecisionBox eventDecisionBox;
 
-        public WorldUI(PlayerCharacter playerInWorld)
+        public WorldUI(PlayerCharacter playerInWorld, Form parentForm)
         {
             InitializeComponent();
+            parentForm.Hide();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.player = playerInWorld;
             world = new World(player);
-            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
-            pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
+
+			//Gender Required.
+            pictureBox1.Image = HelperClass.Images(player.gender)[player.portraitNumber];
             lblDate.Text = world.GetDate();
             listofActions = new List<String>();
+            //Startup
             AtHome();
+            player.GetMood();
+            pBoxMood.Image = player.CurrentMood.GetMoodImage();
         }
 
         private void RunEvent(IEvent thisevent)
         {
-            MessageBox.Show("Suddenly someone comes over to you...");
             world.SetEvent(thisevent);
             pBoxNPC.Visible = true;
-            pBoxNPC.Image = world.newevent.eventNPC.portrait;
-            txtConversation.Text = world.GetDate() + ": " + world.newevent.EventConversation() + Environment.NewLine;
-            DialogResult dialogResult = MessageBox.Show("Make a Choice", "Choice Time", MessageBoxButtons.YesNo);
-            txtConversation.AppendText(world.GetDate() + ": " + world.newevent.MakeChoice(dialogResult.ToString()) + Environment.NewLine);
+			pBoxNPC.Image = thisevent.eventNPC.portrait;
+			txtConversation.Text = world.EventConversation();
+            if (thisevent.eventChoices.Count == 2)
+            {
+                eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1]);
+            }
+            else
+            {
+                eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1], thisevent.eventChoices[2]);
+            }
+            eventDecisionBox.ShowDialog();
+			txtConversation.Text = world.EventDecision(eventDecisionBox.choice);
             CloseEvent();
         }
-
+		
         private void CloseEvent()
         {
             pBoxNPC.Visible = false;
@@ -64,24 +78,27 @@ namespace CharacterCreationandDevelopment
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.player = HelperClass.LoadPlayerDetailsFromFile(player.name);
-            Character_Creation CharacterSheet = new Character_Creation(player, 0);
+            Character_Creation CharacterSheet = new Character_Creation(player, 0, this);
             CharacterSheet.ShowDialog();
         }
 
         private void NextTurn()
         {
             lblDate.Text = world.NewTurn();
-
-            if (world.monthNumber == 3)
+            player.ageMonths++;
+            if (player.ageMonths == 13)
             {
-                RunEvent((new GameStart(player)));
+                player.ageMonths = 1;
+                player.ageYears++;
             }
-        }
 
-        private void btnNextTurn_Click(object sender, EventArgs e)
-        {
-            NextTurn();
+            player.GetMood();
+            pBoxMood.Image = player.CurrentMood.GetMoodImage();
+
+            if ((player.ageYears == 10) && (player.ageMonths == 9))
+            {
+                RunEvent((new ChildhoodStart(player)));
+            }
         }
 
         private void lblSkills_Click(object sender, EventArgs e)
@@ -111,6 +128,16 @@ namespace CharacterCreationandDevelopment
 			lblJournal.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		}
 
+        private void lblMood_MouseEnter(object sender, EventArgs e)
+        {
+            lblMood.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void lblMood_MouseLeave(object sender, EventArgs e)
+        {
+            lblMood.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
         private void PopulateListBox()
         {
             lBoxActions.Items.Clear();
@@ -132,8 +159,7 @@ namespace CharacterCreationandDevelopment
         private void pBoxFarm_Click(object sender, EventArgs e)
         {
             AtHome();
- 
-        }
+         }
 
         private void AtHome()
         {
@@ -190,7 +216,7 @@ namespace CharacterCreationandDevelopment
             listofActions.Clear();
             listofActions.Add("Barter for Items");
             listofActions.Add("Steal Items");
-            listofActions.Add("Create Weapons");
+            listofActions.Add("Create Items");
             listofActions.Add("Break in.");
             PopulateListBox();
 
@@ -200,41 +226,104 @@ namespace CharacterCreationandDevelopment
         {
             if (lBoxActions.SelectedItem.ToString().Contains(keyword))
             {
-                world.SetLesson(lesson);
+                player.SetLesson(lesson);
 				txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
                 NextTurn();
             }
-
         }
 
         private void btnTakeAction_Click(object sender, EventArgs e)
         {
+			if (lBoxActions.SelectedItem == null)
+			{
+				MessageBox.Show("Select an Action");
+			}
+            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
+            {
+                player.SetExcitedBored(-50);
+                txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
+                NextTurn();
+            }
+			else
+			{
+				TakeAction("Farm", new AnimalEmpathyLesson(player));
+				TakeAction("Running", new AthleticsLesson(player));
+				TakeAction("Create", new CraftingLesson(player));
+				TakeAction("Barter", new DiplomacyLesson(player));
+				TakeAction("Prayer", new FaithLesson(player));
+				TakeAction("Break", new LockpickingLesson(player));
+				TakeAction("Medic", new MedicineLesson(player));
+				TakeAction("Steal", new PickpocketingLesson(player));
+				TakeAction("Science", new ScienceLesson(player));
+				TakeAction("Survival", new SurvivalLesson(player));
+				TakeAction("Camping", new SurvivalLesson(player));
+				TakeAction("Swimming", new SwimmingLesson(player));
+				TakeAction("Fist", new UnarmedLesson(player));
+				TakeAction("Weapon", new WeaponsLesson(player));
+			}
+        }
+
+		//DELEGATE THIS ^^^^^ AND THIS vvvvvvvvv NOW!!!
+		private void lBoxActions_SelectedValueChanged(object sender, EventArgs e)
+		{
             if (lBoxActions.SelectedItem == null)
             {
-                MessageBox.Show("Select an Action");
-            }
 
-            TakeAction("Farm", new AnimalEmpathyLesson(player));
-            TakeAction("Running", new AthleticsLesson(player));
-            TakeAction("Create", new CraftingLesson(player));
-            TakeAction("Barter", new DiplomacyLesson(player));
-            TakeAction("Prayer", new FaithLesson(player));
-            TakeAction("Break", new LockpickingLesson(player));
-            TakeAction("Medic", new MedicineLesson(player));
-            TakeAction("Steal", new PickpocketingLesson(player));
-            TakeAction("Science", new ScienceLesson(player));
-            TakeAction("Survival", new SurvivalLesson(player));
-            TakeAction("Camping", new SurvivalLesson(player));
-            TakeAction("Swimming", new SwimmingLesson(player));
-            TakeAction("Fist", new UnarmedLesson(player));
-            TakeAction("Weapon", new WeaponsLesson(player));
-        }
+            }
+            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
+            {
+                this.toolTip1.SetToolTip(lBoxActions, "Skill Bonus: What Skill?. Makes you Bored. Very Bored.");
+            }
+            else
+            {
+                SetToolTipValue("Farm", new AnimalEmpathyLesson(player));
+                SetToolTipValue("Running", new AthleticsLesson(player));
+                SetToolTipValue("Create", new CraftingLesson(player));
+                SetToolTipValue("Barter", new DiplomacyLesson(player));
+                SetToolTipValue("Prayer", new FaithLesson(player));
+                SetToolTipValue("Break", new LockpickingLesson(player));
+                SetToolTipValue("Medic", new MedicineLesson(player));
+                SetToolTipValue("Steal", new PickpocketingLesson(player));
+                SetToolTipValue("Science", new ScienceLesson(player));
+                SetToolTipValue("Survival", new SurvivalLesson(player));
+                SetToolTipValue("Camping", new SurvivalLesson(player));
+                SetToolTipValue("Swimming", new SwimmingLesson(player));
+                SetToolTipValue("Fist", new UnarmedLesson(player));
+                SetToolTipValue("Weapon", new WeaponsLesson(player));
+            }
+		}
 
 		private void lblJournal_Click(object sender, EventArgs e)
 		{
 			JournalUI journalUI = new JournalUI(world);
 			journalUI.ShowDialog();
 		}
+
+        private void lblMood_Click(object sender, EventArgs e)
+        {
+           // MoodUI moodUI = new MoodUI(player); HAHA Sigh
+            MoodUI2 moodUI = new MoodUI2(player);
+            moodUI.ShowDialog();
+        }
+
+		private void SetToolTipValue(string keyword, ILesson lesson)
+		{
+			if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+			{
+				this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
+			}
+		}
+
+        private void pBoxMood_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(this.pBoxMood, player.CurrentMood.GetName());
+        }
+
+
+
+
+
+
 
     }
 }

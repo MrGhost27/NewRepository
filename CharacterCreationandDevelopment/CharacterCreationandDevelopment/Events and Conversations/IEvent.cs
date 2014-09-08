@@ -9,7 +9,11 @@ namespace CharacterCreationandDevelopment
     public interface IEvent
     {
         NPC eventNPC { get; set; }
+        List<String> eventChoices { get; set; }
         string EventConversation();
-        string MakeChoice(string choice);
+        string EventDecisionText();
+        string ChoiceOne();
+        string ChoiceTwo();
+        string ChoiceThree();
     }
 }

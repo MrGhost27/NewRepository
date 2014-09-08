@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Charisma";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Charisma. Makes you Logical";
+		}
 
 		public string LessonEffects()
 		{
 			int previousValue = _player.diplomacy;
-			_player.diplomacy += _player.charisma / 2;
+			_player.diplomacy += 5 + (_player.charisma / 2);
+            _player.SetLogicalCrazy(20);
 
             if (_player.diplomacy > 100)
 			{

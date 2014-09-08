@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CharacterCreationandDevelopment.Lessons;
+using CharacterCreationandDevelopment.Moods;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,9 +13,12 @@ namespace CharacterCreationandDevelopment
     {
         #region InterfaceFields
         public string name { get; set; }
+		public int gender { get; set; }
         public int portraitNumber { get; set; }
-        public int currentHP { get; set; }
-        public int maxHP { get; set; }
+		public int ageYears { get; set; }
+		public int ageMonths { get; set; }
+        //public int currentHP { get; set; }
+        //public int maxHP { get; set; }
         #endregion  
 
         #region Attributes
@@ -42,14 +47,28 @@ namespace CharacterCreationandDevelopment
 
         #endregion
 
-        public IMoodBehaviour CurrentMood;
+        #region Mood
+
+        public int happyDepressed { get; private set; }
+        public int angryAfraid { get; private set; }
+        public int excitedBored { get; private set; }
+        public int logicalCrazy { get; private set; }
+        public int[] moodValues {get; set;}
 
 
-        public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
+        #endregion
+
+		public IMoodBehaviour CurrentMood;
+        public ILesson lesson;
+
+
+        public PlayerCharacter(string Name, int gender, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
-			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science)
+			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
+			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy)
         {
             this.name = Name;
+			this.gender = gender;
             this.strength = Str;
             this.dexterity = Dex;
             this.constitution = Const;
@@ -57,6 +76,7 @@ namespace CharacterCreationandDevelopment
             this.wisdom = Wis;
             this.charisma = Char;
             this.portraitNumber = imageNumber;
+
             this.weapons = weapons;
 			this.unarmed = unarmed;
 			this.swimming = swimming;
@@ -70,17 +90,129 @@ namespace CharacterCreationandDevelopment
 			this.animalEmpathy = animalEmpathy;
 			this.medicine = medicine;
             this.science = science;
+			this.ageYears = ageYears;
+			this.ageMonths = ageMonths;
 
-            CurrentMood = new Happy();
+            this.happyDepressed = happyDepressed;
+			this.angryAfraid = angryAfraid;
+			this.excitedBored = excitedBored;
+			this.logicalCrazy = logicalCrazy;
+            GetMood();
         }
 
-        public void SetMood (IMoodBehaviour newMood)
+        public void SetHappyDepressed(int value)
         {
-            this.CurrentMood.RemoveMoodEffectsandModifiers(this);
+            happyDepressed += value;
+            if (happyDepressed > 100)
+            {
+                happyDepressed = 100;
+            }
+            if (happyDepressed < -100)
+            {
+                happyDepressed = -100;
+            }
+        }
+
+        public void SetAngryAfraid(int value)
+        {
+            {
+                angryAfraid += value;
+                if (angryAfraid > 100)
+                {
+                    angryAfraid = 100;
+                }
+                if (angryAfraid < -100)
+                {
+                    angryAfraid = -100;
+                }
+            }
+        }
+
+        public void SetExcitedBored(int value)
+        {
+            {
+                excitedBored += value;
+                if (excitedBored > 100)
+                {
+                    excitedBored = 100;
+                }
+                if (excitedBored < -100)
+                {
+                    excitedBored = -100;
+                }
+            }
+        }
+
+        public void SetLogicalCrazy(int value)
+        {
+            logicalCrazy += value;
+            if (logicalCrazy > 100)
+            {
+                logicalCrazy = 100;
+            }
+            if (logicalCrazy < -100)
+            {
+                logicalCrazy = -100;
+            }
+        }
+
+
+        public void GetMood()
+        {
+			moodValues = new int[] { happyDepressed, angryAfraid, excitedBored, logicalCrazy };
+            int max = moodValues.Max();
+            int min = moodValues.Min();
+
+            if (Math.Abs(min) > Math.Abs(max))
+            {
+                int index = Array.IndexOf(moodValues, moodValues.Min());
+                switch (index)
+                {
+                    case 0:
+                        SetMood(new Depressed());
+                        break;
+                    case 1:
+                        SetMood(new Afraid());
+                        break;
+                    case 2:
+                        SetMood(new Bored());
+                        break;
+                    case 3:
+                        SetMood(new Crazy());
+                        break;
+                }
+            }
+            else
+            {
+                int index = Array.IndexOf(moodValues, moodValues.Max());
+                switch (index)
+                {
+                    case 0:
+                        SetMood(new Happy());
+                        break;
+                    case 1:
+                        SetMood(new Angry());
+                        break;
+                    case 2:
+                        SetMood(new Excited());
+                        break;
+                    case 3:
+                        SetMood(new Logical());
+                        break;
+                }
+            }
+        }
+
+        private void SetMood (IMoodBehaviour newMood)
+        {
             this.CurrentMood = newMood;
+            this.CurrentMood.RemoveMoodEffectsandModifiers(this);
             this.CurrentMood.SetMoodEffectsandModifiers(this);
         }
- 
 
+        public void SetLesson(ILesson todaysLesson)
+        {
+            this.lesson = todaysLesson;
+        }
     }
 }

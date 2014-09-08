@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Intelligence";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Intelligence. Makes you Depressed";
+		}
 
         public string LessonEffects()
         {
 			int previousValue = _player.medicine;
-            _player.medicine += _player.intelligence /2;
+            _player.medicine += 5 + (_player.intelligence /2);
+            _player.SetHappyDepressed(-20);
 
 			if (_player.medicine > 100)
             {

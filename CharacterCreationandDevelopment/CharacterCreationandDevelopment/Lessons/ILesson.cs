@@ -11,6 +11,6 @@ namespace CharacterCreationandDevelopment.Lessons
         string GetLessonName();
         string LessonEffects();
 		int GetNewSkillValue();
-        string GetAttributeUsed();
+		string GetToolTip();
     }
 }

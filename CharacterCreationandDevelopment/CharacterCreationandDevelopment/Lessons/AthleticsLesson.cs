@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Constitution";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Constitution. Makes you Bored";
+		}
 
 		public string LessonEffects()
 		{
 			int previousvalue = _player.athletics;
-			_player.athletics += _player.constitution / 2;
+			_player.athletics += 5 + (_player.constitution / 2);
+            _player.SetExcitedBored(-20);
 
 			if (_player.athletics > 100)
 			{
@@ -45,31 +46,31 @@ namespace CharacterCreationandDevelopment.Lessons
 
 			if (_player.athletics.IsBetween(0, 15, previousvalue))
 			{
-				return _player.name + " learns to look with eyes, not with hands";
+				return _player.name + " learns to get a stitch going up a hill";
 			}
 			else if (_player.athletics.IsBetween(15, 30, previousvalue))
 			{
-				return _player.name + " learns to stick 'em with the pointy end";
+				return _player.name + " learns to put one foot in front of the other in quick succession";
 			}
 			else if (_player.athletics.IsBetween(30, 45, previousvalue))
 			{
-				return _player.name + " learns to make the weapon an extension of their body";
+				return _player.name + " learns to breathe effectively and maintain a steady pace";
 			}
 			else if (_player.athletics.IsBetween(45, 60, previousvalue))
 			{
-				return _player.name + " learns that a man cannot push a button, if you disable his hand";
+				return _player.name + " learns to sprint in short bursts where necessary";
 			}
 			else if (_player.athletics.IsBetween(60, 75, previousvalue))
 			{
-				return _player.name + " learns that the sword really IS mighter than the quill.";
+				return _player.name + " can run cross country adaquately";
 			}
 			else if (_player.athletics.IsBetween(75, 90, previousvalue))
 			{
-				return _player.name + " is going to have to be registered AS a lethal weapon";
+				return _player.name + " pities the fool that tries to race him";
 			}
 			else if (_player.athletics.IsBetween(90, 99, previousvalue))
 			{
-				return _player.name + " could take on just about anyone, with a spoon";
+				return _player.name + " can effectively run indefinitely";
 			}
 			else if (_player.athletics == 100)
 			{

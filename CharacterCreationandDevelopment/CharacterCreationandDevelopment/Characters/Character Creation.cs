@@ -22,32 +22,47 @@ namespace CharacterCreationandDevelopment
         public int _charisma { get; private set; }
         public string _name { get; private set; }
         public int imageNumber { get; private set; }
+		public int gender { get; private set; }
         public PlayerCharacter player;
+        private Form parentForm;
 
-        public Character_Creation()
+        public Character_Creation(Form parentForm)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.parentForm = parentForm;
+			cBoxGender.Text = "Male";
+			gender = 1;
             SetAttributes();
             imageNumber = 0;
-            pBoxImage.Image = HelperClass.Images()[imageNumber];
+            pBoxImage.Image = HelperClass.Images(gender)[imageNumber];
             remainingPoints = 10;
             txtRemainingPoints.Text = remainingPoints.ToString();
        }
 
-        public Character_Creation(PlayerCharacter player, int PointsToAllocate)
+        public Character_Creation(PlayerCharacter player, int PointsToAllocate, Form parentForm)
         {
             InitializeComponent();
             SetAttributes();
             this.Text = "Character Sheet";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.parentForm = parentForm;
             btnCreateCharacter.Text = "Level Up";
+            gender = player.gender;
+            if (gender ==0)
+            {
+                cBoxGender.Text = "Female";
+            }
+            else
+            {
+                cBoxGender.Text = "Male";
+            }
             txtName.Text = player.name;
             txtName.Enabled = false;
             btnPreviousPic.Visible = false;
             btnNext.Visible = false;
             btnReset.Visible = false;
             buttonRandomName.Visible = false;
-
 
             numericStr.Value = player.strength;
             numericDex.Value = player.dexterity;
@@ -56,7 +71,7 @@ namespace CharacterCreationandDevelopment
             numericWis.Value = player.wisdom;
             numericCha.Value = player.charisma;
             imageNumber = player.portraitNumber;
-            pBoxImage.Image = HelperClass.Images()[player.portraitNumber];
+            pBoxImage.Image = HelperClass.Images(gender)[player.portraitNumber];
 
             if (PointsToAllocate == 0)
             {
@@ -66,6 +81,7 @@ namespace CharacterCreationandDevelopment
                 numericInt.Enabled = false;
                 numericWis.Enabled = false;
                 numericCha.Enabled = false;
+                cBoxGender.Enabled = false;
                 remainingPoints = 0;
                 btnCreateCharacter.Visible = false;
             }
@@ -96,9 +112,14 @@ namespace CharacterCreationandDevelopment
 
         private void buttonRandomName_Click(object sender, EventArgs e)
         {
-            txtName.Text = HelperClass.RandomName();
-            _name = txtName.Text;
+            RandomName(gender);
         }
+
+		private void RandomName(int gender)
+		{
+			txtName.Text = HelperClass.RandomName(gender);
+			_name = txtName.Text;
+		}
 
         #region ValueChanged
         
@@ -199,53 +220,61 @@ namespace CharacterCreationandDevelopment
         {
             if (txtName.Text == "")
             {
-                _name = HelperClass.RandomName();
+                MessageBox.Show("Must Enter a Name!");
             }
             else
             {
                 _name = txtName.Text;
             }
 
-            player = new PlayerCharacter(_name, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            player = new PlayerCharacter(_name, gender, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
 
-
-            HelperClass.SavePlayerDetailsToFile(player);
+			HelperClass.SavePlayerDetailsToFile(player);
             this.Close();
             if (txtName.Enabled)
             {
-                WorldUI newVisibleWorld = new WorldUI(player);
+                WorldUI newVisibleWorld = new WorldUI(player, parentForm);
                 newVisibleWorld.Show();
             }
-        
-
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (imageNumber == HelperClass.Images().Count())
-            {
-                imageNumber = 0;
-            }
-            else
-            {
-                imageNumber++;
-            }
-            pBoxImage.Image = HelperClass.Images()[imageNumber];
+			NextPic(gender);
         }
 
-        private void btnPreviousPic_Click(object sender, EventArgs e)
-        {
-            if (imageNumber == 0)
-            {
-                imageNumber = HelperClass.Images().Count()-1;
-            }
-            else
-            {
-                imageNumber--;
-            }
-            pBoxImage.Image = HelperClass.Images()[imageNumber];
-        }
+		private void btnPreviousPic_Click(object sender, EventArgs e)
+		{
+			PreviousPic(gender);
+		}
+
+		private void NextPic(int gender)
+		{
+			if (imageNumber == HelperClass.Images(gender).Count() - 1)
+			{
+				imageNumber = 0;
+			}
+			else
+			{
+				imageNumber++;
+			}
+			pBoxImage.Image = HelperClass.Images(gender)[imageNumber];
+		}
+
+		private void PreviousPic(int gender)
+		{
+			if (imageNumber == 0)
+			{
+				imageNumber = HelperClass.Images(gender).Count() - 1;
+			}
+			else
+			{
+				imageNumber--;
+			}
+			pBoxImage.Image = HelperClass.Images(gender)[imageNumber];
+
+		}
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -258,11 +287,24 @@ namespace CharacterCreationandDevelopment
             remainingPoints = 10;
         }
 
+        private void Character_Creation_FormClosed(object sender, FormClosedEventArgs e)
+        {
+			parentForm.Show();
+        }
 
-
-
-
-
-
+        private void cBoxGender_SelectedValueChanged(object sender, EventArgs e)
+        {
+			if (cBoxGender.Text == "Male")
+			{
+				gender = 1;
+			}
+			else
+			{
+				gender = 0;
+			}
+			pBoxImage.Image = HelperClass.Images(gender)[0];
+			imageNumber = 0;
+			txtName.Text = "";
+        }
     }
 }

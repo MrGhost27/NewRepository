@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Intelligence";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Intelligence. Makes you Logical";
+		}
 
-        public string LessonEffects()
+		public string LessonEffects()
         {
 			int previousValue = _player.science;
-            _player.science += _player.intelligence / 2;
+            _player.science += 5 + (_player.intelligence / 2);
+            _player.SetLogicalCrazy(20);
 
             if (_player.science > 100)
             {

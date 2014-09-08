@@ -22,23 +22,24 @@ namespace CharacterCreationandDevelopment.Lessons
             return _lessonName;
         }
 
-        public string GetAttributeUsed()
-        {
-            return "Dexterity";
-        }
-
 		public int GetNewSkillValue()
 		{
 			int newSkillValue = _player.lockpicking;
 			return newSkillValue;
 		}
 
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Dexterity. Makes you Excited";
+		}
+
         public string LessonEffects()
         {
 			int previousValue = _player.lockpicking;
-			_player.lockpicking += _player.dexterity / 2;
-
-			if (_player.lockpicking > 100)
+			_player.lockpicking += 5 + (_player.dexterity / 2);
+            _player.SetExcitedBored(20);
+			
+            if (_player.lockpicking > 100)
             {
 				_player.lockpicking = 100;
             }

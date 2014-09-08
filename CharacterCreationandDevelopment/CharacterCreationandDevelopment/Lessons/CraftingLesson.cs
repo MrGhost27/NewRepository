@@ -28,15 +28,16 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Dexterity";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Dexterity. Makes you Excited";
+		}
 
 		public string LessonEffects()
 		{
 			int previousValue = _player.crafting;
-			_player.crafting += _player.dexterity / 2;
+			_player.crafting += 5 + (_player.dexterity / 2);
+            _player.SetExcitedBored(20);
 
 			if (_player.crafting > 100)
 			{

@@ -28,15 +28,17 @@ namespace CharacterCreationandDevelopment.Lessons
 			return newSkillValue;
 		}
 
-        public string GetAttributeUsed()
-        {
-            return "Charisma";
-        }
+		public string GetToolTip()
+		{
+			return "Skill Bonus: Charisma. Makes you Happy";
+
+		}
 
         public string LessonEffects()
         {
 			int previousValue = _player.animalEmpathy;
-			_player.animalEmpathy += _player.charisma / 2;
+			_player.animalEmpathy +=  (5 + _player.charisma / 2);
+            _player.SetHappyDepressed(20);
 
 			if (_player.animalEmpathy > 100)
             {

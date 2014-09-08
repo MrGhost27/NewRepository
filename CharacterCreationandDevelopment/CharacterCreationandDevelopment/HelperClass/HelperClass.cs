@@ -16,10 +16,23 @@ namespace CharacterCreationandDevelopment
         private static Random random = new Random();
         private static List<Image> imageList = new List<Image>();
 
-        public static List<Image> Images()
+        public static List<Image> Images(int gender)
         {
-            //feels WRONG
-            string[] images = System.IO.Directory.GetFiles(@"Images");
+			string imageDirectory = "";
+			switch(gender)
+			{
+				case 0:
+					imageDirectory = @"Images\Female";
+					break;
+				case 1: 
+					imageDirectory = @"Images\Male";
+					break;
+				case 2:
+					imageDirectory = @"Images\Other";
+					break;
+			}
+
+            string[] images = System.IO.Directory.GetFiles(imageDirectory);
             imageList.Clear();
             foreach (string Img in images)
             {
@@ -29,17 +42,23 @@ namespace CharacterCreationandDevelopment
             return imageList;
         }
 
-        public static string RandomName()
+        public static string RandomName(int gender)
         {
             /*Ensure you map this correctly in filepath. Also Ensure File properties has "embedded resource"
              * as the build action. Copy to Output directory if newer
              */
-
-            string filepath = @"HelperClass\ListOfNames.txt";
+			string filepath = "";
+			switch(gender)
+			{
+				case 0:
+					filepath = @"HelperClass\ListOfFemaleNames.txt";
+					break;
+				case 1:
+					filepath = @"HelperClass\ListOfMaleNames.txt";
+					break;
+			}
             string[] names = System.IO.File.ReadAllLines(filepath);
-
             return names[GenerateRandomNumber(1, names.Count())];
-
         }
 
         public static int GenerateRandomNumber(int min, int max)
@@ -48,13 +67,21 @@ namespace CharacterCreationandDevelopment
             return randomNumber;
         }
 
-        public static string RandomCityName()
+		public static string GetSaveFileName(PlayerCharacter player)
+		{
+			return @".\Saves\" + player.name + @"\" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";
+		}
+        
+        //Required for ComboBox - no idea who player is yet.
+        public static string GetSaveFileName(string saveFileString)
         {
-            string filepath = @"HelperClass\ListOfCities.txt";
-            string[] cityNames = System.IO.File.ReadAllLines(filepath);
-
-            return cityNames[GenerateRandomNumber(1, cityNames.Count())];
+            return saveFileString + ".xml";
         }
+
+		public static string GetWorldFileName(PlayerCharacter player)
+		{
+            return @".\Worlds\" + player.name + @"\" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";
+		}
 
         public static void SaveWorldDetailsToFile(PlayerCharacter player, World world)
         {
@@ -67,15 +94,24 @@ namespace CharacterCreationandDevelopment
 			new XAttribute("Journal", "001"),
 			new XElement("Entry", world.GetJournal())));
 
-            Directory.CreateDirectory(@".\Worlds\");
-            File.WriteAllText(@".\Worlds\" + player.name + ".xml", doc.ToString());
+            string directory = @".\Worlds\" + player.name + @"\";
+            Directory.CreateDirectory(directory);
+
+            //Stolen Linq. Read how this works later :)
+            var files = new DirectoryInfo(directory).EnumerateFiles()
+            .OrderByDescending(f => f.CreationTime)
+            .Skip(5)
+            .ToList();
+            files.ForEach(f => f.Delete());
+
+            File.WriteAllText(GetWorldFileName(player), doc.ToString());
         }
 
-        public static List<String> LoadWorldDetailsFromFile(string filename)
+        public static List<String> LoadWorldDetailsFromFile(PlayerCharacter player)
         {
             List<String> worldDetails = new List<String>();
             worldDetails.Clear();
-            var doc = XDocument.Load(@".\Worlds\" + filename + ".xml");
+            var doc = XDocument.Load(GetWorldFileName(player));
             string PlayerName = doc.Descendants("Name").Single().Value;
             worldDetails.Add(PlayerName);
             string Month = doc.Descendants("Month").Single().Value;
@@ -94,6 +130,7 @@ namespace CharacterCreationandDevelopment
             new XElement("Player",
             new XAttribute("ID", "001"),
             new XElement("Name", player.name),
+			new XElement("Gender", player.gender),
             new XElement("Strength", player.strength),
             new XElement("Dexterity", player.dexterity),
             new XElement("Constitution", player.constitution),
@@ -113,18 +150,33 @@ namespace CharacterCreationandDevelopment
 			new XElement("Pickpocketing", player.pickpocketing),
 			new XElement("AnimalEmpathy", player.animalEmpathy),
 			new XElement("Medicine", player.medicine),
-            new XElement("Science", player.science)));
+            new XElement("Science", player.science),
+			new XElement("AgeYears", player.ageYears),
+			new XElement("AgeMonths", player.ageMonths),
+            new XElement("HappyDepressed",player.happyDepressed),
+			new XElement("AngryAfraid", player.angryAfraid),
+			new XElement("ExcitedBored", player.excitedBored),
+			new XElement("LogicalCrazy", player.logicalCrazy)));
 
-            Directory.CreateDirectory(@".\Saves\");
-            File.WriteAllText(@".\Saves\" + player.name + ".xml", doc.ToString());
+            string directory = @".\Saves\" + player.name + @"\";
+            Directory.CreateDirectory(directory);
+
+            //Stolen Linq. Read how this works later :)
+            var files = new DirectoryInfo(directory).EnumerateFiles()
+            .OrderByDescending(f => f.CreationTime)
+            .Skip(9)
+            .ToList();
+            files.ForEach(f => f.Delete());
+			File.WriteAllText(GetSaveFileName(player), doc.ToString());
         }
         
 
      
         public static PlayerCharacter LoadPlayerDetailsFromFile(string filename)
         {
-            var doc = XDocument.Load(@".\Saves\" + filename + ".xml");
+            var doc = XDocument.Load(HelperClass.GetSaveFileName(filename));
             string PlayerName = doc.Descendants("Name").Single().Value;
+			int gender = Int32.Parse(doc.Descendants("Gender").Single().Value);
             int strength = Int32.Parse(doc.Descendants("Strength").Single().Value);
             int dexterity = Int32.Parse(doc.Descendants("Dexterity").Single().Value);
             int constitution = Int32.Parse(doc.Descendants("Constitution").Single().Value);
@@ -145,11 +197,17 @@ namespace CharacterCreationandDevelopment
 			int animalEmpathy = Int32.Parse(doc.Descendants("AnimalEmpathy").Single().Value);
 			int medicine = Int32.Parse(doc.Descendants("Medicine").Single().Value);
             int science = Int32.Parse(doc.Descendants("Science").Single().Value);
+			int ageYears = Int32.Parse(doc.Descendants("AgeYears").Single().Value);
+			int ageMonths = Int32.Parse(doc.Descendants("AgeMonths").Single().Value);
+            int happyDepressed = Int32.Parse(doc.Descendants("HappyDepressed").Single().Value);
+			int angryAfraid = Int32.Parse(doc.Descendants("AngryAfraid").Single().Value);
+			int excitedBored = Int32.Parse(doc.Descendants("ExcitedBored").Single().Value);
+			int logicalCrazy = Int32.Parse(doc.Descendants("LogicalCrazy").Single().Value);
             //etc
 
-            return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
-				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing, 
-				animalEmpathy, medicine, science);
+            return new PlayerCharacter(PlayerName, gender, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
+				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
+				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
         }
 
 
@@ -162,7 +220,6 @@ namespace CharacterCreationandDevelopment
 			}
 
 			return val > low && val < high;
-        }
-        
+        }       
     }
 }
