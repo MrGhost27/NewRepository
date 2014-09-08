@@ -26,7 +26,7 @@ namespace CharacterCreationandDevelopment.Moods
 
         public Image GetMoodImage()
         {
-            Bitmap bmp = new Bitmap(@"Moods\Images\Depressed.jpg");
+            Bitmap bmp = new Bitmap(@"Moods\Images\Depressed.png");
             return bmp;
         }
     }

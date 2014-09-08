@@ -94,6 +94,7 @@ namespace CharacterCreationandDevelopment
 
             player.GetMood();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
+            toolTip1.SetToolTip(this, player.CurrentMood.GetName());
 
             if ((player.ageYears == 10) && (player.ageMonths == 9))
             {
