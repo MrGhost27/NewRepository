@@ -49,9 +49,9 @@ namespace CharacterCreationandDevelopment
         #region Mood
 
         public int happyDepressed;
-        public int boredAngry;
-        public int fearlessScared;
-        public int saneInsane;
+		public int angryAfraid;
+		public int excitedBored;
+		public int logicalCrazy;
         public int[] moodValues {get; set;}
 
 
@@ -64,7 +64,7 @@ namespace CharacterCreationandDevelopment
         public PlayerCharacter(string Name, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
 			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
-            int happyDepressed, int boredAngry, int fearlessScared, int saneInsane)
+			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy)
         {
             this.name = Name;
             this.strength = Str;
@@ -92,15 +92,15 @@ namespace CharacterCreationandDevelopment
 			this.ageMonths = ageMonths;
 
             this.happyDepressed = happyDepressed;
-            this.boredAngry = boredAngry;
-            this.fearlessScared = fearlessScared;
-            this.saneInsane = saneInsane;
+			this.angryAfraid = angryAfraid;
+			this.excitedBored = excitedBored;
+			this.logicalCrazy = logicalCrazy;
             GetMood();
         }
 
         public void GetMood()
         {
-            moodValues = new int[] {happyDepressed, boredAngry, fearlessScared, saneInsane};
+			moodValues = new int[] { happyDepressed, angryAfraid, excitedBored, logicalCrazy };
             int max = moodValues.Max();
             int min = moodValues.Min();
 
@@ -113,13 +113,13 @@ namespace CharacterCreationandDevelopment
                         SetMood(new Depressed());
                         break;
                     case 1:
-                        SetMood(new Angry());
+                        SetMood(new Afraid());
                         break;
                     case 2:
-                        SetMood(new Scared());
+                        SetMood(new Bored());
                         break;
                     case 3:
-                        SetMood(new Insane());
+                        SetMood(new Crazy());
                         break;
                 }
             }
@@ -132,13 +132,13 @@ namespace CharacterCreationandDevelopment
                         SetMood(new Happy());
                         break;
                     case 1:
-                        SetMood(new Bored());
+                        SetMood(new Angry());
                         break;
                     case 2:
-                        SetMood(new Fearless());
+                        SetMood(new Excited());
                         break;
                     case 3:
-                        SetMood(new Sane());
+                        SetMood(new Logical());
                         break;
                 }
             }

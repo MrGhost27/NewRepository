@@ -29,7 +29,7 @@ namespace CharacterCreationandDevelopment
             this.player = playerInWorld;
             world = new World(player);
 
-            pictureBox1.Image = HelperClass.Images()[player.portraitNumber];
+            pictureBox1.Image = HelperClass.MaleImages()[player.portraitNumber];
             lblDate.Text = world.GetDate();
             listofActions = new List<String>();
             //Startup
@@ -240,7 +240,7 @@ namespace CharacterCreationandDevelopment
 			}
             else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
             {
-                player.boredAngry += 10;
+				player.excitedBored -= 10;
                 txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
                 NextTurn();
             }

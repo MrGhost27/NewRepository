@@ -85,7 +85,7 @@ namespace CharacterCreationandDevelopment
             {
                 string selectedGame = comboBox1.Text + @"\" + listOfSaves.SelectedItem.ToString();
                 PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(selectedGame);
-                pBoxChar.Image = HelperClass.Images()[player.portraitNumber];
+                pBoxChar.Image = HelperClass.MaleImages()[player.portraitNumber];
                 UpdateMiniSkillsBox(player);
             }
         }

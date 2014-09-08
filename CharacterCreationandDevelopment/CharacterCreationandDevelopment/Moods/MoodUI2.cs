@@ -23,15 +23,17 @@ namespace CharacterCreationandDevelopment.Moods
 
         private void UpdateScreen()
         {
-            int relativezero = panel1.Size.Height / 2;
-            int hundred = panel1.Location.Y;
-            int difference = hundred - relativezero;
-            int onepercent = (panel1.Size.Height / 100) * 100;
+			player.GetMood();
+			pictureBox1.Location = new Point(pictureBox1.Location.X, 150 - (int)Math.Round(player.happyDepressed * 1.5));
+			pictureBox2.Location = new Point(pictureBox2.Location.X, 150 - (int)Math.Round(player.angryAfraid * 1.5));
+			pictureBox3.Location = new Point(pictureBox3.Location.X, 150 - (int)Math.Round(player.excitedBored * 1.5));
+			pictureBox4.Location = new Point(pictureBox4.Location.X, 150 - (int)Math.Round(player.logicalCrazy * 1.5));
 
-            pictureBox1.Location = new Point(pictureBox1.Location.X, (panel1.Size.Height/2) - (player.happyDepressed * 2));
-            //pictureBox2.Location = new Point(pictureBox2.Location.X, player.boredAngry/10);
-            //pictureBox3.Location = new Point(pictureBox3.Location.X, player.fearlessScared/10);
-            //pictureBox4.Location = new Point(pictureBox4.Location.X, player.saneInsane/10);
+			pictureBox1.Image = player.CurrentMood.GetMoodImage();
+			pictureBox2.Image = player.CurrentMood.GetMoodImage();
+			pictureBox3.Image = player.CurrentMood.GetMoodImage();
+			pictureBox4.Image = player.CurrentMood.GetMoodImage();
+			lblCurrentMood.Text = "Current Mood: " + player.CurrentMood.GetName();
         }
     }
 }

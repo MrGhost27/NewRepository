@@ -16,9 +16,9 @@ namespace CharacterCreationandDevelopment
         private static Random random = new Random();
         private static List<Image> imageList = new List<Image>();
 
-        public static List<Image> Images()
+        public static List<Image> FemaleImages()
         {
-            string[] images = System.IO.Directory.GetFiles(@"Images");
+            string[] images = System.IO.Directory.GetFiles(@"Images\Female");
             imageList.Clear();
             foreach (string Img in images)
             {
@@ -28,18 +28,46 @@ namespace CharacterCreationandDevelopment
             return imageList;
         }
 
-        public static string RandomName()
+		public static List<Image> MaleImages()
+		{
+			string[] images = System.IO.Directory.GetFiles(@"Images\Male");
+			imageList.Clear();
+			foreach (string Img in images)
+			{
+				Bitmap bmp = new Bitmap(Img);
+				imageList.Add(bmp);
+			}
+			return imageList;
+		}
+
+		public static List<Image> OtherImages()
+		{
+			string[] images = System.IO.Directory.GetFiles(@"Images\Other");
+			imageList.Clear();
+			foreach (string Img in images)
+			{
+				Bitmap bmp = new Bitmap(Img);
+				imageList.Add(bmp);
+			}
+			return imageList;
+		}
+
+        public static string RandomMaleName()
         {
             /*Ensure you map this correctly in filepath. Also Ensure File properties has "embedded resource"
              * as the build action. Copy to Output directory if newer
              */
-
-            string filepath = @"HelperClass\ListOfNames.txt";
+            string filepath = @"HelperClass\ListOfMaleNames.txt";
             string[] names = System.IO.File.ReadAllLines(filepath);
-
             return names[GenerateRandomNumber(1, names.Count())];
-
         }
+
+		public static string RandomFemaleName()
+		{
+			string filepath = @"HelperClass\ListOfFemaleNames.txt";
+			string[] names = System.IO.File.ReadAllLines(filepath);
+			return names[GenerateRandomNumber(1, names.Count())];
+		}
 
         public static int GenerateRandomNumber(int min, int max)
         {
@@ -133,9 +161,9 @@ namespace CharacterCreationandDevelopment
 			new XElement("AgeYears", player.ageYears),
 			new XElement("AgeMonths", player.ageMonths),
             new XElement("HappyDepressed",player.happyDepressed),
-            new XElement("BoredAngry", player.boredAngry),
-            new XElement("FearlessScared", player.fearlessScared),
-            new XElement ("SaneInsane",player.saneInsane)));
+			new XElement("AngryAfraid", player.angryAfraid),
+			new XElement("ExcitedBored", player.excitedBored),
+			new XElement("LogicalCrazy", player.logicalCrazy)));
 
             string directory = @".\Saves\" + player.name + @"\";
             Directory.CreateDirectory(directory);
@@ -178,14 +206,14 @@ namespace CharacterCreationandDevelopment
 			int ageYears = Int32.Parse(doc.Descendants("AgeYears").Single().Value);
 			int ageMonths = Int32.Parse(doc.Descendants("AgeMonths").Single().Value);
             int happyDepressed = Int32.Parse(doc.Descendants("HappyDepressed").Single().Value);
-            int boredAngry = Int32.Parse(doc.Descendants("BoredAngry").Single().Value);
-            int fearlessScared = Int32.Parse(doc.Descendants("FearlessScared").Single().Value);
-            int saneInsane = Int32.Parse(doc.Descendants("SaneInsane").Single().Value);
+			int angryAfraid = Int32.Parse(doc.Descendants("AngryAfraid").Single().Value);
+			int excitedBored = Int32.Parse(doc.Descendants("ExcitedBored").Single().Value);
+			int logicalCrazy = Int32.Parse(doc.Descendants("LogicalCrazy").Single().Value);
             //etc
 
             return new PlayerCharacter(PlayerName, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
 				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
-                animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, boredAngry, fearlessScared, saneInsane);
+				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
         }
 
 

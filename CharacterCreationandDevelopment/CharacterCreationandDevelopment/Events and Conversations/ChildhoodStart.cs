@@ -32,7 +32,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 
         public string ChoiceOne()
         {
-            player.boredAngry -= 10;
+			player.angryAfraid += 10;
             choiceText += "You are getting angry (10 points)" + Environment.NewLine;
             choiceText += "Your unarmed skill is put to the test... (Requires 10 points)" + Environment.NewLine;
             
@@ -45,10 +45,8 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             else
             {
                 choiceText += "You fail to beat the bullies who beat you instead" + Environment.NewLine;
-                player.fearlessScared -= 50;
-                choiceText += "You are less angry (-10 points)" + Environment.NewLine;
-                player.boredAngry += 10;
-                choiceText += "You are scared (50 points)" + Environment.NewLine;
+				player.angryAfraid -= 50;
+                choiceText += "You are afraid (50 points)" + Environment.NewLine;
                 player.happyDepressed -= 30;
                 choiceText += "You are Depressed (30 points)" + Environment.NewLine;
             }
@@ -67,9 +65,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             else
             {
                 choiceText += "You cannot convince the bullies to leave and take a beating for your efforts" + Environment.NewLine;
-                player.fearlessScared -= 50;
-                choiceText += "You are less angry (-10 points)" + Environment.NewLine;
-                player.boredAngry += 10;
+				player.angryAfraid -= 50;
                 choiceText += "You are scared (50 points)" + Environment.NewLine;
                 player.happyDepressed -= 30;
                 choiceText += "You are Depressed (30 points)" + Environment.NewLine;
@@ -89,9 +85,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             else
             {
                 choiceText += "You cannot outrun the bullies, they catch and beat you" + Environment.NewLine;
-                player.fearlessScared -= 50;
-                choiceText += "You are less angry (-10 points)" + Environment.NewLine;
-                player.boredAngry += 10;
+				player.angryAfraid -= 50;
                 choiceText += "You are scared (50 points)" + Environment.NewLine;
                 player.happyDepressed -= 30;
                 choiceText += "You are Depressed (30 points)" + Environment.NewLine;

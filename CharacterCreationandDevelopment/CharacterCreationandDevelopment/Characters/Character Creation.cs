@@ -22,6 +22,7 @@ namespace CharacterCreationandDevelopment
         public int _charisma { get; private set; }
         public string _name { get; private set; }
         public int imageNumber { get; private set; }
+        private bool isMale;
         public PlayerCharacter player;
         private Form parentForm;
 
@@ -30,9 +31,10 @@ namespace CharacterCreationandDevelopment
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.parentForm = parentForm;
+            isMale = true;
             SetAttributes();
             imageNumber = 0;
-            pBoxImage.Image = HelperClass.Images()[imageNumber];
+            pBoxImage.Image = HelperClass.MaleImages()[imageNumber];
             remainingPoints = 10;
             txtRemainingPoints.Text = remainingPoints.ToString();
        }
@@ -58,7 +60,7 @@ namespace CharacterCreationandDevelopment
             numericWis.Value = player.wisdom;
             numericCha.Value = player.charisma;
             imageNumber = player.portraitNumber;
-            pBoxImage.Image = HelperClass.Images()[player.portraitNumber];
+            pBoxImage.Image = HelperClass.MaleImages()[player.portraitNumber];
 
             if (PointsToAllocate == 0)
             {
@@ -98,8 +100,21 @@ namespace CharacterCreationandDevelopment
 
         private void buttonRandomName_Click(object sender, EventArgs e)
         {
-            txtName.Text = HelperClass.RandomName();
-            _name = txtName.Text;
+            RandomName(isMale);
+        }
+
+        private void RandomName(bool isMale)
+        {
+            if (isMale)
+            {
+                txtName.Text = HelperClass.RandomMaleName();
+                _name = txtName.Text;
+            }
+            else
+            {
+                txtName.Text = HelperClass.RandomFemaleName();
+                _name = txtName.Text;
+            }
         }
 
         #region ValueChanged
@@ -201,7 +216,7 @@ namespace CharacterCreationandDevelopment
         {
             if (txtName.Text == "")
             {
-                _name = HelperClass.RandomName();
+                MessageBox.Show("Must Enter a Name!");
             }
             else
             {
@@ -224,28 +239,69 @@ namespace CharacterCreationandDevelopment
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (imageNumber == HelperClass.Images().Count())
+            NextPic(isMale);
+        }
+
+        private void NextPic(bool isMale)
+        {
+            if (isMale)
             {
-                imageNumber = 0;
+                if (imageNumber == HelperClass.MaleImages().Count() - 1)
+                {
+                    imageNumber = 0;
+                }
+                else
+                {
+                    imageNumber++;
+                }
+                pBoxImage.Image = HelperClass.MaleImages()[imageNumber];
             }
             else
             {
-                imageNumber++;
+                if (imageNumber == HelperClass.FemaleImages().Count() - 1)
+                {
+                    imageNumber = 0;
+                }
+                else
+                {
+                    imageNumber++;
+                }
+                pBoxImage.Image = HelperClass.FemaleImages()[imageNumber];
             }
-            pBoxImage.Image = HelperClass.Images()[imageNumber];
+
+        }
+
+        private void PreviousPic(bool isMale)
+        {
+            if (isMale)
+            {
+                if (imageNumber == 0)
+                {
+                    imageNumber = HelperClass.MaleImages().Count() - 1;
+                }
+                else
+                {
+                    imageNumber--;
+                }
+                pBoxImage.Image = HelperClass.MaleImages()[imageNumber];
+            }
+            else
+            {
+                if (imageNumber == 0)
+                {
+                    imageNumber = HelperClass.FemaleImages().Count() - 1;
+                }
+                else
+                {
+                    imageNumber--;
+                }
+                pBoxImage.Image = HelperClass.FemaleImages()[imageNumber];
+            }
         }
 
         private void btnPreviousPic_Click(object sender, EventArgs e)
         {
-            if (imageNumber == 0)
-            {
-                imageNumber = HelperClass.Images().Count()-1;
-            }
-            else
-            {
-                imageNumber--;
-            }
-            pBoxImage.Image = HelperClass.Images()[imageNumber];
+            PreviousPic(isMale);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -262,6 +318,26 @@ namespace CharacterCreationandDevelopment
         private void Character_Creation_FormClosed(object sender, FormClosedEventArgs e)
         {
                 parentForm.Show();
+        }
+
+        private void cBoxGender_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cBoxGender.Text == "Male")
+            {
+                isMale = true;
+                pBoxImage.Image = HelperClass.MaleImages()[0];
+                txtName.Text = "";
+            }
+            else if (cBoxGender.Text == "Female")
+            {
+                isMale = false;
+                pBoxImage.Image = HelperClass.FemaleImages()[0];
+                txtName.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Not a valid Gender");
+            }
         }
 
 

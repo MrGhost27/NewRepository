@@ -16,15 +16,15 @@ namespace CharacterCreationandDevelopment
 
         public NPC()
         {
-            portrait = HelperClass.Images()[HelperClass.GenerateRandomNumber(0, HelperClass.Images().Count())];
-            name = HelperClass.RandomName();
+            portrait = HelperClass.MaleImages()[HelperClass.GenerateRandomNumber(0, HelperClass.MaleImages().Count())];
+            name = HelperClass.RandomMaleName();
             maxHP = HelperClass.GenerateRandomNumber(0, 100);
             currentHP = maxHP;
         }
 
         public NPC(string name)
         {
-            portrait = HelperClass.Images()[HelperClass.GenerateRandomNumber(0, HelperClass.Images().Count())];
+            portrait = HelperClass.MaleImages()[HelperClass.GenerateRandomNumber(0, HelperClass.MaleImages().Count())];
             this.name = name;
             maxHP = HelperClass.GenerateRandomNumber(0, 100);
             currentHP = maxHP;
