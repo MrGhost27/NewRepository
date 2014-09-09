@@ -131,3 +131,4 @@ C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Charact
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Excited.png
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Happy.png
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Afraid.png
+F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.csprojResolveAssemblyReference.cache

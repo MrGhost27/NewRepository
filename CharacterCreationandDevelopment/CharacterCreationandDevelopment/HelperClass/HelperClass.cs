@@ -131,7 +131,7 @@ namespace CharacterCreationandDevelopment
             new XAttribute("ID", "001"),
             new XElement("Name", player.name),
 			new XElement("Gender", player.gender),
-			new XElement("Gender", player.location),
+			new XElement("Location", player.location),
             new XElement("Strength", player.strength),
             new XElement("Dexterity", player.dexterity),
             new XElement("Constitution", player.constitution),
