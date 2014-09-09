@@ -62,7 +62,6 @@ namespace CharacterCreationandDevelopment
 		public IMoodBehaviour CurrentMood;
         public ILesson lesson;
 
-
         public PlayerCharacter(string Name, int gender, string location, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
 			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
@@ -99,6 +98,7 @@ namespace CharacterCreationandDevelopment
 			this.angryAfraid = angryAfraid;
 			this.excitedBored = excitedBored;
 			this.logicalCrazy = logicalCrazy;
+            
             GetMood();
         }
 

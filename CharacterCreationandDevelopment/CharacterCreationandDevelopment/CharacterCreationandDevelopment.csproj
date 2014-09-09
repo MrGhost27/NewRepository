@@ -51,6 +51,8 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Characters\Mother.cs" />
+    <Compile Include="Characters\Sister.cs" />
     <Compile Include="Events and Conversations\ChildhoodStart.cs" />
     <Compile Include="Events and Conversations\ConversationDialog.cs">
       <SubType>Form</SubType>
@@ -65,7 +67,7 @@
       <DependentUpon>EventDecisionBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Events and Conversations\IConversation.cs" />
-    <Compile Include="Events and Conversations\TestConversation.cs" />
+    <Compile Include="Events and Conversations\FirstConversation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +321,20 @@
   <ItemGroup>
     <EmbeddedResource Include="Moods\Images\Happy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Other\MaleBandit.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Relationships\sister.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Relationships\Stepmother.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

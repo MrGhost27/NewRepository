@@ -84,7 +84,7 @@ namespace CharacterCreationandDevelopment
 
 			if ((player.ageYears == 10) && (player.ageMonths == 1))
 			{
-				RunConversation(new TestConversation(player));
+				RunConversation(new FirstConversation(player));
 			}
 
             if ((player.ageYears == 10) && (player.ageMonths == 9))

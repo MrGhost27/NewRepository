@@ -28,7 +28,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 			MoveConversationOn();
 		}
 
-		private void PopulateImages()
+		private void NextSpeaker()
 		{
 			if (isSpeakerCharacter)
 			{
@@ -46,9 +46,10 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 		{
 			if (speechNumber < currentConversation.GetEventConversation().Count())
 			{
-				PopulateImages();
-				txtConversation.Text += currentConversation.GetEventConversation()[speechNumber];
+                NextSpeaker();
+				txtConversation.AppendText(currentConversation.GetEventConversation()[speechNumber]);
 				speechNumber++;
+                isSpeakerCharacter = !isSpeakerCharacter;
 			}
 			else
 			{

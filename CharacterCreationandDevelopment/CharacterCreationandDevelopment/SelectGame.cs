@@ -25,11 +25,17 @@ namespace CharacterCreationandDevelopment
 
         private void GetSaves()
         {
-            string[] filePaths = Directory.GetDirectories(@".\Saves\");
-
-            foreach (string filePath in filePaths)
+            try
             {
-                comboBox1.Items.Add(filePath);
+                string[] filePaths = Directory.GetDirectories(@".\Saves\");
+                foreach (string filePath in filePaths)
+                {
+                    comboBox1.Items.Add(filePath);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No save games?!");
             }
         }
 

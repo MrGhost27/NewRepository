@@ -62,10 +62,12 @@ namespace CharacterCreationandDevelopment
 
 		public void LogEventConversation()
 		{
-			foreach (string speech in newConversation.GetEventConversation())
+            string journalEntry = "";
+            foreach (string speech in newConversation.GetEventConversation())
 			{
-				AddJournalEntry(speech);
+                journalEntry += speech;
 			}
+            AddJournalEntry(journalEntry);
 		}
 
 		public string EventDecision(int eventDecisionChoice)

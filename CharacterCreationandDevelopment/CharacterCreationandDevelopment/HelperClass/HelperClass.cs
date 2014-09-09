@@ -29,6 +29,9 @@ namespace CharacterCreationandDevelopment
 					break;
 				case 2:
 					imageDirectory = @"Images\Other";
+                    break;
+                case 3:
+                    imageDirectory = @"Images\Relationships";
 					break;
 			}
 

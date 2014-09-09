@@ -16,7 +16,7 @@ namespace CharacterCreationandDevelopment
 
         public Bandit(int gender)
         {
-            portrait = HelperClass.Images(2)[6];
+            portrait = HelperClass.Images(2)[0];
 			name = HelperClass.RandomName(gender);
 			opinionofPlayer = -100;
 			playerOpinion = -100;
