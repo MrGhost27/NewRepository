@@ -82,11 +82,6 @@ namespace CharacterCreationandDevelopment
             player.GetMood();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
 
-			if ((player.ageYears == 10) && (player.ageMonths == 1))
-			{
-				RunConversation(new FirstConversation(player));
-			}
-
             if ((player.ageYears == 10) && (player.ageMonths == 9))
             {
                 RunEvent((new ChildhoodStart(player)));
@@ -228,6 +223,11 @@ namespace CharacterCreationandDevelopment
 			else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
 			{
 				player.SetExcitedBored(-50);
+                if (!player.firstConversation)
+                {
+                    RunConversation(new FirstConversation(player));
+                    player.firstConversation = true;
+                }
 				txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
 				NextTurn();
 			}

@@ -59,13 +59,18 @@ namespace CharacterCreationandDevelopment
 
         #endregion
 
-		public IMoodBehaviour CurrentMood;
+        #region progression
+        public bool firstConversation;
+        #endregion
+
+        public IMoodBehaviour CurrentMood;
         public ILesson lesson;
 
         public PlayerCharacter(string Name, int gender, string location, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
 			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
-			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy)
+			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy,
+            bool firstConversation)
         {
             this.name = Name;
 			this.gender = gender;
@@ -98,7 +103,9 @@ namespace CharacterCreationandDevelopment
 			this.angryAfraid = angryAfraid;
 			this.excitedBored = excitedBored;
 			this.logicalCrazy = logicalCrazy;
-            
+
+            this.firstConversation = firstConversation;
+
             GetMood();
         }
 

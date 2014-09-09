@@ -160,7 +160,8 @@ namespace CharacterCreationandDevelopment
             new XElement("HappyDepressed",player.happyDepressed),
 			new XElement("AngryAfraid", player.angryAfraid),
 			new XElement("ExcitedBored", player.excitedBored),
-			new XElement("LogicalCrazy", player.logicalCrazy)));
+			new XElement("LogicalCrazy", player.logicalCrazy),
+ 			new XElement("FirstConversation", player.firstConversation)));
 
             string directory = @".\Saves\" + player.name + @"\";
             Directory.CreateDirectory(directory);
@@ -208,11 +209,13 @@ namespace CharacterCreationandDevelopment
 			int angryAfraid = Int32.Parse(doc.Descendants("AngryAfraid").Single().Value);
 			int excitedBored = Int32.Parse(doc.Descendants("ExcitedBored").Single().Value);
 			int logicalCrazy = Int32.Parse(doc.Descendants("LogicalCrazy").Single().Value);
+            bool firstConversation = Boolean.Parse(doc.Descendants("FirstConversation").Single().Value);
             //etc
 
             return new PlayerCharacter(PlayerName, gender, location, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
 				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
-				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
+				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy,
+                firstConversation);
         }
 
 
