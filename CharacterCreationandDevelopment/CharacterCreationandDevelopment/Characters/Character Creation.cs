@@ -227,7 +227,7 @@ namespace CharacterCreationandDevelopment
                 _name = txtName.Text;
             }
 
-            player = new PlayerCharacter(_name, gender, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
+            player = new PlayerCharacter(_name, gender, "", _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
 
 			HelperClass.SavePlayerDetailsToFile(player);

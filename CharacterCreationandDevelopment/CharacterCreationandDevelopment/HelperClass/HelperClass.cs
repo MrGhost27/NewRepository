@@ -131,6 +131,7 @@ namespace CharacterCreationandDevelopment
             new XAttribute("ID", "001"),
             new XElement("Name", player.name),
 			new XElement("Gender", player.gender),
+			new XElement("Gender", player.location),
             new XElement("Strength", player.strength),
             new XElement("Dexterity", player.dexterity),
             new XElement("Constitution", player.constitution),
@@ -177,6 +178,7 @@ namespace CharacterCreationandDevelopment
             var doc = XDocument.Load(HelperClass.GetSaveFileName(filename));
             string PlayerName = doc.Descendants("Name").Single().Value;
 			int gender = Int32.Parse(doc.Descendants("Gender").Single().Value);
+			string location = doc.Descendants("Location").Single().Value;
             int strength = Int32.Parse(doc.Descendants("Strength").Single().Value);
             int dexterity = Int32.Parse(doc.Descendants("Dexterity").Single().Value);
             int constitution = Int32.Parse(doc.Descendants("Constitution").Single().Value);
@@ -205,7 +207,7 @@ namespace CharacterCreationandDevelopment
 			int logicalCrazy = Int32.Parse(doc.Descendants("LogicalCrazy").Single().Value);
             //etc
 
-            return new PlayerCharacter(PlayerName, gender, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
+            return new PlayerCharacter(PlayerName, gender, location, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
 				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
 				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
         }
@@ -220,6 +222,19 @@ namespace CharacterCreationandDevelopment
 			}
 
 			return val > low && val < high;
-        }       
+        }
+
+		public static int SetMoodBoundaries(int mood)
+		{
+			if (mood > 100)
+			{
+				mood = 100;
+			}
+			if (mood < -100)
+			{
+				mood = -100;
+			}
+			return mood;
+		}
     }
 }

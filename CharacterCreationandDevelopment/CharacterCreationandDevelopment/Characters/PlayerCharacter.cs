@@ -11,9 +11,10 @@ namespace CharacterCreationandDevelopment
 {
     public class PlayerCharacter
     {
-        #region InterfaceFields
+        #region CharDetails
         public string name { get; set; }
 		public int gender { get; set; }
+		public string location { get; set; }
         public int portraitNumber { get; set; }
 		public int ageYears { get; set; }
 		public int ageMonths { get; set; }
@@ -62,13 +63,14 @@ namespace CharacterCreationandDevelopment
         public ILesson lesson;
 
 
-        public PlayerCharacter(string Name, int gender, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
+        public PlayerCharacter(string Name, int gender, string location, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
 			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
 			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
 			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy)
         {
             this.name = Name;
 			this.gender = gender;
+			this.location = location;
             this.strength = Str;
             this.dexterity = Dex;
             this.constitution = Const;
@@ -100,60 +102,28 @@ namespace CharacterCreationandDevelopment
             GetMood();
         }
 
-        public void SetHappyDepressed(int value)
+		public void SetHappyDepressed(int value)
         {
             happyDepressed += value;
-            if (happyDepressed > 100)
-            {
-                happyDepressed = 100;
-            }
-            if (happyDepressed < -100)
-            {
-                happyDepressed = -100;
-            }
+			happyDepressed = HelperClass.SetMoodBoundaries(happyDepressed);
         }
 
         public void SetAngryAfraid(int value)
         {
-            {
-                angryAfraid += value;
-                if (angryAfraid > 100)
-                {
-                    angryAfraid = 100;
-                }
-                if (angryAfraid < -100)
-                {
-                    angryAfraid = -100;
-                }
-            }
+			angryAfraid += value;
+			angryAfraid = HelperClass.SetMoodBoundaries(angryAfraid);
         }
 
         public void SetExcitedBored(int value)
         {
-            {
-                excitedBored += value;
-                if (excitedBored > 100)
-                {
-                    excitedBored = 100;
-                }
-                if (excitedBored < -100)
-                {
-                    excitedBored = -100;
-                }
-            }
+			excitedBored += value;
+			excitedBored = HelperClass.SetMoodBoundaries(excitedBored);
         }
 
         public void SetLogicalCrazy(int value)
         {
-            logicalCrazy += value;
-            if (logicalCrazy > 100)
-            {
-                logicalCrazy = 100;
-            }
-            if (logicalCrazy < -100)
-            {
-                logicalCrazy = -100;
-            }
+			logicalCrazy += value;
+			logicalCrazy = HelperClass.SetMoodBoundaries(logicalCrazy);
         }
 
 

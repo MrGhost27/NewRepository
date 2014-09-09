@@ -40,11 +40,6 @@ C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Charact
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.exe
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Moods.MoodUI.resources
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\obj\Debug\CharacterCreationandDevelopment.Moods.MoodUI2.resources
-C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Fearless.jpg
-C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Depressed.jpg
-C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Happy.jpg
-C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Insane.jpg
-C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Scared.jpg
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Bored.png
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Angry.png
 C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Logical.png
@@ -131,3 +126,8 @@ F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Excited.png
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Happy.png
 F:\NewRepository\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Afraid.png
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Crazy.png
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Depressed.png
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Excited.png
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Happy.png
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\CharacterCreationandDevelopment\CharacterCreationandDevelopment\bin\Debug\Moods\Images\Afraid.png
