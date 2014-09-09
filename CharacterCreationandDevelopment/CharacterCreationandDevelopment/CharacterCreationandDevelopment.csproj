@@ -52,13 +52,20 @@
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
     <Compile Include="Events and Conversations\ChildhoodStart.cs" />
+    <Compile Include="Events and Conversations\ConversationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events and Conversations\ConversationDialog.Designer.cs">
+      <DependentUpon>ConversationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Events and Conversations\EventDecisionBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Events and Conversations\EventDecisionBox.Designer.cs">
       <DependentUpon>EventDecisionBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Events and Conversations\GameStart.cs" />
+    <Compile Include="Events and Conversations\IConversation.cs" />
+    <Compile Include="Events and Conversations\TestConversation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,7 +103,7 @@
     <Compile Include="Moods\Excited.cs" />
     <Compile Include="Moods\Happy.cs" />
     <Compile Include="Moods\IMoodBehaviour.cs" />
-    <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Characters\Bandit.cs" />
     <Compile Include="Characters\PlayerCharacter.cs" />
     <Compile Include="Moods\Crazy.cs" />
     <Compile Include="Moods\MoodUI.cs">
@@ -136,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="Characters\Character Creation.resx">
       <DependentUpon>Character Creation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events and Conversations\ConversationDialog.resx">
+      <DependentUpon>ConversationDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Events and Conversations\EventDecisionBox.resx">
       <DependentUpon>EventDecisionBox.cs</DependentUpon>

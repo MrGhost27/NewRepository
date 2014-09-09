@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public interface IEvent
+    public interface IEvent : IConversation
     {
-        NPC eventNPC { get; set; }
         List<String> eventChoices { get; set; }
-        string EventConversation();
         string EventDecisionText();
         string ChoiceOne();
         string ChoiceTwo();

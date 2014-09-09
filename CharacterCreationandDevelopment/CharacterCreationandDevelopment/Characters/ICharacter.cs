@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    interface ICharacter
+    public interface ICharacter
     {
-        Image portrait { get; set; }
-        string name { get; set; }
-        int currentHP { get; set; }
-        int maxHP { get; set; }
+		string name { get; set; }
+		int opinionofPlayer { get; set; }
+		int playerOpinion { get; set; }
+		Image portrait { get; set; }
     }
 }

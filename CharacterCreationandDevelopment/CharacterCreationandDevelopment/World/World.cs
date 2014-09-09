@@ -12,6 +12,7 @@ namespace CharacterCreationandDevelopment
         public int monthNumber { get; private set; }
         public int year { get; private set; }
         public IEvent newEvent;
+		public IConversation newConversation;
         PlayerCharacter player;
 		Journal journal;
 
@@ -48,14 +49,23 @@ namespace CharacterCreationandDevelopment
 			return journal.GetJournal();
 		}
 
+		public void SetConversation(IConversation thisConversation)
+		{
+			this.newConversation = thisConversation;
+		}
+
+
         public void SetEvent(IEvent thisevent)
         {
             this.newEvent = thisevent;
         }
 
-		public string EventConversation()
+		public void LogEventConversation()
 		{
-			return AddJournalEntry(newEvent.EventConversation());
+			foreach (string speech in newConversation.GetEventConversation())
+			{
+				AddJournalEntry(speech);
+			}
 		}
 
 		public string EventDecision(int eventDecisionChoice)
