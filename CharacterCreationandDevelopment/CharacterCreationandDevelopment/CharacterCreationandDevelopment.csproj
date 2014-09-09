@@ -136,6 +136,7 @@
     <Compile Include="Skills.Designer.cs">
       <DependentUpon>Skills.cs</DependentUpon>
     </Compile>
+    <Compile Include="World\StoryProgression.cs" />
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldUI.cs">
       <SubType>Form</SubType>

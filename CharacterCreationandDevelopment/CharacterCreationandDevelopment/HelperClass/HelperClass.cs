@@ -86,6 +86,41 @@ namespace CharacterCreationandDevelopment
             return @".\Worlds\" + player.name + @"\" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";
 		}
 
+        public static string GetStoryFileName(PlayerCharacter player)
+        {
+            return @".\Story\" + player.name + @"\" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";
+        }
+
+        private static void MaxSaves(int numberofSaves, string directory)
+        {
+            //Stolen Linq. Read how this works later :)
+            var files = new DirectoryInfo(directory).EnumerateFiles()
+            .OrderByDescending(f => f.CreationTime)
+            .Skip(numberofSaves)
+            .ToList();
+            files.ForEach(f => f.Delete());
+        }
+
+        public static void SaveStoryProgressionToFile(PlayerCharacter player, StoryProgression storyProgression)
+        {
+            var doc = new XDocument(
+            new XElement("StoryProgression",
+            new XAttribute("ID", "001"),
+            new XElement("FirstConversation", storyProgression.firstConversation)));
+
+            string directory = @".\Story\" + player.name + @"\";
+            Directory.CreateDirectory(directory);
+            MaxSaves(9, directory);
+			File.WriteAllText(GetStoryFileName(player), doc.ToString());
+        }
+
+        public static StoryProgression LoadStoryProgressionFromFile(PlayerCharacter player)
+        {
+            var doc = XDocument.Load(GetStoryFileName(player));
+            bool firstConversation = Boolean.Parse(doc.Descendants("FirstConversation").Single().Value);
+            return new StoryProgression(firstConversation);
+        }
+
         public static void SaveWorldDetailsToFile(PlayerCharacter player, World world)
         {
             var doc = new XDocument(
@@ -99,14 +134,7 @@ namespace CharacterCreationandDevelopment
 
             string directory = @".\Worlds\" + player.name + @"\";
             Directory.CreateDirectory(directory);
-
-            //Stolen Linq. Read how this works later :)
-            var files = new DirectoryInfo(directory).EnumerateFiles()
-            .OrderByDescending(f => f.CreationTime)
-            .Skip(5)
-            .ToList();
-            files.ForEach(f => f.Delete());
-
+            MaxSaves(9, directory);
             File.WriteAllText(GetWorldFileName(player), doc.ToString());
         }
 
@@ -160,18 +188,11 @@ namespace CharacterCreationandDevelopment
             new XElement("HappyDepressed",player.happyDepressed),
 			new XElement("AngryAfraid", player.angryAfraid),
 			new XElement("ExcitedBored", player.excitedBored),
-			new XElement("LogicalCrazy", player.logicalCrazy),
- 			new XElement("FirstConversation", player.firstConversation)));
+			new XElement("LogicalCrazy", player.logicalCrazy)));
 
             string directory = @".\Saves\" + player.name + @"\";
             Directory.CreateDirectory(directory);
-
-            //Stolen Linq. Read how this works later :)
-            var files = new DirectoryInfo(directory).EnumerateFiles()
-            .OrderByDescending(f => f.CreationTime)
-            .Skip(9)
-            .ToList();
-            files.ForEach(f => f.Delete());
+            MaxSaves(9, directory);
 			File.WriteAllText(GetSaveFileName(player), doc.ToString());
         }
         
@@ -209,13 +230,11 @@ namespace CharacterCreationandDevelopment
 			int angryAfraid = Int32.Parse(doc.Descendants("AngryAfraid").Single().Value);
 			int excitedBored = Int32.Parse(doc.Descendants("ExcitedBored").Single().Value);
 			int logicalCrazy = Int32.Parse(doc.Descendants("LogicalCrazy").Single().Value);
-            bool firstConversation = Boolean.Parse(doc.Descendants("FirstConversation").Single().Value);
             //etc
 
             return new PlayerCharacter(PlayerName, gender, location, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
 				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
-				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy,
-                firstConversation);
+				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
         }
 
 

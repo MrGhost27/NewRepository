@@ -19,13 +19,15 @@ namespace CharacterCreationandDevelopment
         private World world;
         private Skills playerSkills;
         private EventDecisionBox eventDecisionBox;
+        private StoryProgression storyProgression;
 
-        public WorldUI(PlayerCharacter player, Form parentForm)
+        public WorldUI(PlayerCharacter player, Form parentForm, StoryProgression storyProgression)
         {
             InitializeComponent();
             parentForm.Hide();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.player = player;
+            this.storyProgression = storyProgression;
             world = new World(player);
 
 			//Startup
@@ -223,10 +225,10 @@ namespace CharacterCreationandDevelopment
 			else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
 			{
 				player.SetExcitedBored(-50);
-                if (!player.firstConversation)
+                if (!storyProgression.firstConversation)
                 {
                     RunConversation(new FirstConversation(player));
-                    player.firstConversation = true;
+                    storyProgression.firstConversation = true;
                 }
 				txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
 				NextTurn();
@@ -289,6 +291,7 @@ namespace CharacterCreationandDevelopment
 			{
 				HelperClass.SavePlayerDetailsToFile(player);
 				HelperClass.SaveWorldDetailsToFile(player, world);
+                HelperClass.SaveStoryProgressionToFile(player, storyProgression);
 			}
 			Form1 x = new Form1();
 			x.Show();

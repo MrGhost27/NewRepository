@@ -228,13 +228,16 @@ namespace CharacterCreationandDevelopment
             }
 
             player = new PlayerCharacter(_name, gender, "", _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25, false);
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
+
+            StoryProgression newStory = new StoryProgression(false);
 
 			HelperClass.SavePlayerDetailsToFile(player);
+            HelperClass.SaveStoryProgressionToFile(player, newStory);
             this.Close();
             if (txtName.Enabled)
             {
-                WorldUI newVisibleWorld = new WorldUI(player, parentForm);
+                WorldUI newVisibleWorld = new WorldUI(player, parentForm, newStory);
                 newVisibleWorld.Show();
             }
         }
