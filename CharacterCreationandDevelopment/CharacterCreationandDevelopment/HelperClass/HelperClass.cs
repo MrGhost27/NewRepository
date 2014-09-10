@@ -14,6 +14,30 @@ namespace CharacterCreationandDevelopment
         private static List<Image> imageList = new List<Image>();
         public static List<Relationship> listOfRelationships = new List<Relationship>();
 
+        public static void UpdateRelationship(string type, string value)
+        {
+            foreach (Relationship relationship in listOfRelationships)
+            {
+                if (relationship.type == type)
+                {
+                    relationship.name = value;
+                }
+            }
+        }
+
+        public static Relationship GetRelationshipTypeFromList(string type)
+        {
+            foreach (Relationship relationship in listOfRelationships)
+            {
+                if (relationship.type == type)
+                {
+                    return relationship;
+                }
+            }
+            return listOfRelationships[0];
+        }
+
+
 		public static List<Image> Images(int gender)
         {
 			string imageDirectory = "";

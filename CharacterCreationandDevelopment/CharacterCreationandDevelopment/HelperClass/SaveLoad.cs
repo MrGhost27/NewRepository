@@ -31,6 +31,7 @@ namespace CharacterCreationandDevelopment
 			File.WriteAllText(GetRelationshipFileName(player), doc.ToString());
 		}
 
+
 		public static Relationship LoadRelationshipFromFile(string type, PlayerCharacter player)
 		{
 			var doc = XDocument.Load(GetRelationshipFileName(player));

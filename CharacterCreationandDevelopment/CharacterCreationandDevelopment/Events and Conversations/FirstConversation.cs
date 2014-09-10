@@ -15,7 +15,7 @@ namespace CharacterCreationandDevelopment
 		public FirstConversation(PlayerCharacter player)
 		{
 			this.player = player;
-            conversationNPC = HelperClass.listOfRelationships[0];
+            conversationNPC = HelperClass.GetRelationshipTypeFromList("Mother");
 		}
 
 		public List<string> GetEventConversation()
@@ -32,11 +32,5 @@ namespace CharacterCreationandDevelopment
 			conversationParts.Add(conversationNPC.name + ": Hey - that's what sisters are for!" + Environment.NewLine);
             return conversationParts;
 		}
-
-        public void GetEventConversationOutcome()
-        {
-            conversationNPC.opinionofPlayer -= 50;
-            HelperClass.listOfRelationships[0].name = "Christine";
-        }
 	}
 }

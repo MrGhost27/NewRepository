@@ -52,7 +52,9 @@ namespace CharacterCreationandDevelopment
 				PlayerCharacter player = SaveLoad.LoadPlayerDetailsFromFile(selectedGame);
 				StoryProgression storyProgression = SaveLoad.LoadStoryProgressionFromFile(player);
 				World world = SaveLoad.LoadWorldDetailsFromFile(player);
-				Relationship mum = SaveLoad.LoadRelationshipFromFile("Mother", player);
+				
+                Relationship mum = SaveLoad.LoadRelationshipFromFile("Mother", player);
+                HelperClass.listOfRelationships.Add(mum);
 
                 WorldUI worldUI = new WorldUI(player, world, parentForm, storyProgression);
                 worldUI.Show();

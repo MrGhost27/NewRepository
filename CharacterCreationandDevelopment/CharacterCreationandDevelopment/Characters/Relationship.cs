@@ -26,4 +26,5 @@ namespace CharacterCreationandDevelopment
 			playerOpinion = 100;
         }
     }
+
 }
