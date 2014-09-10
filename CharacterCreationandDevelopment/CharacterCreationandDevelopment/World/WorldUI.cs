@@ -289,9 +289,9 @@ namespace CharacterCreationandDevelopment
 			DialogResult dialogResult = MessageBox.Show("Would you like to save the game?", "World Closing", MessageBoxButtons.YesNo);
 			if (dialogResult.ToString() == "Yes")
 			{
-				HelperClass.SavePlayerDetailsToFile(player);
-				HelperClass.SaveWorldDetailsToFile(player, world);
-                HelperClass.SaveStoryProgressionToFile(player, storyProgression);
+				SaveLoad.SavePlayerDetailsToFile(player);
+				SaveLoad.SaveWorldDetailsToFile(player, world);
+				SaveLoad.SaveStoryProgressionToFile(player, storyProgression);
 			}
 			Form1 x = new Form1();
 			x.Show();

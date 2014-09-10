@@ -51,7 +51,7 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Characters\Mother.cs" />
+    <Compile Include="Characters\Relationship.cs" />
     <Compile Include="Characters\Sister.cs" />
     <Compile Include="Events and Conversations\ChildhoodStart.cs" />
     <Compile Include="Events and Conversations\ConversationDialog.cs">
@@ -78,6 +78,7 @@
     <Compile Include="HelperClass\HelperClass.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Events and Conversations\IEvent.cs" />
+    <Compile Include="HelperClass\SaveLoad.cs" />
     <Compile Include="Journal\Journal.cs" />
     <Compile Include="Journal\JournalUI.cs">
       <SubType>Form</SubType>
@@ -108,12 +109,6 @@
     <Compile Include="Characters\Bandit.cs" />
     <Compile Include="Characters\PlayerCharacter.cs" />
     <Compile Include="Moods\Crazy.cs" />
-    <Compile Include="Moods\MoodUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Moods\MoodUI.Designer.cs">
-      <DependentUpon>MoodUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Moods\MoodUI2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,9 +153,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Journal\JournalUI.resx">
       <DependentUpon>JournalUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Moods\MoodUI.resx">
-      <DependentUpon>MoodUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moods\MoodUI2.resx">
       <DependentUpon>MoodUI2.cs</DependentUpon>

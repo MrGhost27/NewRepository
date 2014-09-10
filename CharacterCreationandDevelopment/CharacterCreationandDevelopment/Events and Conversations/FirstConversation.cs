@@ -15,7 +15,7 @@ namespace CharacterCreationandDevelopment
 		public FirstConversation(PlayerCharacter player)
 		{
 			this.player = player;
-			conversationNPC = new Sister();
+			conversationNPC = new Relationship("Mum", HelperClass.Images(3)[1]);
 		}
 
 		public List<string> GetEventConversation()
