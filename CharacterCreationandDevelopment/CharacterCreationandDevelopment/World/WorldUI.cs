@@ -21,14 +21,14 @@ namespace CharacterCreationandDevelopment
         private EventDecisionBox eventDecisionBox;
         private StoryProgression storyProgression;
 
-        public WorldUI(PlayerCharacter player, Form parentForm, StoryProgression storyProgression)
+        public WorldUI(PlayerCharacter player, World world, Form parentForm, StoryProgression storyProgression)
         {
             InitializeComponent();
             parentForm.Hide();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.player = player;
             this.storyProgression = storyProgression;
-            world = new World(player);
+            this.world = world;
 
 			//Startup
 			ChangeLocation("Your Home", "Work on the Farm", "Relax at Home");

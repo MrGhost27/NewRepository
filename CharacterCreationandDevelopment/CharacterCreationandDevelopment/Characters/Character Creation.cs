@@ -231,13 +231,16 @@ namespace CharacterCreationandDevelopment
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
 
             StoryProgression newStory = new StoryProgression(false);
+            World world = new World(player, 12, 1050, "");
 
 			HelperClass.SavePlayerDetailsToFile(player);
+            HelperClass.SaveWorldDetailsToFile(player, world);
             HelperClass.SaveStoryProgressionToFile(player, newStory);
+
             this.Close();
             if (txtName.Enabled)
             {
-                WorldUI newVisibleWorld = new WorldUI(player, parentForm, newStory);
+                WorldUI newVisibleWorld = new WorldUI(player, world, parentForm, newStory);
                 newVisibleWorld.Show();
             }
         }

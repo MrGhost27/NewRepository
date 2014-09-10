@@ -46,8 +46,10 @@ namespace CharacterCreationandDevelopment
                 string selectedGame = comboBox1.Text + @"\" + listOfSaves.SelectedItem.ToString();
                 PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(selectedGame);
                 StoryProgression storyProgression = HelperClass.LoadStoryProgressionFromFile(player);
-                WorldUI world = new WorldUI(player, parentForm, storyProgression);
-                world.Show();
+                World world = HelperClass.LoadWorldDetailsFromFile(player);
+
+                WorldUI worldUI = new WorldUI(player, world, parentForm, storyProgression);
+                worldUI.Show();
                 this.Close();
             }
             catch (Exception)

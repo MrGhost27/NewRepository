@@ -138,21 +138,17 @@ namespace CharacterCreationandDevelopment
             File.WriteAllText(GetWorldFileName(player), doc.ToString());
         }
 
-        public static List<String> LoadWorldDetailsFromFile(PlayerCharacter player)
+        public static World LoadWorldDetailsFromFile(PlayerCharacter player)
         {
             List<String> worldDetails = new List<String>();
             worldDetails.Clear();
             var doc = XDocument.Load(GetWorldFileName(player));
-            string PlayerName = doc.Descendants("Name").Single().Value;
-            worldDetails.Add(PlayerName);
-            string Month = doc.Descendants("Month").Single().Value;
-            worldDetails.Add(Month);
-            string Year = doc.Descendants("Year").Single().Value;
-            worldDetails.Add(Year);
-			string Journal = doc.Descendants("Entry").Single().Value;
-			worldDetails.Add(Journal);
+            string playerName = doc.Descendants("Name").Single().Value;
+            int month = Int32.Parse(doc.Descendants("Month").Single().Value);
+            int year = Int32.Parse(doc.Descendants("Year").Single().Value);
+			string journal = doc.Descendants("Entry").Single().Value;
 
-            return worldDetails;
+            return new World(player, month, year, journal);
         }
 
         public static void SavePlayerDetailsToFile(PlayerCharacter player)
