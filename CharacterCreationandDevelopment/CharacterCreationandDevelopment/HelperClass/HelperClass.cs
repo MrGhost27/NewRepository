@@ -13,7 +13,7 @@ namespace CharacterCreationandDevelopment
         private static Random random = new Random();
         private static List<Image> imageList = new List<Image>();
 
-        public static List<Image> Images(int gender)
+		public static List<Image> Images(int gender)
         {
 			string imageDirectory = "";
 			switch(gender)
@@ -41,6 +41,7 @@ namespace CharacterCreationandDevelopment
             }
             return imageList;
         }
+
 
         public static string RandomName(int gender)
         {

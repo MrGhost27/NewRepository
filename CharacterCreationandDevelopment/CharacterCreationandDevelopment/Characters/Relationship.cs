@@ -10,14 +10,18 @@ namespace CharacterCreationandDevelopment
     public class Relationship : ICharacter
     {
         public Image portrait { get; set; }
+		public int portraitNumber { get; set; }
         public string name { get; set; }
+		public string type { get; set; }
 		public int opinionofPlayer { get; set; }
 		public int playerOpinion { get; set; }
 
-        public Relationship(string name, Image portrait)
+        public Relationship(string type, string name, int portraitNumber)
         {
-			this.portrait = portrait;
+			this.portraitNumber = portraitNumber;
+			this.portrait = HelperClass.Images(3)[portraitNumber];
 			this.name = name;
+			this.type = type;
 			opinionofPlayer = 100;
 			playerOpinion = 100;
         }

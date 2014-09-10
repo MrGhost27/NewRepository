@@ -19,8 +19,9 @@ namespace CharacterCreationandDevelopment
 				new XElement("Root",
 				from relationship in listOfRelationships
 				select
-					new XElement("Relationship",
-					new XElement("name", relationship.name),
+					new XElement(relationship.type,
+					new XElement("Name", relationship.name),
+					new XElement("PortraitNumber", relationship.portraitNumber),
 					new XElement("OpinionOfPlayer", relationship.opinionofPlayer)))
 			);
 
@@ -30,11 +31,14 @@ namespace CharacterCreationandDevelopment
 			File.WriteAllText(GetRelationshipFileName(player), doc.ToString());
 		}
 
-		/*public static List<Relationship> LoadRelationshipsFromFile(PlayerCharacter player)
+		public static Relationship LoadRelationshipFromFile(string type, PlayerCharacter player)
 		{
 			var doc = XDocument.Load(GetRelationshipFileName(player));
-			List<Relationship> listOfRelationships = new List<Relationship>();
-		}*/
+			string name = doc.Root.Element(type).Element("Name").Value;
+			int imageNumber = Int32.Parse(doc.Root.Element(type).Element("PortraitNumber").Value);
+			int opinion = Int32.Parse(doc.Root.Element(type).Element("OpinionOfPlayer").Value);
+			return new Relationship(type, name, imageNumber);
+		}
 
 
 
