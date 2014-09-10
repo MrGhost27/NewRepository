@@ -12,6 +12,7 @@ namespace CharacterCreationandDevelopment
     {
         private static Random random = new Random();
         private static List<Image> imageList = new List<Image>();
+        public static List<Relationship> listOfRelationships = new List<Relationship>();
 
 		public static List<Image> Images(int gender)
         {

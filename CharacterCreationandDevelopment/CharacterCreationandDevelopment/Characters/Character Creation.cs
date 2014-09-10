@@ -23,7 +23,6 @@ namespace CharacterCreationandDevelopment
         public string _name { get; private set; }
         public int imageNumber { get; private set; }
 		public int gender { get; private set; }
-		public List<Relationship> listOfRelationships { get; private set; }
 		public PlayerCharacter player { get; private set; }
         private Form parentForm;
 
@@ -31,7 +30,6 @@ namespace CharacterCreationandDevelopment
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-			listOfRelationships = new List<Relationship>();
             this.parentForm = parentForm;
 			cBoxGender.Text = "Male";
 			gender = 1;
@@ -237,13 +235,13 @@ namespace CharacterCreationandDevelopment
 
 			Relationship mum = new Relationship("Mother", HelperClass.RandomName(0), 0);
 			Relationship sis = new Relationship("Sister", HelperClass.RandomName(0), 1);
-			listOfRelationships.Add(mum);
-			listOfRelationships.Add(sis);
+			HelperClass.listOfRelationships.Add(mum);
+			HelperClass.listOfRelationships.Add(sis);
 
 			SaveLoad.SavePlayerDetailsToFile(player);
 			SaveLoad.SaveWorldDetailsToFile(player, world);
 			SaveLoad.SaveStoryProgressionToFile(player, newStory);
-			SaveLoad.SaveRelationshipsToFile(player, listOfRelationships);
+			SaveLoad.SaveRelationshipsToFile(player, HelperClass.listOfRelationships);
 
             this.Close();
             if (txtName.Enabled)

@@ -15,7 +15,7 @@ namespace CharacterCreationandDevelopment
 		public FirstConversation(PlayerCharacter player)
 		{
 			this.player = player;
-			conversationNPC = SaveLoad.LoadRelationshipFromFile("Mother", player);
+            conversationNPC = HelperClass.listOfRelationships[0];
 		}
 
 		public List<string> GetEventConversation()
@@ -30,8 +30,13 @@ namespace CharacterCreationandDevelopment
 			conversationParts.Add(player.name + ": I'll think on it - you always were a bad influence on me" + Environment.NewLine);
 
 			conversationParts.Add(conversationNPC.name + ": Hey - that's what sisters are for!" + Environment.NewLine);
-
-			return conversationParts;
+            return conversationParts;
 		}
+
+        public void GetEventConversationOutcome()
+        {
+            conversationNPC.opinionofPlayer -= 50;
+            HelperClass.listOfRelationships[0].name = "Christine";
+        }
 	}
 }

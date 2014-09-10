@@ -1,0 +1,12 @@
+<Root>
+  <Mother>
+    <Name>Alice</Name>
+    <PortraitNumber>0</PortraitNumber>
+    <OpinionOfPlayer>100</OpinionOfPlayer>
+  </Mother>
+  <Sister>
+    <Name>Elizabeth</Name>
+    <PortraitNumber>1</PortraitNumber>
+    <OpinionOfPlayer>100</OpinionOfPlayer>
+  </Sister>
+</Root>

@@ -41,7 +41,6 @@ namespace CharacterCreationandDevelopment
 		}
 
 
-
 		public static string GetRelationshipFileName(PlayerCharacter player)
 		{
 			return @".\Saves\" + player.name + @"\Relationships\" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";

@@ -292,6 +292,7 @@ namespace CharacterCreationandDevelopment
 				SaveLoad.SavePlayerDetailsToFile(player);
 				SaveLoad.SaveWorldDetailsToFile(player, world);
 				SaveLoad.SaveStoryProgressionToFile(player, storyProgression);
+                SaveLoad.SaveRelationshipsToFile(player, HelperClass.listOfRelationships);
 			}
 			Form1 x = new Form1();
 			x.Show();
