@@ -8,14 +8,16 @@ namespace CharacterCreationandDevelopment
 {
 	public class FirstConversation : IConversation
 	{
-		public ICharacter conversationNPC { get; set; }
+		public Relationship conversationNPC { get; set; }
 		private PlayerCharacter player;
 		private List<string> conversationParts;
 
 		public FirstConversation(PlayerCharacter player)
 		{
 			this.player = player;
-            conversationNPC = HelperClass.GetRelationshipTypeFromList("Mother");
+			conversationNPC = HelperClass.GetRelationshipFromList("Sister");
+            conversationNPC.opinionofPlayer = 0;
+			HelperClass.listOfRelationships.Add(new Sister());
 		}
 
 		public List<string> GetEventConversation()
@@ -30,6 +32,7 @@ namespace CharacterCreationandDevelopment
 			conversationParts.Add(player.name + ": I'll think on it - you always were a bad influence on me" + Environment.NewLine);
 
 			conversationParts.Add(conversationNPC.name + ": Hey - that's what sisters are for!" + Environment.NewLine);
+
             return conversationParts;
 		}
 	}

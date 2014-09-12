@@ -233,15 +233,13 @@ namespace CharacterCreationandDevelopment
             StoryProgression newStory = new StoryProgression(false);
             World world = new World(player, 12, 1050, "");
 
-			Relationship mum = new Relationship("Mother", HelperClass.RandomName(0), 0);
-			Relationship sis = new Relationship("Sister", HelperClass.RandomName(0), 1);
-			HelperClass.listOfRelationships.Add(mum);
-			HelperClass.listOfRelationships.Add(sis);
-
 			SaveLoad.SavePlayerDetailsToFile(player);
 			SaveLoad.SaveWorldDetailsToFile(player, world);
 			SaveLoad.SaveStoryProgressionToFile(player, newStory);
-			SaveLoad.SaveRelationshipsToFile(player, HelperClass.listOfRelationships);
+
+			SaveLoad.SaveRelationshipToFile(player, new Mother());
+			SaveLoad.SaveRelationshipToFile(player, new Sister());
+			SaveLoad.LoadAllRelationships(player);
 
             this.Close();
             if (txtName.Enabled)

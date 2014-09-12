@@ -14,18 +14,15 @@ namespace CharacterCreationandDevelopment
         private static List<Image> imageList = new List<Image>();
         public static List<Relationship> listOfRelationships = new List<Relationship>();
 
-        public static void UpdateRelationship(string type, string value)
+        public static Type[] RelationshipTypes()
         {
-            foreach (Relationship relationship in listOfRelationships)
-            {
-                if (relationship.type == type)
-                {
-                    relationship.name = value;
-                }
-            }
+            Type[] extraTypes= new Type[2];
+            extraTypes[0] = typeof(Mother);
+            extraTypes[1] = typeof(Sister);
+            return extraTypes;
         }
 
-        public static Relationship GetRelationshipTypeFromList(string type)
+        public static Relationship GetRelationshipFromList(string type)
         {
             foreach (Relationship relationship in listOfRelationships)
             {
@@ -70,9 +67,6 @@ namespace CharacterCreationandDevelopment
 
         public static string RandomName(int gender)
         {
-            /*Ensure you map this correctly in filepath. Also Ensure File properties has "embedded resource"
-             * as the build action. Copy to Output directory if newer
-             */
 			string filepath = "";
 			switch(gender)
 			{

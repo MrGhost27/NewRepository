@@ -8,7 +8,7 @@ namespace CharacterCreationandDevelopment
 {
 	public interface IConversation
 	{
-		ICharacter conversationNPC { get; set; }
+		Relationship conversationNPC { get; set; }
 		List<string> GetEventConversation();
 	}
 }

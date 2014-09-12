@@ -37,7 +37,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 			}
 			else
 			{
-				pBoxNPC.Image = currentConversation.conversationNPC.portrait;
+				pBoxNPC.Image = currentConversation.conversationNPC.GetPortrait();
 				pBoxCharacter.Image = null;
 			}
 		}

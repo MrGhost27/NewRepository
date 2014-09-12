@@ -51,6 +51,11 @@
 			this.btnTakeAction = new System.Windows.Forms.Button();
 			this.pBoxMood = new System.Windows.Forms.PictureBox();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxPortrait)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxSchool)).BeginInit();
@@ -61,12 +66,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.pBoxMarket)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxBlacksmith)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxMood)).BeginInit();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pBoxPortrait
 			// 
 			this.pBoxPortrait.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pBoxPortrait.Location = new System.Drawing.Point(22, 45);
+			this.pBoxPortrait.Location = new System.Drawing.Point(18, 66);
 			this.pBoxPortrait.Name = "pBoxPortrait";
 			this.pBoxPortrait.Size = new System.Drawing.Size(100, 101);
 			this.pBoxPortrait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -79,7 +85,7 @@
 			this.lblDate.AutoSize = true;
 			this.lblDate.BackColor = System.Drawing.Color.Transparent;
 			this.lblDate.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblDate.Location = new System.Drawing.Point(12, 9);
+			this.lblDate.Location = new System.Drawing.Point(12, 30);
 			this.lblDate.Name = "lblDate";
 			this.lblDate.Size = new System.Drawing.Size(63, 33);
 			this.lblDate.TabIndex = 3;
@@ -88,7 +94,7 @@
 			// pBoxNPC
 			// 
 			this.pBoxNPC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pBoxNPC.Location = new System.Drawing.Point(630, 45);
+			this.pBoxNPC.Location = new System.Drawing.Point(625, 64);
 			this.pBoxNPC.Name = "pBoxNPC";
 			this.pBoxNPC.Size = new System.Drawing.Size(100, 101);
 			this.pBoxNPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -98,7 +104,7 @@
 			// 
 			// txtConversation
 			// 
-			this.txtConversation.Location = new System.Drawing.Point(138, 47);
+			this.txtConversation.Location = new System.Drawing.Point(134, 66);
 			this.txtConversation.Multiline = true;
 			this.txtConversation.Name = "txtConversation";
 			this.txtConversation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -217,17 +223,18 @@
 			this.lblCurrentLocation.AutoSize = true;
 			this.lblCurrentLocation.BackColor = System.Drawing.Color.Transparent;
 			this.lblCurrentLocation.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblCurrentLocation.Location = new System.Drawing.Point(409, 9);
+			this.lblCurrentLocation.Location = new System.Drawing.Point(390, 30);
 			this.lblCurrentLocation.Name = "lblCurrentLocation";
-			this.lblCurrentLocation.Size = new System.Drawing.Size(0, 33);
+			this.lblCurrentLocation.Size = new System.Drawing.Size(33, 33);
 			this.lblCurrentLocation.TabIndex = 20;
+			this.lblCurrentLocation.Text = "...";
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
 			this.label5.BackColor = System.Drawing.Color.Transparent;
 			this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(228, 9);
+			this.label5.Location = new System.Drawing.Point(207, 30);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(186, 33);
 			this.label5.TabIndex = 19;
@@ -276,13 +283,51 @@
 			// pBoxMood
 			// 
 			this.pBoxMood.BackColor = System.Drawing.Color.Transparent;
-			this.pBoxMood.Location = new System.Drawing.Point(21, 152);
+			this.pBoxMood.Location = new System.Drawing.Point(21, 173);
 			this.pBoxMood.Name = "pBoxMood";
 			this.pBoxMood.Size = new System.Drawing.Size(54, 40);
 			this.pBoxMood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pBoxMood.TabIndex = 25;
 			this.pBoxMood.TabStop = false;
 			this.pBoxMood.MouseHover += new System.EventHandler(this.pBoxMood_MouseHover);
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(737, 24);
+			this.menuStrip1.TabIndex = 26;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveGameToolStripMenuItem,
+            this.exitToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "File";
+			// 
+			// saveGameToolStripMenuItem
+			// 
+			this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
+			this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+			this.saveGameToolStripMenuItem.Text = "Save Game";
+			this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			// 
+			// loadGameToolStripMenuItem
+			// 
+			this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
+			this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
 			// 
 			// WorldUI
 			// 
@@ -311,6 +356,8 @@
 			this.Controls.Add(this.pBoxNPC);
 			this.Controls.Add(this.lblDate);
 			this.Controls.Add(this.pBoxPortrait);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "WorldUI";
 			this.Text = "WorldUI";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WorldUI_FormClosed);
@@ -324,6 +371,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.pBoxMarket)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxBlacksmith)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pBoxMood)).EndInit();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -352,5 +401,10 @@
         private System.Windows.Forms.Button btnTakeAction;
         private System.Windows.Forms.PictureBox pBoxMood;
 		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

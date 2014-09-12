@@ -5,15 +5,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace CharacterCreationandDevelopment
 {
 	public static class SaveLoad
 	{
 
-		#region Relationship
+        public static void SaveRelationshipToFile(PlayerCharacter player, Relationship relationship)
+        {
+            string directory = @".\Saves\" + player.name + @"\Relationships\" + relationship.type + @"\";
+            Directory.CreateDirectory(directory);
 
-		public static void SaveRelationshipsToFile(PlayerCharacter player, List<Relationship> listOfRelationships)
+            XmlSerializer mySerializer = new XmlSerializer(typeof(Relationship), HelperClass.RelationshipTypes());
+            using (StreamWriter myWriter = new StreamWriter(GetRelationshipFileName(player, relationship)))
+            {
+                mySerializer.Serialize(myWriter, (Relationship)relationship);
+            }
+        }
+
+        public static void LoadRelationshipFromFile (PlayerCharacter player, Relationship relationship, string filename)
+        {
+            XmlSerializer mySerializer = new XmlSerializer(typeof(Relationship), HelperClass.RelationshipTypes());
+			using (FileStream myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                relationship = (Relationship)mySerializer.Deserialize(myFileStream);
+            }
+            HelperClass.listOfRelationships.Add(relationship);
+        }
+
+        public static string GetRelationshipFileName(PlayerCharacter player, Relationship relationship)
+        {
+            return @".\Saves\" + player.name + @"\Relationships\" + relationship.type + @"\" + relationship.name + "-" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";
+        }
+
+		public static void LoadAllRelationships(PlayerCharacter player)
+		{
+			string[] folders = Directory.GetDirectories(@".\Saves\" + player.name + @"\Relationships");
+
+			foreach (string folderpath in folders)
+			{
+				string folderName = Path.GetFileName(folderpath);
+
+				string[] files = Directory.GetFiles(folderpath, "*.xml");
+
+				foreach (string file in files)
+				{
+					if (file.Contains(player.ageYears + "Y-" + player.ageMonths))
+					{
+						switch (folderName)
+						{
+							case "Mother":
+								SaveLoad.LoadRelationshipFromFile(player, new Mother(), file);
+								break;
+							case "Sister":
+								SaveLoad.LoadRelationshipFromFile(player, new Sister(), file);
+								break;
+						}
+					}
+				}
+			}
+		}
+
+
+        #region HideMe
+        /*public static void SaveRelationshipsToFile(PlayerCharacter player, List<Relationship> listOfRelationships)
 		{
 			var doc = new XDocument(
 				new XElement("Root",
@@ -38,20 +94,22 @@ namespace CharacterCreationandDevelopment
 			string name = doc.Root.Element(type).Element("Name").Value;
 			int imageNumber = Int32.Parse(doc.Root.Element(type).Element("PortraitNumber").Value);
 			int opinion = Int32.Parse(doc.Root.Element(type).Element("OpinionOfPlayer").Value);
-			return new Relationship(type, name, imageNumber);
+			Relationship x = new Relationship(type, name, imageNumber);
+            HelperClass.listOfRelationships.Add(x);
+            return x;
 		}
-
+        #endregion
 
 		public static string GetRelationshipFileName(PlayerCharacter player)
 		{
 			return @".\Saves\" + player.name + @"\Relationships\" + player.name + " " + player.ageYears + "Y-" + player.ageMonths + "M.xml";
-		}
+		}*/
 
-		#endregion
+        #endregion
 
-		#region Story Progression
+        #region Story Progression
 
-		public static void SaveStoryProgressionToFile(PlayerCharacter player, StoryProgression storyProgression)
+        public static void SaveStoryProgressionToFile(PlayerCharacter player, StoryProgression storyProgression)
 		{
 			var doc = new XDocument(
 			new XElement("StoryProgression",

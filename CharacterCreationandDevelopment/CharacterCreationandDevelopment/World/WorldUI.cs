@@ -31,7 +31,7 @@ namespace CharacterCreationandDevelopment
             this.world = world;
 
 			//Startup
-			ChangeLocation("Your Home", "Work on the Farm", "Relax at Home");
+            SetStartLocation();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
 			pBoxPortrait.Image = HelperClass.Images(player.gender)[player.portraitNumber];
 			lblDate.Text = world.GetDate();
@@ -141,40 +141,81 @@ namespace CharacterCreationandDevelopment
 			}
 		}
 
+        private void ChangeLocation(Location location)
+        {
+            player.location = location.locationName;
+            lblCurrentLocation.Text = location.locationName;
+            lBoxActions.Items.Clear();
+            foreach (string action in location.GetActions(player))
+            {
+                lBoxActions.Items.Add(action);
+            }
+        }
+
+        private void SetStartLocation()
+        {
+            switch (player.location)
+            {
+                case "The Church":
+                    ChangeLocation(new Church());
+                    break;
+                case "The Farm":
+                    ChangeLocation(new Farm());
+                    break;
+                case "The School":
+                    ChangeLocation(new School());
+                    break;
+                case "The Lake":
+                    ChangeLocation(new Lake());
+                    break;
+                case "The Barracks":
+                    ChangeLocation(new Barracks());
+                    break;
+                case "The Market":
+                    ChangeLocation(new Market());
+                    break;
+                case "The Blacksmith":
+                    ChangeLocation(new Blacksmith());
+                    break;
+                default:
+                    ChangeLocation(new Farm());
+                    break;
+            }
+        }
+
 		private void pBoxChurch_Click(object sender, EventArgs e)
         {
-			ChangeLocation("The Church", "Go for Prayer", "Break into the Church");
+            ChangeLocation(new Church());
         }
 
         private void pBoxFarm_Click(object sender, EventArgs e)
         {
-			ChangeLocation("Your Home", "Work on the Farm", "Relax at Home");
+            ChangeLocation(new Farm());
          }
 
         private void pBoxSchool_Click(object sender, EventArgs e)
         {
-			ChangeLocation("The School", "Take Science Class", "Take Medical Class", "Break into the School");
+            ChangeLocation(new School());
         }
 
         private void pBoxLake_Click(object sender, EventArgs e)
         {
-			ChangeLocation("The Lake", "Go Swimming", "Go Camping");
+            ChangeLocation(new Lake());
         }
 
         private void pBoxBarracks_Click(object sender, EventArgs e)
         {
-			ChangeLocation("The Barracks", "Go Running", "Train With Medics", "Train With Fists", "Train With Weapons",
-				"Take Survival Training");
+            ChangeLocation(new Barracks());
         }
 
         private void pBoxMarket_Click(object sender, EventArgs e)
         {
-			ChangeLocation("The Market", "Barter for Food", "Steal Food");
+            ChangeLocation(new Market());
         }
 
         private void pBoxBlacksmith_Click(object sender, EventArgs e)
         {
-			ChangeLocation("The Blacksmith", "Barter for Items", "Steal Items", "Create Items", "Break In");
+            ChangeLocation(new Blacksmith());
         }
 		#endregion
 
@@ -289,18 +330,33 @@ namespace CharacterCreationandDevelopment
 			DialogResult dialogResult = MessageBox.Show("Would you like to save the game?", "World Closing", MessageBoxButtons.YesNo);
 			if (dialogResult.ToString() == "Yes")
 			{
-				SaveLoad.SavePlayerDetailsToFile(player);
-				SaveLoad.SaveWorldDetailsToFile(player, world);
-				SaveLoad.SaveStoryProgressionToFile(player, storyProgression);
-                SaveLoad.SaveRelationshipsToFile(player, HelperClass.listOfRelationships);
+				SaveGame();
 			}
+			HelperClass.listOfRelationships.Clear();
 			Form1 x = new Form1();
 			x.Show();
 		}
 
+		private void SaveGame()
+		{
+			foreach (Relationship relationship in HelperClass.listOfRelationships)
+			{
+				SaveLoad.SaveRelationshipToFile(player, relationship);
+			}
+			SaveLoad.SavePlayerDetailsToFile(player);
+			SaveLoad.SaveWorldDetailsToFile(player, world);
+			SaveLoad.SaveStoryProgressionToFile(player, storyProgression);
+		}
 
+		private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveGame();
+			MessageBox.Show("Game Saved");
+		}
 
-
-
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
     }
 }

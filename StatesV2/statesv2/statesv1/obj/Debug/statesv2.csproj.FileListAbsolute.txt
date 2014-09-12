@@ -1,0 +1,8 @@
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\bin\Debug\statesv1.exe.config
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\obj\Debug\statesv1.exe
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\obj\Debug\statesv1.pdb
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\bin\Debug\statesv1.exe
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\bin\Debug\statesv1.pdb
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\obj\Debug\statesv1.Form1.resources
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\obj\Debug\statesv1.Properties.Resources.resources
+C:\Users\David Walsh\Desktop\mentoring\StatesV2\statesv2\statesv1\obj\Debug\statesv2.csproj.GenerateResource.Cache

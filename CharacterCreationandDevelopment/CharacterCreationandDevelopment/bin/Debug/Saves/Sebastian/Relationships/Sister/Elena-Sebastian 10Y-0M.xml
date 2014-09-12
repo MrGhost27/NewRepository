@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Sister">
+  <portraitNumber>1</portraitNumber>
+  <name>Elena</name>
+  <type>Sister</type>
+  <opinionofPlayer>100</opinionofPlayer>
+  <playerOpinion>100</playerOpinion>
+</Relationship>

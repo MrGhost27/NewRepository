@@ -12,6 +12,7 @@ namespace CharacterCreationandDevelopment
 		string name { get; set; }
 		int opinionofPlayer { get; set; }
 		int playerOpinion { get; set; }
-		Image portrait { get; set; }
+        int portraitNumber { get; set; }
+
     }
 }

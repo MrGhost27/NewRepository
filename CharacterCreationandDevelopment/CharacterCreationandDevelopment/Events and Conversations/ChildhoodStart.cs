@@ -10,7 +10,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
     {
         private PlayerCharacter player;
         public List<String> eventChoices { get; set; }
-		public ICharacter conversationNPC { get; set; }
+		public Relationship conversationNPC { get; set; }
 		private List<string> conversationParts;
         private string choiceText;
 

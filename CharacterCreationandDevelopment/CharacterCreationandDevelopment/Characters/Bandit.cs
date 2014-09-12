@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public class Bandit : ICharacter
+    public class Bandit : Relationship
     {
-		public Image portrait { get; set; }
-        public string name { get; set; }
-		public int opinionofPlayer { get; set; }
-		public int playerOpinion { get; set; }
-
         public Bandit(int gender)
         {
-            portrait = HelperClass.Images(2)[0];
-			name = HelperClass.RandomName(gender);
-			opinionofPlayer = -100;
-			playerOpinion = -100;
+            this.portraitNumber = 0;
+            this.name = HelperClass.RandomName(1);
+            opinionofPlayer = -100;
+            playerOpinion = 100;
+        }
+
+        public override Image GetPortrait()
+        {
+            return HelperClass.Images(2)[portraitNumber];
         }
     }
 }

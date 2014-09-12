@@ -51,7 +51,9 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Characters\Mother.cs" />
     <Compile Include="Characters\Relationship.cs" />
+    <Compile Include="Characters\Sister.cs" />
     <Compile Include="Events and Conversations\ChildhoodStart.cs" />
     <Compile Include="Events and Conversations\ConversationDialog.cs">
       <SubType>Form</SubType>
@@ -136,6 +138,14 @@
     <Compile Include="Skills.Designer.cs">
       <DependentUpon>Skills.cs</DependentUpon>
     </Compile>
+    <Compile Include="World\Locations\Barracks.cs" />
+    <Compile Include="World\Locations\Blacksmith.cs" />
+    <Compile Include="World\Locations\Church.cs" />
+    <Compile Include="World\Locations\Farm.cs" />
+    <Compile Include="World\Locations\Lake.cs" />
+    <Compile Include="World\Locations\Location.cs" />
+    <Compile Include="World\Locations\Market.cs" />
+    <Compile Include="World\Locations\School.cs" />
     <Compile Include="World\StoryProgression.cs" />
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldUI.cs">
