@@ -53,6 +53,12 @@
     </Compile>
     <Compile Include="Characters\Mother.cs" />
     <Compile Include="Characters\Relationship.cs" />
+    <Compile Include="Characters\RelationshipsUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Characters\RelationshipsUI.Designer.cs">
+      <DependentUpon>RelationshipsUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Characters\Sister.cs" />
     <Compile Include="Events and Conversations\ChildhoodStart.cs" />
     <Compile Include="Events and Conversations\ConversationDialog.cs">
@@ -95,6 +101,7 @@
     <Compile Include="Lessons\ILesson.cs" />
     <Compile Include="Lessons\LockpickingLesson.cs" />
     <Compile Include="Lessons\MedicineLesson.cs" />
+    <Compile Include="Lessons\NoLesson.cs" />
     <Compile Include="Lessons\PickpocketingLesson.cs" />
     <Compile Include="Lessons\ScienceLesson.cs" />
     <Compile Include="Lessons\SurvivalLesson.cs" />
@@ -156,6 +163,9 @@
     </Compile>
     <EmbeddedResource Include="Characters\Character Creation.resx">
       <DependentUpon>Character Creation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Characters\RelationshipsUI.resx">
+      <DependentUpon>RelationshipsUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Events and Conversations\ConversationDialog.resx">
       <DependentUpon>ConversationDialog.cs</DependentUpon>
@@ -339,7 +349,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Relationships\Companion.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Relationships\Sister.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Relationships\sister.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

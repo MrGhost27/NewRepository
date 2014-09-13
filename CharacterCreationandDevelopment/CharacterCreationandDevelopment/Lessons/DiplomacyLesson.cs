@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
 		public string LessonEffects()
 		{
 			int previousValue = _player.diplomacy;
-			_player.diplomacy += 5 + (_player.charisma / 2);
+			_player.diplomacy += (_player.charisma / 2);
             _player.SetLogicalCrazy(20);
 
             if (_player.diplomacy > 100)

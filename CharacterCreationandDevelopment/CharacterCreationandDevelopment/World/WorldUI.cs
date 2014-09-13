@@ -1,4 +1,5 @@
-﻿using CharacterCreationandDevelopment.Events_and_Conversations;
+﻿using CharacterCreationandDevelopment.Characters;
+using CharacterCreationandDevelopment.Events_and_Conversations;
 using CharacterCreationandDevelopment.Lessons;
 using CharacterCreationandDevelopment.Moods;
 using System;
@@ -130,17 +131,6 @@ namespace CharacterCreationandDevelopment
 
 		#region ChangeLocation
 
-		private void ChangeLocation(string locationName, params string[] actionList)
-		{
-			player.location = locationName;
-			lblCurrentLocation.Text = locationName;
-			lBoxActions.Items.Clear();
-			for (int i = 0; i < actionList.Length; i++)
-			{
-				lBoxActions.Items.Add(actionList[i]);
-			}
-		}
-
         private void ChangeLocation(Location location)
         {
             player.location = location.locationName;
@@ -255,6 +245,7 @@ namespace CharacterCreationandDevelopment
 			ActionOrToolTip("Swimming", new SwimmingLesson(player));
 			ActionOrToolTip("Fist", new UnarmedLesson(player));
 			ActionOrToolTip("Weapon", new WeaponsLesson(player));
+            //ActionOrToolTip("Relax", new NoLesson(player));
 		}
 
 		private void btnTakeAction_Click(object sender, EventArgs e)
@@ -263,6 +254,7 @@ namespace CharacterCreationandDevelopment
 			{
 				MessageBox.Show("Select an Action");
 			}
+                //Find a way to incorporate this into Lessons?
 			else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
 			{
 				player.SetExcitedBored(-50);
@@ -320,8 +312,7 @@ namespace CharacterCreationandDevelopment
 		private void lblSkills_Click(object sender, EventArgs e)
 		{
 			playerSkills = new Skills(player, this);
-			playerSkills.Show();
-			this.Hide();
+			playerSkills.ShowDialog();
 		}
 		#endregion
 
@@ -358,5 +349,11 @@ namespace CharacterCreationandDevelopment
 		{
 			this.Close();
 		}
+
+        private void lblRelationships_Click(object sender, EventArgs e)
+        {
+            RelationshipsUI relationshipsUI = new RelationshipsUI(player);
+            relationshipsUI.ShowDialog();
+        }
     }
 }

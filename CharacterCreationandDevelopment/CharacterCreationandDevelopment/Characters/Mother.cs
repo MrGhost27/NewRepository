@@ -11,7 +11,7 @@ namespace CharacterCreationandDevelopment
     {
         public Mother()
         {
-            this.portraitNumber = 0;
+            this.portraitNumber = 4;
             this.name = HelperClass.RandomName(0);
             opinionofPlayer = 100;
             playerOpinion = 100;

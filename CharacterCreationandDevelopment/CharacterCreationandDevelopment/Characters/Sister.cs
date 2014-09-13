@@ -10,7 +10,7 @@ namespace CharacterCreationandDevelopment
     {
         public Sister()
         {
-            this.portraitNumber = 1;
+            this.portraitNumber = HelperClass.GenerateRandomNumber(1, 4);
             this.name = HelperClass.RandomName(0);
             opinionofPlayer = 100;
             playerOpinion = 100;

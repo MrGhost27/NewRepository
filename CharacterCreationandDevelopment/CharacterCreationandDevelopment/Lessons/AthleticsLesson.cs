@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
 		public string LessonEffects()
 		{
 			int previousvalue = _player.athletics;
-			_player.athletics += 5 + (_player.constitution / 2);
+			_player.athletics += (_player.constitution / 2);
             _player.SetExcitedBored(-20);
 
 			if (_player.athletics > 100)

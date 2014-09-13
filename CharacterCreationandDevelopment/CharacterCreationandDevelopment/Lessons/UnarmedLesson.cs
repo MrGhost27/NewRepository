@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
 		public string LessonEffects()
 		{
 			int previousValue = _player.unarmed;
-			_player.unarmed += 5 + (_player.strength / 4) + (_player.dexterity / 4);
+			_player.unarmed += (_player.strength / 4) + (_player.dexterity / 4);
             _player.SetAngryAfraid(20);
 
 			if (_player.unarmed > 100)
