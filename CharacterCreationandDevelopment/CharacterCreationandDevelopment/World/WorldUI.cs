@@ -167,6 +167,9 @@ namespace CharacterCreationandDevelopment
                 case "The Blacksmith":
                     ChangeLocation(new Blacksmith());
                     break;
+                case "The Forest Path":
+                    ChangeLocation(new ForestPath());
+                    break;
                 default:
                     ChangeLocation(new Farm());
                     break;
@@ -207,6 +210,11 @@ namespace CharacterCreationandDevelopment
         {
             ChangeLocation(new Blacksmith());
         }
+
+        private void pBoxForestPath_Click(object sender, EventArgs e)
+        {
+            ChangeLocation(new ForestPath());
+        }
 		#endregion
 
 		#region Actions
@@ -245,8 +253,22 @@ namespace CharacterCreationandDevelopment
 			ActionOrToolTip("Swimming", new SwimmingLesson(player));
 			ActionOrToolTip("Fist", new UnarmedLesson(player));
 			ActionOrToolTip("Weapon", new WeaponsLesson(player));
+            ActionOrToolTip("Help Mum", new HelpingAroundTheHouse(player));
             //ActionOrToolTip("Relax", new NoLesson(player));
 		}
+
+        private void NPCTriggers()
+        {
+            if (HelperClass.GetRelationshipFromList("Mother").opinionofPlayer < 50)
+            {
+                if (!storyProgression.firstConversation)
+                {
+                    RunConversation(new FirstConversation(player));
+                    storyProgression.firstConversation = true;
+                }
+            }
+            NextTurn();
+        }
 
 		private void btnTakeAction_Click(object sender, EventArgs e)
 		{
@@ -254,21 +276,10 @@ namespace CharacterCreationandDevelopment
 			{
 				MessageBox.Show("Select an Action");
 			}
-                //Find a way to incorporate this into Lessons?
-			else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
-			{
-				player.SetExcitedBored(-50);
-                if (!storyProgression.firstConversation)
-                {
-                    RunConversation(new FirstConversation(player));
-                    storyProgression.firstConversation = true;
-                }
-				txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
-				NextTurn();
-			}
 			else
 			{
 				RunActionMethod(TakeAction);
+                NPCTriggers();
 			}
 		}
 
@@ -355,5 +366,7 @@ namespace CharacterCreationandDevelopment
             RelationshipsUI relationshipsUI = new RelationshipsUI(player);
             relationshipsUI.ShowDialog();
         }
+
+
     }
 }

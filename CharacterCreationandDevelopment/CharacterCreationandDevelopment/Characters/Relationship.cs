@@ -19,6 +19,12 @@ namespace CharacterCreationandDevelopment
         {
             return HelperClass.Images(3)[portraitNumber];
         }
+
+        public void ChangeOpinion(int value)
+        {
+            opinionofPlayer += value;
+            HelperClass.SetMoodBoundaries(opinionofPlayer);
+        }
     }
 
 }

@@ -98,6 +98,7 @@
     <Compile Include="Lessons\CraftingLesson.cs" />
     <Compile Include="Lessons\DiplomacyLesson.cs" />
     <Compile Include="Lessons\FaithLesson.cs" />
+    <Compile Include="Lessons\HelpingAroundTheHouse.cs" />
     <Compile Include="Lessons\ILesson.cs" />
     <Compile Include="Lessons\LockpickingLesson.cs" />
     <Compile Include="Lessons\MedicineLesson.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="World\Locations\Blacksmith.cs" />
     <Compile Include="World\Locations\Church.cs" />
     <Compile Include="World\Locations\Farm.cs" />
+    <Compile Include="World\Locations\ForestPath.cs" />
     <Compile Include="World\Locations\Lake.cs" />
     <Compile Include="World\Locations\Location.cs" />
     <Compile Include="World\Locations\Market.cs" />
@@ -364,6 +366,9 @@
     <EmbeddedResource Include="Images\Relationships\Stepmother.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Notes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

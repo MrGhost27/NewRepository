@@ -56,6 +56,7 @@
             this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pBoxForestPath = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxPortrait)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxSchool)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBoxBlacksmith)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxMood)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxForestPath)).BeginInit();
             this.SuspendLayout();
             // 
             // pBoxPortrait
@@ -139,7 +141,7 @@
             // 
             this.pBoxFarm.BackColor = System.Drawing.Color.Transparent;
             this.pBoxFarm.Image = ((System.Drawing.Image)(resources.GetObject("pBoxFarm.Image")));
-            this.pBoxFarm.Location = new System.Drawing.Point(339, 168);
+            this.pBoxFarm.Location = new System.Drawing.Point(348, 171);
             this.pBoxFarm.Name = "pBoxFarm";
             this.pBoxFarm.Size = new System.Drawing.Size(75, 75);
             this.pBoxFarm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,16 +205,16 @@
             this.lBoxActions.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lBoxActions.FormattingEnabled = true;
             this.lBoxActions.ItemHeight = 18;
-            this.lBoxActions.Location = new System.Drawing.Point(295, 269);
+            this.lBoxActions.Location = new System.Drawing.Point(275, 252);
             this.lBoxActions.Name = "lBoxActions";
-            this.lBoxActions.Size = new System.Drawing.Size(166, 112);
+            this.lBoxActions.Size = new System.Drawing.Size(218, 148);
             this.lBoxActions.TabIndex = 17;
             this.lBoxActions.SelectedValueChanged += new System.EventHandler(this.lBoxActions_SelectedValueChanged);
             // 
             // pBoxLake
             // 
             this.pBoxLake.Image = ((System.Drawing.Image)(resources.GetObject("pBoxLake.Image")));
-            this.pBoxLake.Location = new System.Drawing.Point(519, 197);
+            this.pBoxLake.Location = new System.Drawing.Point(533, 197);
             this.pBoxLake.Name = "pBoxLake";
             this.pBoxLake.Size = new System.Drawing.Size(75, 75);
             this.pBoxLake.TabIndex = 18;
@@ -244,7 +246,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(249, 445);
+            this.pictureBox2.Location = new System.Drawing.Point(213, 445);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(75, 75);
             this.pictureBox2.TabIndex = 21;
@@ -273,7 +275,7 @@
             // 
             // btnTakeAction
             // 
-            this.btnTakeAction.Location = new System.Drawing.Point(320, 389);
+            this.btnTakeAction.Location = new System.Drawing.Point(327, 406);
             this.btnTakeAction.Name = "btnTakeAction";
             this.btnTakeAction.Size = new System.Drawing.Size(112, 33);
             this.btnTakeAction.TabIndex = 24;
@@ -330,13 +332,25 @@
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
             this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
+            // pBoxForestPath
+            // 
+            this.pBoxForestPath.Image = ((System.Drawing.Image)(resources.GetObject("pBoxForestPath.Image")));
+            this.pBoxForestPath.Location = new System.Drawing.Point(348, 504);
+            this.pBoxForestPath.Name = "pBoxForestPath";
+            this.pBoxForestPath.Size = new System.Drawing.Size(75, 75);
+            this.pBoxForestPath.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBoxForestPath.TabIndex = 27;
+            this.pBoxForestPath.TabStop = false;
+            this.pBoxForestPath.Click += new System.EventHandler(this.pBoxForestPath_Click);
+            // 
             // WorldUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(737, 546);
+            this.ClientSize = new System.Drawing.Size(737, 596);
+            this.Controls.Add(this.pBoxForestPath);
             this.Controls.Add(this.pBoxMood);
             this.Controls.Add(this.btnTakeAction);
             this.Controls.Add(this.pBoxBlacksmith);
@@ -360,7 +374,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "WorldUI";
-            this.Text = "WorldUI";
+            this.Text = "The World";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WorldUI_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pBoxPortrait)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxNPC)).EndInit();
@@ -374,6 +388,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBoxMood)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxForestPath)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,5 +422,6 @@
 		private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pBoxForestPath;
     }
 }

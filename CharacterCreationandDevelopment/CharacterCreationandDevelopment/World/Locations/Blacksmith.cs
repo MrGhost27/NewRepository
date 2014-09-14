@@ -18,7 +18,7 @@ namespace CharacterCreationandDevelopment
             actionlist.Add("Barter for Items");
             if (player.ageYears > 10)
             {
-                AddActionByAttribute(player.diplomacy, 20, "Work at the stall");
+                AddActionByAttribute(player.diplomacy, 20, "Work at the Smith");
                 AddActionByAttribute(player.pickpocketing, 50, "Steal Items");
                 AddActionByAttribute(player.crafting, 50, "Create Items");
             }

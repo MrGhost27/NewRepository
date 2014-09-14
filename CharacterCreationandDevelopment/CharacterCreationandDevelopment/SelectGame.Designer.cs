@@ -220,7 +220,7 @@
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SelectGame";
-            this.Text = "SelectGame";
+            this.Text = "Select Game";
             ((System.ComponentModel.ISupportInitialize)(this.pBoxChar)).EndInit();
             this.ResumeLayout(false);
 
