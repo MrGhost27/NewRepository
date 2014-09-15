@@ -261,12 +261,12 @@ namespace CharacterCreationandDevelopment
 
 		public void RunActionMethod(DelegateWorldActions ActionOrToolTip)
 		{
-			ActionOrToolTip(new AnimalEmpathyLesson(player), "Farm", "Animals");
+			ActionOrToolTip(new AnimalEmpathyLesson(player), "Farm", "animals");
 			ActionOrToolTip(new CraftingLesson(player), "Create");
             ActionOrToolTip(new ClimbingLesson(player), "Climb");
 			ActionOrToolTip(new DiplomacyLesson(player),"Barter");
 			ActionOrToolTip(new FaithLesson(player),"Prayer");
-			ActionOrToolTip(new HelpingAroundTheHouse(player), "Help Mum");
+			ActionOrToolTip(new HelpingAroundTheHouse(player), "Help Mum around");
 			ActionOrToolTip(new LockpickingLesson(player),"Break in");
 			ActionOrToolTip(new MedicineLesson(player), "Medic");
 			ActionOrToolTip(new PickpocketingLesson(player),"Steal");
