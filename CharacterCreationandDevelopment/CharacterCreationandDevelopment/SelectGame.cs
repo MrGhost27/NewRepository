@@ -88,13 +88,14 @@ namespace CharacterCreationandDevelopment
         private void UpdateMiniSkillsBox(PlayerCharacter player)
         {
             pBarAnimalEmpathy.Value = player.animalEmpathy;
-            pBarAthletics.Value = player.athletics;
+            pBarClimbing.Value = player.climbing;
             pBarCrafting.Value = player.crafting;
             pBarDiplomacy.Value = player.diplomacy;
             pBarFaith.Value = player.faith;
             pBarLockpicking.Value = player.lockpicking;
             pBarMedicine.Value = player.medicine;
             pBarPickPocketing.Value = player.pickpocketing;
+            pBarRunning.Value = player.running;
             pBarScience.Value = player.science;
             pBarSurvival.Value = player.survival;
             pBarSwimming.Value = player.swimming;

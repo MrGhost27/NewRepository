@@ -9,10 +9,12 @@ namespace CharacterCreationandDevelopment
     public class StoryProgression
     {
         public bool firstConversation { get; set; }
+		public int wolfEvent { get; set; }
 
-        public StoryProgression(bool firstConversation)
+        public StoryProgression(bool firstConversation, int wolfEvent)
         {
             this.firstConversation = firstConversation;
+			this.wolfEvent = wolfEvent;
         }
     }
 }

@@ -17,8 +17,11 @@ namespace CharacterCreationandDevelopment
         {
             actionlist.Add("Relax at Home");
             actionlist.Add("Help Mum around the House");
-            AddActionOnMood(player, "Happy", "Show off your Happiness");
-            AddActionOnMood(player, "Depressed", "Have a Cry");
+            actionlist.Add("Help Mum tend to the animals");
+            actionlist.Add("Punch a cow");
+			//Concept.
+            //AddActionOnMood(player, "Happy", "Show off your Happiness");
+            //AddActionOnMood(player, "Depressed", "Have a Cry");
             
             if (player.ageYears > 10)
             {

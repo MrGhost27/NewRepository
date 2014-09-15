@@ -21,6 +21,7 @@ namespace CharacterCreationandDevelopment
         private Skills playerSkills;
         private EventDecisionBox eventDecisionBox;
         private StoryProgression storyProgression;
+        private bool wc = false;
 
         public WorldUI(PlayerCharacter player, World world, Form parentForm, StoryProgression storyProgression)
         {
@@ -41,32 +42,35 @@ namespace CharacterCreationandDevelopment
 		private void RunConversation(IConversation currentConversation)
 		{
 			world.SetConversation(currentConversation);
-			world.LogEventConversation();
+			world.LogEventConversation(currentConversation.GetEventConversation());
 			ConversationDialog eventConversationDialog = new ConversationDialog(currentConversation, player);
 			eventConversationDialog.ShowDialog();
 		}
 
 
-        private void RunEvent(IEvent currentEvent)
-        {
+		private void RunEvent(IEvent currentEvent)
+		{
 			world.SetEvent(currentEvent);
 			RunConversation(currentEvent);
-			//pBoxNPC.Visible = true;
-			//pBoxNPC.Image = thisevent.conversationNPC.portrait;
 
 			if (currentEvent.eventChoices.Count == 2)
 			{
 				eventDecisionBox = new EventDecisionBox(currentEvent.EventDecisionText(), currentEvent.eventChoices[0], currentEvent.eventChoices[1]);
 			}
-			else
+			else if (currentEvent.eventChoices.Count == 3)
 			{
 				eventDecisionBox = new EventDecisionBox(currentEvent.EventDecisionText(), currentEvent.eventChoices[0], currentEvent.eventChoices[1], currentEvent.eventChoices[2]);
 			}
 			eventDecisionBox.ShowDialog();
 
-     		txtConversation.Text = world.EventDecision(eventDecisionBox.choice);
-            CloseEvent();
-        }
+			List<string> eventOutcomeList = new List<string>();
+			
+			eventOutcomeList = world.EventDecision(eventDecisionBox.choice);
+			EventOutcome eventOutcome = new EventOutcome(eventOutcomeList);
+			world.LogEventConversation(eventOutcomeList);
+			eventOutcome.ShowDialog();
+			CloseEvent();
+		}
 		
         private void CloseEvent()
         {
@@ -84,11 +88,7 @@ namespace CharacterCreationandDevelopment
             }
             player.GetMood();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
-
-            if ((player.ageYears == 10) && (player.ageMonths == 9))
-            {
-                RunEvent((new ChildhoodStart(player)));
-            }
+			YearOne();
         }
 
 		#region MouseEvents
@@ -126,6 +126,16 @@ namespace CharacterCreationandDevelopment
         private void lblMood_MouseLeave(object sender, EventArgs e)
         {
             lblMood.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void lblRelationships_MouseEnter(object sender, EventArgs e)
+        {
+            lblRelationships.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void lblRelationships_MouseLeave(object sender, EventArgs e)
+        {
+            lblRelationships.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 		#endregion
 
@@ -219,45 +229,57 @@ namespace CharacterCreationandDevelopment
 
 		#region Actions
 
-		private void TakeAction(string keyword, ILesson lesson)
+		private void TakeAction(ILesson lesson, params string[] keywords)
 		{
-			if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+			foreach (string keyword in keywords)
 			{
-				player.SetLesson(lesson);
-				txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
-				NextTurn();
+				if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+				{
+					player.SetLesson(lesson);
+					txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
+					NextTurn();
+				}
+                if (lBoxActions.SelectedItem.ToString().Contains("Cow"))
+                {
+                    player.animalEmpathy -= 10;
+                    if (player.animalEmpathy < 0)
+                        player.animalEmpathy = 0;
+                }
 			}
 		}
 
-		private void SetToolTipValue(string keyword, ILesson lesson)
+		private void SetToolTipValue(ILesson lesson, params string[] keywords)
 		{
-			if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+			foreach (string keyword in keywords)
 			{
-				this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
+				if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+				{
+					this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
+				}
 			}
 		}
 
 		public void RunActionMethod(DelegateWorldActions ActionOrToolTip)
 		{
-			ActionOrToolTip("Farm", new AnimalEmpathyLesson(player));
-			ActionOrToolTip("Running", new AthleticsLesson(player));
-			ActionOrToolTip("Create", new CraftingLesson(player));
-			ActionOrToolTip("Barter", new DiplomacyLesson(player));
-			ActionOrToolTip("Prayer", new FaithLesson(player));
-			ActionOrToolTip("Break", new LockpickingLesson(player));
-			ActionOrToolTip("Medic", new MedicineLesson(player));
-			ActionOrToolTip("Steal", new PickpocketingLesson(player));
-			ActionOrToolTip("Science", new ScienceLesson(player));
-			ActionOrToolTip("Survival", new SurvivalLesson(player));
-			ActionOrToolTip("Camping", new SurvivalLesson(player));
-			ActionOrToolTip("Swimming", new SwimmingLesson(player));
-			ActionOrToolTip("Fist", new UnarmedLesson(player));
-			ActionOrToolTip("Weapon", new WeaponsLesson(player));
-            ActionOrToolTip("Help Mum", new HelpingAroundTheHouse(player));
-            //ActionOrToolTip("Relax", new NoLesson(player));
+			ActionOrToolTip(new AnimalEmpathyLesson(player), "Farm", "Animals");
+			ActionOrToolTip(new CraftingLesson(player), "Create");
+            ActionOrToolTip(new ClimbingLesson(player), "Climb");
+			ActionOrToolTip(new DiplomacyLesson(player),"Barter");
+			ActionOrToolTip(new FaithLesson(player),"Prayer");
+			ActionOrToolTip(new HelpingAroundTheHouse(player), "Help Mum");
+			ActionOrToolTip(new LockpickingLesson(player),"Break in");
+			ActionOrToolTip(new MedicineLesson(player), "Medic");
+			ActionOrToolTip(new PickpocketingLesson(player),"Steal");
+            ActionOrToolTip(new RunningLesson(player), "Run");
+			ActionOrToolTip(new ScienceLesson(player),"Science");
+			ActionOrToolTip(new SurvivalLesson(player),"Survival", "Camping");
+			ActionOrToolTip(new SwimmingLesson(player),"Swim");
+			ActionOrToolTip(new UnarmedLesson(player),"Fist", "Punch");
+			ActionOrToolTip(new WeaponsLesson(player),"Weapon");
+            ActionOrToolTip(new NoLesson(player),"Relax");
 		}
 
-        private void NPCTriggers()
+        private void YearOne()
         {
             if (HelperClass.GetRelationshipFromList("Mother").opinionofPlayer < 50)
             {
@@ -267,7 +289,22 @@ namespace CharacterCreationandDevelopment
                     storyProgression.firstConversation = true;
                 }
             }
-            NextTurn();
+			
+			if ((player.ageYears > 9) && (player.ageMonths > 6) && (storyProgression.wolfEvent == 9))
+			{
+                if (!wc)
+                {
+                    RunConversation(new WolfConversation(player));
+                    wc = true;
+                }
+
+				if (player.location == "The Forest Path")
+				{
+					storyProgression.wolfEvent = 0;
+					RunEvent(new PlayingWolfEvent(player));
+					storyProgression.wolfEvent = eventDecisionBox.choice;
+				}
+			}
         }
 
 		private void btnTakeAction_Click(object sender, EventArgs e)
@@ -279,7 +316,6 @@ namespace CharacterCreationandDevelopment
 			else
 			{
 				RunActionMethod(TakeAction);
-                NPCTriggers();
 			}
 		}
 
@@ -287,11 +323,6 @@ namespace CharacterCreationandDevelopment
 		{
             if (lBoxActions.SelectedItem == null)
             {
-
-            }
-            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
-            {
-                this.toolTip1.SetToolTip(lBoxActions, "Skill Bonus: What Skill?. Makes you Bored. Very Bored.");
             }
             else
             {
@@ -366,6 +397,8 @@ namespace CharacterCreationandDevelopment
             RelationshipsUI relationshipsUI = new RelationshipsUI(player);
             relationshipsUI.ShowDialog();
         }
+
+
 
 
     }

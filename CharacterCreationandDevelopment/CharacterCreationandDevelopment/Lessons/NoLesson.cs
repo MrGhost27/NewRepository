@@ -36,6 +36,8 @@ namespace CharacterCreationandDevelopment.Lessons
         public string LessonEffects()
         {
             _player.SetExcitedBored(-50);
+            HelperClass.GetRelationshipFromList("Mother").ChangeOpinion(-20);
+            HelperClass.GetRelationshipFromList("Sister").ChangeOpinion(-20);
             return _player.name + " does nothing all month";
 
         }

@@ -60,7 +60,13 @@
       <DependentUpon>RelationshipsUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\Sister.cs" />
-    <Compile Include="Events and Conversations\ChildhoodStart.cs" />
+    <Compile Include="Events and Conversations\EventOutcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events and Conversations\EventOutcome.Designer.cs">
+      <DependentUpon>EventOutcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events and Conversations\Year One\ChildhoodStart.cs" />
     <Compile Include="Events and Conversations\ConversationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,7 +80,9 @@
       <DependentUpon>EventDecisionBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Events and Conversations\IConversation.cs" />
-    <Compile Include="Events and Conversations\FirstConversation.cs" />
+    <Compile Include="Events and Conversations\Year One\FirstConversation.cs" />
+    <Compile Include="Events and Conversations\Year One\PlayingWolfEvent.cs" />
+    <Compile Include="Events and Conversations\Year One\WolfConversation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,7 +102,8 @@
       <DependentUpon>JournalUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Lessons\AnimalEmpathyLesson.cs" />
-    <Compile Include="Lessons\AthleticsLesson.cs" />
+    <Compile Include="Lessons\ClimbingLesson.cs" />
+    <Compile Include="Lessons\RunningLesson.cs" />
     <Compile Include="Lessons\CraftingLesson.cs" />
     <Compile Include="Lessons\DiplomacyLesson.cs" />
     <Compile Include="Lessons\FaithLesson.cs" />
@@ -174,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Events and Conversations\EventDecisionBox.resx">
       <DependentUpon>EventDecisionBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events and Conversations\EventOutcome.resx">
+      <DependentUpon>EventOutcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -368,6 +380,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\Male\Human_male30.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\male023.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\post-1557-1139893645.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\Servant_det01.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\Young_ammon_jerro_-_nwn2_cinematic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Notes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

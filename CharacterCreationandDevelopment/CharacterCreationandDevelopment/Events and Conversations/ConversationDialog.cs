@@ -25,7 +25,9 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 			this.player = player;
 			speechNumber = 0;
 			isSpeakerCharacter = true;
-			MoveConversationOn();
+			pBoxCharacter.Image = HelperClass.Images(player.gender)[player.portraitNumber];
+			txtConversation.Text = currentConversation.GetEventConversation()[speechNumber];
+			btnPrevious.Enabled = false;
 		}
 
 		private void NextSpeaker()
@@ -42,29 +44,41 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 			}
 		}
 
-		private void MoveConversationOn()
+		private void btnNext_Click(object sender, EventArgs e)
 		{
-			if (speechNumber < currentConversation.GetEventConversation().Count())
-			{
-                NextSpeaker();
-				txtConversation.AppendText(currentConversation.GetEventConversation()[speechNumber]);
-				speechNumber++;
-                isSpeakerCharacter = !isSpeakerCharacter;
-			}
-			else
+			if (speechNumber == currentConversation.GetEventConversation().Count()-1)
 			{
 				btnNext.Enabled = false;
 			}
-		}
-
-		private void btnNext_Click(object sender, EventArgs e)
-		{
-			MoveConversationOn();
+			else
+			{
+				btnPrevious.Enabled = true;
+				speechNumber++;
+				txtConversation.Text = currentConversation.GetEventConversation()[speechNumber];
+				isSpeakerCharacter = !isSpeakerCharacter;
+				NextSpeaker();
+			}
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void btnPrevious_Click(object sender, EventArgs e)
+		{
+			if (speechNumber == 0)
+			{
+				btnPrevious.Enabled = false;
+			}
+			else
+			{
+				btnNext.Enabled = true;
+				speechNumber--;
+				txtConversation.Text = currentConversation.GetEventConversation()[speechNumber];
+				isSpeakerCharacter = !isSpeakerCharacter;
+				NextSpeaker();
+			}
 		}
 	}
 }

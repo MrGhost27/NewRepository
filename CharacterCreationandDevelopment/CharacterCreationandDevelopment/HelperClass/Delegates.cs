@@ -8,6 +8,6 @@ using CharacterCreationandDevelopment.Lessons;
 
 namespace CharacterCreationandDevelopment
 {
-    public delegate void DelegateWorldActions(string value, ILesson lesson);
+    public delegate void DelegateWorldActions(ILesson lesson, params string[] keywords);
 }
 

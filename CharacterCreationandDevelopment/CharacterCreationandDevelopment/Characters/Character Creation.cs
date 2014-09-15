@@ -228,9 +228,9 @@ namespace CharacterCreationandDevelopment
             }
 
             player = new PlayerCharacter(_name, gender, "", _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0);
 
-            StoryProgression newStory = new StoryProgression(false);
+            StoryProgression newStory = new StoryProgression(false, 9);
             World world = new World(player, 12, 1050, "");
 
 			SaveLoad.SavePlayerDetailsToFile(player);

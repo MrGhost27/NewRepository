@@ -14,12 +14,11 @@ namespace CharacterCreationandDevelopment
         }
 
         public override List<string> GetActions(PlayerCharacter player)
-        {
-            actionlist.Add("Train With Fists");
-            actionlist.Add("Go Running");
-            
+        {         
             if (player.ageYears > 11)
             {
+				actionlist.Add("Train With Fists");
+				actionlist.Add("Go Running");
                 actionlist.Add("Train With Medics");
                 actionlist.Add("Train With Weapons");
             }

@@ -27,13 +27,14 @@ namespace CharacterCreationandDevelopment
         private void PopulateSkills()
         {
             UpdateSkillsAndProgressBars(pBarAnimalEmpathy, lblAnimalEmpathyValue, player.animalEmpathy);
-            UpdateSkillsAndProgressBars(pBarAthletics, lblAthleticsValue, player.athletics);
             UpdateSkillsAndProgressBars(pBarCrafting, lblCraftingValue, player.crafting);
+            UpdateSkillsAndProgressBars(pBarClimbing, lblClimbingValue, player.climbing);
             UpdateSkillsAndProgressBars(pBarDiplomacy, lblDiplomacyValue, player.diplomacy);
             UpdateSkillsAndProgressBars(pBarFaith, lblFaithValue, player.faith);
             UpdateSkillsAndProgressBars(pBarLockpicking, lblLockpickingValue, player.lockpicking);
             UpdateSkillsAndProgressBars(pBarMedicine, lblMedicineValue, player.medicine);
             UpdateSkillsAndProgressBars(pBarPickpocketing, lblPickpocketingValue, player.pickpocketing);
+            UpdateSkillsAndProgressBars(pBarRunning, lblAthleticsValue, player.running);
             UpdateSkillsAndProgressBars(pBarScience, lblScienceValue, player.science);
             UpdateSkillsAndProgressBars(pBarSurvival, lblSurvivalValue, player.survival);
             UpdateSkillsAndProgressBars(pBarSwimming, lblSwimmingValue, player.swimming);

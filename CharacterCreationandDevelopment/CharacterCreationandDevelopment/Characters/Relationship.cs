@@ -23,7 +23,8 @@ namespace CharacterCreationandDevelopment
         public void ChangeOpinion(int value)
         {
             opinionofPlayer += value;
-            HelperClass.SetMoodBoundaries(opinionofPlayer);
+            if (opinionofPlayer > 100)
+				opinionofPlayer = 100;
         }
     }
 

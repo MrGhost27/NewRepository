@@ -114,7 +114,8 @@ namespace CharacterCreationandDevelopment
 			var doc = new XDocument(
 			new XElement("StoryProgression",
 			new XAttribute("ID", "001"),
-			new XElement("FirstConversation", storyProgression.firstConversation)));
+			new XElement("FirstConversation", storyProgression.firstConversation),
+			new XElement("PlayingWolf", storyProgression.wolfEvent)));
 
 			string directory = @".\Saves\" + player.name + @"\Story\";
 			Directory.CreateDirectory(directory);
@@ -126,7 +127,8 @@ namespace CharacterCreationandDevelopment
 		{
 			var doc = XDocument.Load(GetStoryFileName(player));
 			bool firstConversation = Boolean.Parse(doc.Descendants("FirstConversation").Single().Value);
-			return new StoryProgression(firstConversation);
+			int playingWolf = Int32.Parse(doc.Descendants("PlayingWolf").Single().Value);
+			return new StoryProgression(firstConversation, playingWolf);
 		}
 
 		public static string GetStoryFileName(PlayerCharacter player)
@@ -192,7 +194,8 @@ namespace CharacterCreationandDevelopment
 			new XElement("Weapons", player.weapons),
 			new XElement("Unarmed", player.unarmed),
 			new XElement("Swimming", player.swimming),
-			new XElement("Athletics", player.athletics),
+            new XElement("Running", player.running),
+            new XElement("Climbing", player.climbing),
 			new XElement("Diplomacy", player.diplomacy),
 			new XElement("Survival", player.survival),
 			new XElement("Crafting", player.crafting),
@@ -233,7 +236,8 @@ namespace CharacterCreationandDevelopment
 			int weapons = Int32.Parse(doc.Descendants("Weapons").Single().Value);
 			int unarmed = Int32.Parse(doc.Descendants("Unarmed").Single().Value);
 			int swimming = Int32.Parse(doc.Descendants("Swimming").Single().Value);
-			int athletics = Int32.Parse(doc.Descendants("Athletics").Single().Value);
+			int running = Int32.Parse(doc.Descendants("Running").Single().Value);
+            int climbing = Int32.Parse(doc.Descendants("Climbing").Single().Value);
 			int diplomacy = Int32.Parse(doc.Descendants("Diplomacy").Single().Value);
 			int survival = Int32.Parse(doc.Descendants("Survival").Single().Value);
 			int crafting = Int32.Parse(doc.Descendants("Crafting").Single().Value);
@@ -252,7 +256,7 @@ namespace CharacterCreationandDevelopment
 			//etc
 
 			return new PlayerCharacter(PlayerName, gender, location, strength, dexterity, constitution, intelligence, wisdom, charisma, portrait,
-				weapons, unarmed, swimming, athletics, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
+				weapons, unarmed, swimming, running, climbing, diplomacy, survival, crafting, faith, lockpicking, pickpocketing,
 				animalEmpathy, medicine, science, ageYears, ageMonths, happyDepressed, angryAfraid, excitedBored, logicalCrazy);
 		}
 

@@ -15,7 +15,9 @@ namespace CharacterCreationandDevelopment
 
         public override List<string> GetActions(PlayerCharacter player)
         {
-            actionlist.Add("Go Playing");
+            actionlist.Add("Climb Trees");
+            actionlist.Add("Run around");
+            actionlist.Add("Try taking to the animals");
             
             if (player.ageYears > 11)
             {

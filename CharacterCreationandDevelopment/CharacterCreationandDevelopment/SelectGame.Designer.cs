@@ -34,7 +34,7 @@
             this.listOfSaves = new System.Windows.Forms.ListBox();
             this.pBoxChar = new System.Windows.Forms.PictureBox();
             this.pBarAnimalEmpathy = new System.Windows.Forms.ProgressBar();
-            this.pBarAthletics = new System.Windows.Forms.ProgressBar();
+            this.pBarRunning = new System.Windows.Forms.ProgressBar();
             this.pBarCrafting = new System.Windows.Forms.ProgressBar();
             this.pBarDiplomacy = new System.Windows.Forms.ProgressBar();
             this.pBarFaith = new System.Windows.Forms.ProgressBar();
@@ -47,6 +47,7 @@
             this.pBarUnarmed = new System.Windows.Forms.ProgressBar();
             this.pBarWeapons = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pBarClimbing = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxChar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,17 +99,17 @@
             this.pBarAnimalEmpathy.TabIndex = 4;
             this.toolTip1.SetToolTip(this.pBarAnimalEmpathy, "Animal Empathy");
             // 
-            // pBarAthletics
+            // pBarRunning
             // 
-            this.pBarAthletics.Location = new System.Drawing.Point(12, 135);
-            this.pBarAthletics.Name = "pBarAthletics";
-            this.pBarAthletics.Size = new System.Drawing.Size(48, 10);
-            this.pBarAthletics.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.pBarAthletics, "Athletics");
+            this.pBarRunning.Location = new System.Drawing.Point(64, 135);
+            this.pBarRunning.Name = "pBarRunning";
+            this.pBarRunning.Size = new System.Drawing.Size(48, 10);
+            this.pBarRunning.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.pBarRunning, "Athletics");
             // 
             // pBarCrafting
             // 
-            this.pBarCrafting.Location = new System.Drawing.Point(12, 151);
+            this.pBarCrafting.Location = new System.Drawing.Point(10, 151);
             this.pBarCrafting.Name = "pBarCrafting";
             this.pBarCrafting.Size = new System.Drawing.Size(48, 10);
             this.pBarCrafting.TabIndex = 6;
@@ -116,7 +117,7 @@
             // 
             // pBarDiplomacy
             // 
-            this.pBarDiplomacy.Location = new System.Drawing.Point(12, 167);
+            this.pBarDiplomacy.Location = new System.Drawing.Point(10, 167);
             this.pBarDiplomacy.Name = "pBarDiplomacy";
             this.pBarDiplomacy.Size = new System.Drawing.Size(48, 10);
             this.pBarDiplomacy.TabIndex = 7;
@@ -124,7 +125,7 @@
             // 
             // pBarFaith
             // 
-            this.pBarFaith.Location = new System.Drawing.Point(12, 183);
+            this.pBarFaith.Location = new System.Drawing.Point(10, 183);
             this.pBarFaith.Name = "pBarFaith";
             this.pBarFaith.Size = new System.Drawing.Size(48, 10);
             this.pBarFaith.TabIndex = 8;
@@ -132,7 +133,7 @@
             // 
             // pBarLockpicking
             // 
-            this.pBarLockpicking.Location = new System.Drawing.Point(12, 199);
+            this.pBarLockpicking.Location = new System.Drawing.Point(10, 199);
             this.pBarLockpicking.Name = "pBarLockpicking";
             this.pBarLockpicking.Size = new System.Drawing.Size(48, 10);
             this.pBarLockpicking.TabIndex = 9;
@@ -140,7 +141,7 @@
             // 
             // pBarMedicine
             // 
-            this.pBarMedicine.Location = new System.Drawing.Point(12, 215);
+            this.pBarMedicine.Location = new System.Drawing.Point(10, 215);
             this.pBarMedicine.Name = "pBarMedicine";
             this.pBarMedicine.Size = new System.Drawing.Size(48, 10);
             this.pBarMedicine.TabIndex = 10;
@@ -148,7 +149,7 @@
             // 
             // pBarPickPocketing
             // 
-            this.pBarPickPocketing.Location = new System.Drawing.Point(66, 119);
+            this.pBarPickPocketing.Location = new System.Drawing.Point(64, 119);
             this.pBarPickPocketing.Name = "pBarPickPocketing";
             this.pBarPickPocketing.Size = new System.Drawing.Size(48, 10);
             this.pBarPickPocketing.TabIndex = 11;
@@ -156,7 +157,7 @@
             // 
             // pBarScience
             // 
-            this.pBarScience.Location = new System.Drawing.Point(66, 135);
+            this.pBarScience.Location = new System.Drawing.Point(64, 151);
             this.pBarScience.Name = "pBarScience";
             this.pBarScience.Size = new System.Drawing.Size(48, 10);
             this.pBarScience.TabIndex = 12;
@@ -164,7 +165,7 @@
             // 
             // pBarSurvival
             // 
-            this.pBarSurvival.Location = new System.Drawing.Point(66, 151);
+            this.pBarSurvival.Location = new System.Drawing.Point(64, 167);
             this.pBarSurvival.Name = "pBarSurvival";
             this.pBarSurvival.Size = new System.Drawing.Size(48, 10);
             this.pBarSurvival.TabIndex = 13;
@@ -172,7 +173,7 @@
             // 
             // pBarSwimming
             // 
-            this.pBarSwimming.Location = new System.Drawing.Point(66, 167);
+            this.pBarSwimming.Location = new System.Drawing.Point(64, 183);
             this.pBarSwimming.Name = "pBarSwimming";
             this.pBarSwimming.Size = new System.Drawing.Size(48, 10);
             this.pBarSwimming.TabIndex = 14;
@@ -180,7 +181,7 @@
             // 
             // pBarUnarmed
             // 
-            this.pBarUnarmed.Location = new System.Drawing.Point(66, 183);
+            this.pBarUnarmed.Location = new System.Drawing.Point(64, 199);
             this.pBarUnarmed.Name = "pBarUnarmed";
             this.pBarUnarmed.Size = new System.Drawing.Size(48, 10);
             this.pBarUnarmed.TabIndex = 15;
@@ -188,11 +189,19 @@
             // 
             // pBarWeapons
             // 
-            this.pBarWeapons.Location = new System.Drawing.Point(66, 199);
+            this.pBarWeapons.Location = new System.Drawing.Point(64, 215);
             this.pBarWeapons.Name = "pBarWeapons";
             this.pBarWeapons.Size = new System.Drawing.Size(48, 10);
             this.pBarWeapons.TabIndex = 16;
             this.toolTip1.SetToolTip(this.pBarWeapons, "Weapons");
+            // 
+            // pBarClimbing
+            // 
+            this.pBarClimbing.Location = new System.Drawing.Point(12, 135);
+            this.pBarClimbing.Name = "pBarClimbing";
+            this.pBarClimbing.Size = new System.Drawing.Size(48, 10);
+            this.pBarClimbing.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.pBarClimbing, "Crafting");
             // 
             // SelectGame
             // 
@@ -200,6 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(395, 233);
+            this.Controls.Add(this.pBarClimbing);
             this.Controls.Add(this.pBarWeapons);
             this.Controls.Add(this.pBarUnarmed);
             this.Controls.Add(this.pBarSwimming);
@@ -211,7 +221,7 @@
             this.Controls.Add(this.pBarFaith);
             this.Controls.Add(this.pBarDiplomacy);
             this.Controls.Add(this.pBarCrafting);
-            this.Controls.Add(this.pBarAthletics);
+            this.Controls.Add(this.pBarRunning);
             this.Controls.Add(this.pBarAnimalEmpathy);
             this.Controls.Add(this.pBoxChar);
             this.Controls.Add(this.listOfSaves);
@@ -233,7 +243,7 @@
         private System.Windows.Forms.ListBox listOfSaves;
         private System.Windows.Forms.PictureBox pBoxChar;
         private System.Windows.Forms.ProgressBar pBarAnimalEmpathy;
-        private System.Windows.Forms.ProgressBar pBarAthletics;
+        private System.Windows.Forms.ProgressBar pBarRunning;
         private System.Windows.Forms.ProgressBar pBarCrafting;
         private System.Windows.Forms.ProgressBar pBarDiplomacy;
         private System.Windows.Forms.ProgressBar pBarFaith;
@@ -246,5 +256,6 @@
         private System.Windows.Forms.ProgressBar pBarUnarmed;
         private System.Windows.Forms.ProgressBar pBarWeapons;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ProgressBar pBarClimbing;
     }
 }

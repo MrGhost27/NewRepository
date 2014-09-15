@@ -35,7 +35,8 @@ namespace CharacterCreationandDevelopment
         public int weapons { get; set; }
 		public int unarmed { get; set; }
 		public int swimming { get; set; }
-		public int athletics { get; set; }
+        public int running { get; set; }
+        public int climbing { get; set; }
 		public int diplomacy { get; set; }
 		public int survival { get; set; }
 		public int crafting { get; set; }
@@ -64,7 +65,7 @@ namespace CharacterCreationandDevelopment
         public ILesson lesson;
 
         public PlayerCharacter(string Name, int gender, string location, int Str, int Dex, int Const, int Int, int Wis, int Char, int imageNumber, 
-			int weapons, int unarmed, int swimming, int athletics, int diplomacy, int survival, int crafting, int faith,
+			int weapons, int unarmed, int swimming, int running, int climbing, int diplomacy, int survival, int crafting, int faith,
 			int lockpicking, int pickpocketing, int animalEmpathy, int medicine, int science, int ageYears, int ageMonths,
 			int happyDepressed, int angryAfraid, int excitedBored, int logicalCrazy)
         {
@@ -82,7 +83,8 @@ namespace CharacterCreationandDevelopment
             this.weapons = weapons;
 			this.unarmed = unarmed;
 			this.swimming = swimming;
-			this.athletics = athletics;
+            this.running = running;
+            this.climbing = climbing;
 			this.diplomacy = diplomacy;
 			this.survival = survival;
 			this.crafting = crafting;

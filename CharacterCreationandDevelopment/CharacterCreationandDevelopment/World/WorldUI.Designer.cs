@@ -185,6 +185,8 @@
             this.lblRelationships.TabIndex = 15;
             this.lblRelationships.Text = "Relationships";
             this.lblRelationships.Click += new System.EventHandler(this.lblRelationships_Click);
+            this.lblRelationships.MouseEnter += new System.EventHandler(this.lblRelationships_MouseEnter);
+            this.lblRelationships.MouseLeave += new System.EventHandler(this.lblRelationships_MouseLeave);
             // 
             // lblMood
             // 

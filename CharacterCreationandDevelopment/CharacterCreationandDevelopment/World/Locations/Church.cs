@@ -15,7 +15,7 @@ namespace CharacterCreationandDevelopment
 
         public override List<string> GetActions(PlayerCharacter player)
         {
-            actionlist.Add("Go to Prayer");
+            actionlist.Add("Go to Prayer with Family");
             if (player.ageYears > 10)
             {
                 AddActionByAttribute(player.faith, 10, "Go to confession");

@@ -15,9 +15,9 @@ namespace CharacterCreationandDevelopment
 
         public override List<string> GetActions(PlayerCharacter player)
         {
-            actionlist.Add("Barter for Items");
             if (player.ageYears > 10)
             {
+				actionlist.Add("Barter for Items");
                 AddActionByAttribute(player.diplomacy, 20, "Work at the Smith");
                 AddActionByAttribute(player.pickpocketing, 50, "Steal Items");
                 AddActionByAttribute(player.crafting, 50, "Create Items");

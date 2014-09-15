@@ -8,10 +8,10 @@ namespace CharacterCreationandDevelopment
 {
     public interface IEvent : IConversation
     {
-        List<String> eventChoices { get; set; }
+        List<string> eventChoices { get; set; }
         string EventDecisionText();
-        string ChoiceOne();
-        string ChoiceTwo();
-        string ChoiceThree();
+		List<string> ChoiceOne();
+		List<string> ChoiceTwo();
+		List<string> ChoiceThree();
     }
 }

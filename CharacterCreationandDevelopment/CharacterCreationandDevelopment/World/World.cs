@@ -52,31 +52,32 @@ namespace CharacterCreationandDevelopment
             this.newEvent = thisevent;
         }
 
-		public void LogEventConversation()
+		public void LogEventConversation(List<string> eventConversation)
 		{
             string journalEntry = "";
-            foreach (string speech in newConversation.GetEventConversation())
+			foreach (string speech in eventConversation)
 			{
                 journalEntry += speech;
+				journalEntry += Environment.NewLine;
 			}
             AddJournalEntry(journalEntry);
 		}
 
-		public string EventDecision(int eventDecisionChoice)
+		public List<string> EventDecision(int eventDecisionChoice)
 		{
 			if (eventDecisionChoice == 1)
 			{
-				return AddJournalEntry(newEvent.ChoiceOne());
+				return newEvent.ChoiceOne();
 			}
 			if (eventDecisionChoice == 2)
 			{
-				return AddJournalEntry(newEvent.ChoiceTwo());
+				return newEvent.ChoiceTwo();
 			}
 			if (eventDecisionChoice == 3)
 			{
-				return AddJournalEntry(newEvent.ChoiceThree());
+				return newEvent.ChoiceThree();
 			}
-			return "";
+			return null;
 		}
 
         public string NewTurn()
