@@ -17,7 +17,7 @@ namespace CharacterCreationandDevelopment
         {
             actionlist.Add("Climb Trees");
             actionlist.Add("Run around");
-            actionlist.Add("Try taking to the animals");
+            actionlist.Add("Try talking to the animals");
             
             if (player.ageYears > 11)
             {
