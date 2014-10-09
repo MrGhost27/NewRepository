@@ -28,6 +28,7 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
         public EventDecisionBox(string DecisionInfo, string ChoiceText1, string ChoiceText2, string ChoiceText3)
         {
             InitializeComponent();
+			this.StartPosition = FormStartPosition.CenterScreen;
             lblDecisionInfo.Text = DecisionInfo;
             btnChoice1.Text = ChoiceText1;
             btnChoice2.Text = ChoiceText2;

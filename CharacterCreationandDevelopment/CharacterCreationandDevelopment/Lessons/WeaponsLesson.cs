@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
         public string LessonEffects()
         {
 			int previousValue = _player.weapons;
-            _player.weapons += 5 + (_player.strength /2);
+            _player.weapons += (_player.strength /2);
             _player.SetAngryAfraid(-20);
 
             if (_player.weapons > 100)

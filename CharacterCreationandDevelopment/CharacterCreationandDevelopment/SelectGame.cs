@@ -13,7 +13,9 @@ namespace CharacterCreationandDevelopment
 {
     public partial class SelectGame : Form
     {
-        Form parentForm;
+        private Form parentForm;
+		private List<string> Directories;
+		private string selectedSave;
 
         public SelectGame(Form parentForm)
         {
@@ -25,22 +27,35 @@ namespace CharacterCreationandDevelopment
 
         private void GetSaves()
         {
-            string[] filePaths = Directory.GetDirectories(@".\Saves\");
-
-            foreach (string filePath in filePaths)
+			Directories = new List<string>();
+            try
             {
-                comboBox1.Items.Add(filePath);
+                string[] filePaths = Directory.GetDirectories(@".\Saves\");
+                foreach (string filePath in filePaths)
+                {
+					Directories.Add(filePath + @"\Player");
+                    comboBox1.Items.Add(Path.GetFileName(filePath));
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("No save games?!");
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                string selectedGame = comboBox1.Text + @"\" + listOfSaves.SelectedItem.ToString();
-                PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(selectedGame);
-                WorldUI world = new WorldUI(player, parentForm);
-                world.Show();
+				string selectedGame = Directories[comboBox1.SelectedIndex] + @"\" + selectedSave;
+				PlayerCharacter player = SaveLoad.LoadPlayerDetailsFromFile(selectedGame);
+				StoryProgression storyProgression = SaveLoad.LoadStoryProgressionFromFile(player);
+				World world = SaveLoad.LoadWorldDetailsFromFile(player);
+				SaveLoad.LoadAllRelationships(player);
+
+                WorldUI worldUI = new WorldUI(player, world, parentForm, storyProgression);
+                worldUI.Show();
                 this.Close();
             }
             catch (Exception)
@@ -53,14 +68,14 @@ namespace CharacterCreationandDevelopment
         {
             try
             {
-
-                string[] saveGames = Directory.GetFiles(comboBox1.Text, "*.xml");
+                string[] saveGames = Directory.GetFiles(Directories[comboBox1.SelectedIndex], "*.xml");
                 listOfSaves.Items.Clear();
 
                 foreach (string saveGame in saveGames)
                 {
                     string thisSave = Path.GetFileNameWithoutExtension(saveGame);
-                    listOfSaves.Items.Add(thisSave);
+					selectedSave = Path.GetFileName(saveGame);
+                    listOfSaves.Items.Insert(0,thisSave);
                 }
                 listOfSaves.SetSelected(0, true);
             }
@@ -73,13 +88,14 @@ namespace CharacterCreationandDevelopment
         private void UpdateMiniSkillsBox(PlayerCharacter player)
         {
             pBarAnimalEmpathy.Value = player.animalEmpathy;
-            pBarAthletics.Value = player.athletics;
+            pBarClimbing.Value = player.climbing;
             pBarCrafting.Value = player.crafting;
             pBarDiplomacy.Value = player.diplomacy;
             pBarFaith.Value = player.faith;
             pBarLockpicking.Value = player.lockpicking;
             pBarMedicine.Value = player.medicine;
             pBarPickPocketing.Value = player.pickpocketing;
+            pBarRunning.Value = player.running;
             pBarScience.Value = player.science;
             pBarSurvival.Value = player.survival;
             pBarSwimming.Value = player.swimming;
@@ -91,8 +107,9 @@ namespace CharacterCreationandDevelopment
         {
             if (listOfSaves.SelectedItem != null)
             {
-                string selectedGame = comboBox1.Text + @"\" + listOfSaves.SelectedItem.ToString();
-                PlayerCharacter player = HelperClass.LoadPlayerDetailsFromFile(selectedGame);
+				selectedSave = listOfSaves.GetItemText(listOfSaves.SelectedItem)+".xml";
+				string selectedGame = Directories[comboBox1.SelectedIndex] + @"\" + selectedSave;
+				PlayerCharacter player = SaveLoad.LoadPlayerDetailsFromFile(selectedGame);
                 pBoxChar.Image = HelperClass.Images(player.gender)[player.portraitNumber];
                 UpdateMiniSkillsBox(player);
             }

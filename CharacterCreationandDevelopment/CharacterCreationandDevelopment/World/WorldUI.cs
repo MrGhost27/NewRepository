@@ -1,4 +1,5 @@
-﻿using CharacterCreationandDevelopment.Events_and_Conversations;
+﻿using CharacterCreationandDevelopment.Characters;
+using CharacterCreationandDevelopment.Events_and_Conversations;
 using CharacterCreationandDevelopment.Lessons;
 using CharacterCreationandDevelopment.Moods;
 using System;
@@ -18,70 +19,64 @@ namespace CharacterCreationandDevelopment
         private PlayerCharacter player;
         private World world;
         private Skills playerSkills;
-        private List<String> listofActions;
         private EventDecisionBox eventDecisionBox;
+        private StoryProgression storyProgression;
+        private bool wc = false;
 
-        public WorldUI(PlayerCharacter playerInWorld, Form parentForm)
+        public WorldUI(PlayerCharacter player, World world, Form parentForm, StoryProgression storyProgression)
         {
             InitializeComponent();
             parentForm.Hide();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.player = playerInWorld;
-            world = new World(player);
+            this.player = player;
+            this.storyProgression = storyProgression;
+            this.world = world;
 
-			//Gender Required.
-            pictureBox1.Image = HelperClass.Images(player.gender)[player.portraitNumber];
-            lblDate.Text = world.GetDate();
-            listofActions = new List<String>();
-            //Startup
-            AtHome();
-            player.GetMood();
+			//Startup
+            SetStartLocation();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
+			pBoxPortrait.Image = HelperClass.Images(player.gender)[player.portraitNumber];
+			lblDate.Text = world.GetDate();
         }
 
-        private void RunEvent(IEvent thisevent)
-        {
-            world.SetEvent(thisevent);
-            pBoxNPC.Visible = true;
-			pBoxNPC.Image = thisevent.eventNPC.portrait;
-			txtConversation.Text = world.EventConversation();
-            if (thisevent.eventChoices.Count == 2)
-            {
-                eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1]);
-            }
-            else
-            {
-                eventDecisionBox = new EventDecisionBox(thisevent.EventDecisionText(), thisevent.eventChoices[0], thisevent.eventChoices[1], thisevent.eventChoices[2]);
-            }
-            eventDecisionBox.ShowDialog();
-			txtConversation.Text = world.EventDecision(eventDecisionBox.choice);
-            CloseEvent();
-        }
+		private void RunConversation(IConversation currentConversation)
+		{
+			world.SetConversation(currentConversation);
+			world.LogEventConversation(currentConversation.GetEventConversation());
+			ConversationDialog eventConversationDialog = new ConversationDialog(currentConversation, player);
+			eventConversationDialog.ShowDialog();
+		}
+
+
+		private void RunEvent(IEvent currentEvent)
+		{
+			world.SetEvent(currentEvent);
+			RunConversation(currentEvent);
+
+			if (currentEvent.eventChoices.Count == 2)
+			{
+				eventDecisionBox = new EventDecisionBox(currentEvent.EventDecisionText(), currentEvent.eventChoices[0], currentEvent.eventChoices[1]);
+			}
+			else if (currentEvent.eventChoices.Count == 3)
+			{
+				eventDecisionBox = new EventDecisionBox(currentEvent.EventDecisionText(), currentEvent.eventChoices[0], currentEvent.eventChoices[1], currentEvent.eventChoices[2]);
+			}
+			eventDecisionBox.ShowDialog();
+
+			List<string> eventOutcomeList = new List<string>();
+			
+			eventOutcomeList = world.EventDecision(eventDecisionBox.choice);
+			EventOutcome eventOutcome = new EventOutcome(eventOutcomeList);
+			world.LogEventConversation(eventOutcomeList);
+			eventOutcome.ShowDialog();
+			CloseEvent();
+		}
 		
         private void CloseEvent()
         {
             pBoxNPC.Visible = false;
             NextTurn();
         }
-
-        private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
-        {
-			DialogResult dialogResult = MessageBox.Show("Would you like to save the game?", "World Closing", MessageBoxButtons.YesNo);
-			if (dialogResult.ToString() == "Yes")
-			{
-				HelperClass.SavePlayerDetailsToFile(player);
-				HelperClass.SaveWorldDetailsToFile(player, world);
-			}
-            Form1 x = new Form1();
-            x.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            Character_Creation CharacterSheet = new Character_Creation(player, 0, this);
-            CharacterSheet.ShowDialog();
-        }
-
         private void NextTurn()
         {
             lblDate.Text = world.NewTurn();
@@ -91,24 +86,19 @@ namespace CharacterCreationandDevelopment
                 player.ageMonths = 1;
                 player.ageYears++;
             }
-
             player.GetMood();
             pBoxMood.Image = player.CurrentMood.GetMoodImage();
-
-            if ((player.ageYears == 10) && (player.ageMonths == 9))
-            {
-                RunEvent((new ChildhoodStart(player)));
-            }
+			YearOne();
         }
 
-        private void lblSkills_Click(object sender, EventArgs e)
-        {
-            playerSkills = new Skills(player,this);
-            playerSkills.Show();
-            this.Hide();
-        }
+		#region MouseEvents
 
-        private void lblSkills_MouseEnter(object sender, EventArgs e)
+		private void pBoxMood_MouseHover(object sender, EventArgs e)
+		{
+			toolTip1.SetToolTip(this.pBoxMood, player.CurrentMood.GetName());
+		}
+
+		private void lblSkills_MouseEnter(object sender, EventArgs e)
         {
             this.lblSkills.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
@@ -138,159 +128,215 @@ namespace CharacterCreationandDevelopment
             lblMood.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
-        private void PopulateListBox()
+        private void lblRelationships_MouseEnter(object sender, EventArgs e)
         {
+            lblRelationships.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void lblRelationships_MouseLeave(object sender, EventArgs e)
+        {
+            lblRelationships.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+		#endregion
+
+		#region ChangeLocation
+
+        private void ChangeLocation(Location location)
+        {
+            player.location = location.locationName;
+            lblCurrentLocation.Text = location.locationName;
             lBoxActions.Items.Clear();
-            foreach (string action in listofActions)
+            foreach (string action in location.GetActions(player))
             {
                 lBoxActions.Items.Add(action);
             }
         }
 
-        private void pBoxChurch_Click(object sender, EventArgs e)
+        private void SetStartLocation()
         {
-            lblCurrentLocation.Text = "The Church";
-            listofActions.Clear();
-            listofActions.Add("Go for Prayer");
-            listofActions.Add("Break into the Church");
-            PopulateListBox();
+            switch (player.location)
+            {
+                case "The Church":
+                    ChangeLocation(new Church());
+                    break;
+                case "The Farm":
+                    ChangeLocation(new Farm());
+                    break;
+                case "The School":
+                    ChangeLocation(new School());
+                    break;
+                case "The Lake":
+                    ChangeLocation(new Lake());
+                    break;
+                case "The Barracks":
+                    ChangeLocation(new Barracks());
+                    break;
+                case "The Market":
+                    ChangeLocation(new Market());
+                    break;
+                case "The Blacksmith":
+                    ChangeLocation(new Blacksmith());
+                    break;
+                case "The Forest Path":
+                    ChangeLocation(new ForestPath());
+                    break;
+                default:
+                    ChangeLocation(new Farm());
+                    break;
+            }
+        }
+
+		private void pBoxChurch_Click(object sender, EventArgs e)
+        {
+            ChangeLocation(new Church());
         }
 
         private void pBoxFarm_Click(object sender, EventArgs e)
         {
-            AtHome();
+            ChangeLocation(new Farm());
          }
-
-        private void AtHome()
-        {
-            lblCurrentLocation.Text = "Your Home";
-            listofActions.Clear();
-            listofActions.Add("Work on the Farm");
-            listofActions.Add("Relax at home");
-            PopulateListBox();
-        }
 
         private void pBoxSchool_Click(object sender, EventArgs e)
         {
-            lblCurrentLocation.Text = "The School";
-            listofActions.Clear();
-            listofActions.Add("Take Science Class");
-            listofActions.Add("Take Medicine Class");
-            listofActions.Add("Break into the School");
-            PopulateListBox();
+            ChangeLocation(new School());
         }
 
         private void pBoxLake_Click(object sender, EventArgs e)
         {
-            lblCurrentLocation.Text = "The Lake";
-            listofActions.Clear();
-            listofActions.Add("Go Swimming");
-            listofActions.Add("Go Camping");
-            PopulateListBox();
+            ChangeLocation(new Lake());
         }
 
         private void pBoxBarracks_Click(object sender, EventArgs e)
         {
-            lblCurrentLocation.Text = "The Barracks";
-            listofActions.Clear();
-            listofActions.Add("Go Running");
-            listofActions.Add("Train with Medics");
-            listofActions.Add("Train with Fists");
-            listofActions.Add("Train with Weapons");
-            listofActions.Add("Take Survival Training");
-            PopulateListBox();
+            ChangeLocation(new Barracks());
         }
 
         private void pBoxMarket_Click(object sender, EventArgs e)
         {
-            lblCurrentLocation.Text = "The Market";
-            listofActions.Clear();
-            listofActions.Add("Barter for Items");
-            listofActions.Add("Steal food");
-            PopulateListBox();
+            ChangeLocation(new Market());
         }
 
         private void pBoxBlacksmith_Click(object sender, EventArgs e)
         {
-            lblCurrentLocation.Text = "The Blacksmith";
-            listofActions.Clear();
-            listofActions.Add("Barter for Items");
-            listofActions.Add("Steal Items");
-            listofActions.Add("Create Items");
-            listofActions.Add("Break in.");
-            PopulateListBox();
-
+            ChangeLocation(new Blacksmith());
         }
 
-        private void TakeAction(string keyword, ILesson lesson)
+        private void pBoxForestPath_Click(object sender, EventArgs e)
         {
-            if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+            ChangeLocation(new ForestPath());
+        }
+		#endregion
+
+		#region Actions
+
+		private void TakeAction(ILesson lesson, params string[] keywords)
+		{
+			foreach (string keyword in keywords)
+			{
+				if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+				{
+					player.SetLesson(lesson);
+					txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
+					NextTurn();
+				}
+                if (lBoxActions.SelectedItem.ToString().Contains("Cow"))
+                {
+                    player.animalEmpathy -= 10;
+                    if (player.animalEmpathy < 0)
+                        player.animalEmpathy = 0;
+                }
+			}
+		}
+
+		private void SetToolTipValue(ILesson lesson, params string[] keywords)
+		{
+			foreach (string keyword in keywords)
+			{
+				if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+				{
+					this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
+				}
+			}
+		}
+
+		public void RunActionMethod(DelegateWorldActions ActionOrToolTip)
+		{
+			ActionOrToolTip(new AnimalEmpathyLesson(player), "Farm", "animals");
+			ActionOrToolTip(new CraftingLesson(player), "Create");
+            ActionOrToolTip(new ClimbingLesson(player), "Climb");
+			ActionOrToolTip(new DiplomacyLesson(player),"Barter");
+			ActionOrToolTip(new FaithLesson(player),"Prayer");
+			ActionOrToolTip(new HelpingAroundTheHouse(player), "Help Mum around");
+			ActionOrToolTip(new LockpickingLesson(player),"Break in");
+			ActionOrToolTip(new MedicineLesson(player), "Medic");
+			ActionOrToolTip(new PickpocketingLesson(player),"Steal");
+            ActionOrToolTip(new RunningLesson(player), "Run");
+			ActionOrToolTip(new ScienceLesson(player),"Science");
+			ActionOrToolTip(new SurvivalLesson(player),"Survival", "Camping");
+			ActionOrToolTip(new SwimmingLesson(player),"Swim");
+			ActionOrToolTip(new UnarmedLesson(player),"Fist", "Punch");
+			ActionOrToolTip(new WeaponsLesson(player),"Weapon");
+            ActionOrToolTip(new NoLesson(player),"Relax");
+		}
+
+        private void YearOne()
+        {
+            if (HelperClass.GetRelationshipFromList("Mother").opinionofPlayer < 50)
             {
-                player.SetLesson(lesson);
-				txtConversation.Text = world.AddJournalEntry(lesson.LessonEffects());
-                NextTurn();
+                if (!storyProgression.firstConversation)
+                {
+                    RunConversation(new FirstConversation(player));
+                    storyProgression.firstConversation = true;
+                }
             }
+			
+			if ((player.ageYears > 9) && (player.ageMonths > 6) && (storyProgression.wolfEvent == 9))
+			{
+                if (!wc)
+                {
+                    RunConversation(new WolfConversation(player));
+                    wc = true;
+                }
+
+				if (player.location == "The Forest Path")
+				{
+					storyProgression.wolfEvent = 0;
+					RunEvent(new PlayingWolfEvent(player));
+					storyProgression.wolfEvent = eventDecisionBox.choice;
+				}
+			}
         }
 
-        private void btnTakeAction_Click(object sender, EventArgs e)
-        {
+		private void btnTakeAction_Click(object sender, EventArgs e)
+		{
 			if (lBoxActions.SelectedItem == null)
 			{
 				MessageBox.Show("Select an Action");
 			}
-            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
-            {
-                player.SetExcitedBored(-50);
-                txtConversation.Text = world.AddJournalEntry(player.name + " does nothing all month");
-                NextTurn();
-            }
 			else
 			{
-				TakeAction("Farm", new AnimalEmpathyLesson(player));
-				TakeAction("Running", new AthleticsLesson(player));
-				TakeAction("Create", new CraftingLesson(player));
-				TakeAction("Barter", new DiplomacyLesson(player));
-				TakeAction("Prayer", new FaithLesson(player));
-				TakeAction("Break", new LockpickingLesson(player));
-				TakeAction("Medic", new MedicineLesson(player));
-				TakeAction("Steal", new PickpocketingLesson(player));
-				TakeAction("Science", new ScienceLesson(player));
-				TakeAction("Survival", new SurvivalLesson(player));
-				TakeAction("Camping", new SurvivalLesson(player));
-				TakeAction("Swimming", new SwimmingLesson(player));
-				TakeAction("Fist", new UnarmedLesson(player));
-				TakeAction("Weapon", new WeaponsLesson(player));
+				RunActionMethod(TakeAction);
 			}
-        }
+		}
 
-		//DELEGATE THIS ^^^^^ AND THIS vvvvvvvvv NOW!!!
 		private void lBoxActions_SelectedValueChanged(object sender, EventArgs e)
 		{
             if (lBoxActions.SelectedItem == null)
             {
-
-            }
-            else if (lBoxActions.SelectedItem.ToString().Contains("Relax"))
-            {
-                this.toolTip1.SetToolTip(lBoxActions, "Skill Bonus: What Skill?. Makes you Bored. Very Bored.");
             }
             else
             {
-                SetToolTipValue("Farm", new AnimalEmpathyLesson(player));
-                SetToolTipValue("Running", new AthleticsLesson(player));
-                SetToolTipValue("Create", new CraftingLesson(player));
-                SetToolTipValue("Barter", new DiplomacyLesson(player));
-                SetToolTipValue("Prayer", new FaithLesson(player));
-                SetToolTipValue("Break", new LockpickingLesson(player));
-                SetToolTipValue("Medic", new MedicineLesson(player));
-                SetToolTipValue("Steal", new PickpocketingLesson(player));
-                SetToolTipValue("Science", new ScienceLesson(player));
-                SetToolTipValue("Survival", new SurvivalLesson(player));
-                SetToolTipValue("Camping", new SurvivalLesson(player));
-                SetToolTipValue("Swimming", new SwimmingLesson(player));
-                SetToolTipValue("Fist", new UnarmedLesson(player));
-                SetToolTipValue("Weapon", new WeaponsLesson(player));
+				RunActionMethod(SetToolTipValue);
             }
+		}
+		#endregion
+
+		#region OpenOtherForms
+
+		private void pBoxPortrait_Click(object sender, EventArgs e)
+		{
+			Character_Creation CharacterSheet = new Character_Creation(player, 0, this);
+			CharacterSheet.ShowDialog();
 		}
 
 		private void lblJournal_Click(object sender, EventArgs e)
@@ -301,26 +347,56 @@ namespace CharacterCreationandDevelopment
 
         private void lblMood_Click(object sender, EventArgs e)
         {
-           // MoodUI moodUI = new MoodUI(player); HAHA Sigh
             MoodUI2 moodUI = new MoodUI2(player);
             moodUI.ShowDialog();
         }
 
-		private void SetToolTipValue(string keyword, ILesson lesson)
+		private void lblSkills_Click(object sender, EventArgs e)
 		{
-			if (lBoxActions.SelectedItem.ToString().Contains(keyword))
+			playerSkills = new Skills(player, this);
+			playerSkills.ShowDialog();
+		}
+		#endregion
+
+		private void WorldUI_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			DialogResult dialogResult = MessageBox.Show("Would you like to save the game?", "World Closing", MessageBoxButtons.YesNo);
+			if (dialogResult.ToString() == "Yes")
 			{
-				this.toolTip1.SetToolTip(lBoxActions, lesson.GetToolTip());
+				SaveGame();
 			}
+			HelperClass.listOfRelationships.Clear();
+			Form1 x = new Form1();
+			x.Show();
 		}
 
-        private void pBoxMood_MouseHover(object sender, EventArgs e)
+		private void SaveGame()
+		{
+			foreach (Relationship relationship in HelperClass.listOfRelationships)
+			{
+				SaveLoad.SaveRelationshipToFile(player, relationship);
+			}
+			SaveLoad.SavePlayerDetailsToFile(player);
+			SaveLoad.SaveWorldDetailsToFile(player, world);
+			SaveLoad.SaveStoryProgressionToFile(player, storyProgression);
+		}
+
+		private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveGame();
+			MessageBox.Show("Game Saved");
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+        private void lblRelationships_Click(object sender, EventArgs e)
         {
-            toolTip1.SetToolTip(this.pBoxMood, player.CurrentMood.GetName());
+            RelationshipsUI relationshipsUI = new RelationshipsUI(player);
+            relationshipsUI.ShowDialog();
         }
-
-
-
 
 
 

@@ -37,7 +37,7 @@ namespace CharacterCreationandDevelopment.Lessons
         public string LessonEffects()
         {
 			int previousValue = _player.faith;
-			_player.faith += 5 + (_player.charisma / 2);
+			_player.faith += (_player.charisma / 2);
             _player.SetLogicalCrazy(-20);
 
 			if (_player.faith > 100)

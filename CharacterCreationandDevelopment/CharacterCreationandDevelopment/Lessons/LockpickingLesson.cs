@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
         public string LessonEffects()
         {
 			int previousValue = _player.lockpicking;
-			_player.lockpicking += 5 + (_player.dexterity / 2);
+			_player.lockpicking += (_player.dexterity / 2);
             _player.SetExcitedBored(20);
 			
             if (_player.lockpicking > 100)

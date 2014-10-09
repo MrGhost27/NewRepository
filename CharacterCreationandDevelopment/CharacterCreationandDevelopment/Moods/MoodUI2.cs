@@ -17,6 +17,7 @@ namespace CharacterCreationandDevelopment.Moods
         public MoodUI2(PlayerCharacter player)
         {
             InitializeComponent();
+			this.StartPosition = FormStartPosition.CenterScreen;
             this.player = player;
             UpdateScreen();
         }

@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
         public string LessonEffects()
         {
 			int previousValue = _player.pickpocketing;
-			_player.pickpocketing += 5 + (_player.dexterity / 2);
+			_player.pickpocketing += (_player.dexterity / 2);
             _player.SetExcitedBored(20);
 
 			if (_player.pickpocketing > 100)

@@ -51,23 +51,49 @@
     <Compile Include="Characters\Character Creation.Designer.cs">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Events and Conversations\ChildhoodStart.cs" />
+    <Compile Include="Characters\Mother.cs" />
+    <Compile Include="Characters\Relationship.cs" />
+    <Compile Include="Characters\RelationshipsUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Characters\RelationshipsUI.Designer.cs">
+      <DependentUpon>RelationshipsUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\Sister.cs" />
+    <Compile Include="Events and Conversations\EventOutcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events and Conversations\EventOutcome.Designer.cs">
+      <DependentUpon>EventOutcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events and Conversations\Year One\ChildhoodStart.cs" />
+    <Compile Include="Events and Conversations\ConversationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events and Conversations\ConversationDialog.Designer.cs">
+      <DependentUpon>ConversationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Events and Conversations\EventDecisionBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Events and Conversations\EventDecisionBox.Designer.cs">
       <DependentUpon>EventDecisionBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Events and Conversations\GameStart.cs" />
+    <Compile Include="Events and Conversations\IConversation.cs" />
+    <Compile Include="Events and Conversations\Year One\FirstConversation.cs" />
+    <Compile Include="Events and Conversations\Year One\PlayingWolfEvent.cs" />
+    <Compile Include="Events and Conversations\Year One\WolfConversation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\Delegates.cs" />
     <Compile Include="HelperClass\HelperClass.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Events and Conversations\IEvent.cs" />
+    <Compile Include="HelperClass\SaveLoad.cs" />
     <Compile Include="Journal\Journal.cs" />
     <Compile Include="Journal\JournalUI.cs">
       <SubType>Form</SubType>
@@ -76,13 +102,16 @@
       <DependentUpon>JournalUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Lessons\AnimalEmpathyLesson.cs" />
-    <Compile Include="Lessons\AthleticsLesson.cs" />
+    <Compile Include="Lessons\ClimbingLesson.cs" />
+    <Compile Include="Lessons\RunningLesson.cs" />
     <Compile Include="Lessons\CraftingLesson.cs" />
     <Compile Include="Lessons\DiplomacyLesson.cs" />
     <Compile Include="Lessons\FaithLesson.cs" />
+    <Compile Include="Lessons\HelpingAroundTheHouse.cs" />
     <Compile Include="Lessons\ILesson.cs" />
     <Compile Include="Lessons\LockpickingLesson.cs" />
     <Compile Include="Lessons\MedicineLesson.cs" />
+    <Compile Include="Lessons\NoLesson.cs" />
     <Compile Include="Lessons\PickpocketingLesson.cs" />
     <Compile Include="Lessons\ScienceLesson.cs" />
     <Compile Include="Lessons\SurvivalLesson.cs" />
@@ -95,7 +124,7 @@
     <Compile Include="Moods\Excited.cs" />
     <Compile Include="Moods\Happy.cs" />
     <Compile Include="Moods\IMoodBehaviour.cs" />
-    <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Characters\Bandit.cs" />
     <Compile Include="Characters\PlayerCharacter.cs" />
     <Compile Include="Moods\Crazy.cs" />
     <Compile Include="Moods\MoodUI.cs">
@@ -126,6 +155,16 @@
     <Compile Include="Skills.Designer.cs">
       <DependentUpon>Skills.cs</DependentUpon>
     </Compile>
+    <Compile Include="World\Locations\Barracks.cs" />
+    <Compile Include="World\Locations\Blacksmith.cs" />
+    <Compile Include="World\Locations\Church.cs" />
+    <Compile Include="World\Locations\Farm.cs" />
+    <Compile Include="World\Locations\ForestPath.cs" />
+    <Compile Include="World\Locations\Lake.cs" />
+    <Compile Include="World\Locations\Location.cs" />
+    <Compile Include="World\Locations\Market.cs" />
+    <Compile Include="World\Locations\School.cs" />
+    <Compile Include="World\StoryProgression.cs" />
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldUI.cs">
       <SubType>Form</SubType>
@@ -136,8 +175,17 @@
     <EmbeddedResource Include="Characters\Character Creation.resx">
       <DependentUpon>Character Creation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Characters\RelationshipsUI.resx">
+      <DependentUpon>RelationshipsUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events and Conversations\ConversationDialog.resx">
+      <DependentUpon>ConversationDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Events and Conversations\EventDecisionBox.resx">
       <DependentUpon>EventDecisionBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events and Conversations\EventOutcome.resx">
+      <DependentUpon>EventOutcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -309,6 +357,45 @@
     <EmbeddedResource Include="Moods\Images\Happy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Other\MaleBandit.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Relationships\Companion.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Relationships\Sister.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Relationships\sister.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Relationships\Stepmother.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Male\Human_male30.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\male023.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\post-1557-1139893645.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\Servant_det01.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Male\Young_ammon_jerro_-_nwn2_cinematic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Notes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

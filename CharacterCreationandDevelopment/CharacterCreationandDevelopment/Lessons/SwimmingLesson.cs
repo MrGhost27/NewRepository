@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
 		public string LessonEffects()
 		{
 			int previousvalue = _player.swimming;
-			_player.swimming += 5 + (_player.strength / 2);
+			_player.swimming += (_player.strength / 2);
             _player.SetHappyDepressed(20);
 
 			if (_player.swimming > 100)

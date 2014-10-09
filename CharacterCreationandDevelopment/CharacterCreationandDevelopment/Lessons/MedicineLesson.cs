@@ -36,7 +36,7 @@ namespace CharacterCreationandDevelopment.Lessons
         public string LessonEffects()
         {
 			int previousValue = _player.medicine;
-            _player.medicine += 5 + (_player.intelligence /2);
+            _player.medicine += (_player.intelligence /2);
             _player.SetHappyDepressed(-20);
 
 			if (_player.medicine > 100)

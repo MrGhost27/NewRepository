@@ -23,7 +23,7 @@ namespace CharacterCreationandDevelopment
         public string _name { get; private set; }
         public int imageNumber { get; private set; }
 		public int gender { get; private set; }
-        public PlayerCharacter player;
+		public PlayerCharacter player { get; private set; }
         private Form parentForm;
 
         public Character_Creation(Form parentForm)
@@ -227,14 +227,24 @@ namespace CharacterCreationandDevelopment
                 _name = txtName.Text;
             }
 
-            player = new PlayerCharacter(_name, gender, _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 100, -50, 50 , -25);
+            player = new PlayerCharacter(_name, gender, "", _strength, _dexterity, _consitution, _intelligence, _wisdom, _charisma, imageNumber, 
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0);
 
-			HelperClass.SavePlayerDetailsToFile(player);
+            StoryProgression newStory = new StoryProgression(false, 9);
+            World world = new World(player, 12, 1050, "");
+
+			SaveLoad.SavePlayerDetailsToFile(player);
+			SaveLoad.SaveWorldDetailsToFile(player, world);
+			SaveLoad.SaveStoryProgressionToFile(player, newStory);
+
+			SaveLoad.SaveRelationshipToFile(player, new Mother());
+			SaveLoad.SaveRelationshipToFile(player, new Sister());
+			SaveLoad.LoadAllRelationships(player);
+
             this.Close();
             if (txtName.Enabled)
             {
-                WorldUI newVisibleWorld = new WorldUI(player, parentForm);
+                WorldUI newVisibleWorld = new WorldUI(player, world, parentForm, newStory);
                 newVisibleWorld.Show();
             }
         }

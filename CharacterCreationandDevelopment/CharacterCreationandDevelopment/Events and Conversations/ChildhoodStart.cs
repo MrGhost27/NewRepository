@@ -8,29 +8,25 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 {
     public class ChildhoodStart : IEvent
     {
-       private PlayerCharacter player;
+        private PlayerCharacter player;
         public List<String> eventChoices { get; set; }
-        public NPC eventNPC { get; set; }
+		public Relationship conversationNPC { get; set; }
+		private List<string> conversationParts;
         private string choiceText;
 
         public ChildhoodStart(PlayerCharacter player)
         {
             this.player = player;
-            eventNPC = new NPC("Bullies!");
+			conversationNPC = new Bandit(1);
             eventChoices = new List<String>();
-            eventChoices.Add("Fight the bullies");
+            eventChoices.Add("Fight the Bandits");
             eventChoices.Add("Talk them around");
             eventChoices.Add("Run Away");
 
             choiceText = "";
         }
 
-        public NPC GetSibling()
-        {
-            return eventNPC;
-        }
-
-        public string ChoiceOne()
+		public string ChoiceOne()
         {
             player.SetAngryAfraid(10);
             choiceText += "You are getting angry" + Environment.NewLine;
@@ -38,13 +34,13 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             
             if (player.unarmed > 9)
             {
-                choiceText += "You beat the bullies" + Environment.NewLine;
+                choiceText += "You beat the bandits" + Environment.NewLine;
                 player.SetHappyDepressed(30);
                 choiceText += "You are Happy" + Environment.NewLine;
             }
             else
             {
-                choiceText += "You fail to beat the bullies who beat you instead" + Environment.NewLine;
+				choiceText += "You fail to beat the bandits who beat you instead" + Environment.NewLine;
                 player.SetAngryAfraid(-50);
                 choiceText += "You are afraid" + Environment.NewLine;
                 player.SetHappyDepressed(-30);
@@ -60,11 +56,11 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 
             if (player.diplomacy > 9)
             {
-                choiceText += "You talk the bullies into leaving" + Environment.NewLine;
+				choiceText += "You talk the bandits into leaving" + Environment.NewLine;
             }
             else
             {
-                choiceText += "You cannot convince the bullies to leave and take a beating for your efforts" + Environment.NewLine;
+				choiceText += "You cannot convince the bandits to leave and take a beating for your efforts" + Environment.NewLine;
                 player.SetAngryAfraid(-50);
                 choiceText += "You are afraid" + Environment.NewLine;
                 player.SetHappyDepressed(-30);
@@ -80,11 +76,11 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
 
             if (player.athletics > 9)
             {
-                choiceText += "You manage to outrun the bullies, this time" + Environment.NewLine;
+				choiceText += "You manage to outrun the bandits, this time" + Environment.NewLine;
             }
             else
             {
-                choiceText += "You cannot outrun the bullies, they catch and beat you" + Environment.NewLine;
+				choiceText += "You cannot outrun the bandits, they catch and beat you" + Environment.NewLine;
                 player.SetAngryAfraid(-50);
                 choiceText += "You are afraid" + Environment.NewLine;
                 player.SetHappyDepressed(-30);
@@ -93,19 +89,20 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
             return choiceText;
         }
 
-        public string EventConversation()
+        public List<string> GetEventConversation()
         {
-            string conversation = "";
-            conversation += player.name + ": Oh No! " + eventNPC.name + Environment.NewLine;
-            conversation += eventNPC.name + ": Time for a Beating! " + player.name + Environment.NewLine;
-
-            return conversation;
+			conversationParts = new List<string>();
+			conversationParts.Add(player.name + ": Hi" + conversationNPC.name + Environment.NewLine);
+			conversationParts.Add(conversationNPC.name + ": Give me all your money!" + Environment.NewLine);
+			conversationParts.Add(player.name + ": I don't have any!" + Environment.NewLine);
+			conversationParts.Add(conversationNPC.name + ": Time for a beating" + Environment.NewLine);
+            return conversationParts;
         }
 
         public string EventDecisionText()
         {
             string eventDecisionText = "";
-            eventDecisionText += "Suddenly you are confronted by Bullies! \n How will you deal with them?";
+			eventDecisionText += "Suddenly you are confronted by bandits! \n How will you deal with them?";
             return eventDecisionText;
         }     
     }

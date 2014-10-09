@@ -10,12 +10,12 @@ namespace CharacterCreationandDevelopment.Events_and_Conversations
     {
         private PlayerCharacter player;
         public List<String> eventChoices { get; set; }
-        public NPC eventNPC { get; set; }
+        public ICharacter eventNPC { get; set; }
 
         public GameStart(PlayerCharacter player)
         {
             this.player = player;
-            eventNPC = new NPC();
+            eventNPC = new Bandit(1);
             eventChoices = new List<String>();
             eventChoices.Add("Live");
             eventChoices.Add("Die");

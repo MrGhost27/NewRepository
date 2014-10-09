@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace CharacterCreationandDevelopment
 {
-    public interface IEvent
+    public interface IEvent : IConversation
     {
-        NPC eventNPC { get; set; }
-        List<String> eventChoices { get; set; }
-        string EventConversation();
+        List<string> eventChoices { get; set; }
         string EventDecisionText();
-        string ChoiceOne();
-        string ChoiceTwo();
-        string ChoiceThree();
+		List<string> ChoiceOne();
+		List<string> ChoiceTwo();
+		List<string> ChoiceThree();
     }
 }

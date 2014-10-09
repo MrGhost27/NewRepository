@@ -11,26 +11,19 @@ namespace CharacterCreationandDevelopment
     {
         public int monthNumber { get; private set; }
         public int year { get; private set; }
+        string journalEntries { get; set; }
         public IEvent newEvent;
+		public IConversation newConversation;
         PlayerCharacter player;
 		Journal journal;
 
-        public World(PlayerCharacter player)
+        public World(PlayerCharacter player, int monthNumber, int year, string journalEntries)
         {
             this.player = player;
+            this.monthNumber = monthNumber;
+            this.year = year;
 			journal = new Journal(this, player);
-
-            try
-            {
-				monthNumber = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player)[1]);
-				year = Int32.Parse(HelperClass.LoadWorldDetailsFromFile(player)[2]);
-				journal.SetJournal(HelperClass.LoadWorldDetailsFromFile(player)[3]);
-            }
-            catch (Exception)
-            {
-                monthNumber = 12;
-                year = 1050;
-            }
+            journal.SetJournal(journalEntries);
         }
 
 		public string AddJournalEntry(string entry)
@@ -48,31 +41,43 @@ namespace CharacterCreationandDevelopment
 			return journal.GetJournal();
 		}
 
+		public void SetConversation(IConversation thisConversation)
+		{
+			this.newConversation = thisConversation;
+		}
+
+
         public void SetEvent(IEvent thisevent)
         {
             this.newEvent = thisevent;
         }
 
-		public string EventConversation()
+		public void LogEventConversation(List<string> eventConversation)
 		{
-			return AddJournalEntry(newEvent.EventConversation());
+            string journalEntry = "";
+			foreach (string speech in eventConversation)
+			{
+                journalEntry += speech;
+				journalEntry += Environment.NewLine;
+			}
+            AddJournalEntry(journalEntry);
 		}
 
-		public string EventDecision(int eventDecisionChoice)
+		public List<string> EventDecision(int eventDecisionChoice)
 		{
 			if (eventDecisionChoice == 1)
 			{
-				return AddJournalEntry(newEvent.ChoiceOne());
+				return newEvent.ChoiceOne();
 			}
 			if (eventDecisionChoice == 2)
 			{
-				return AddJournalEntry(newEvent.ChoiceTwo());
+				return newEvent.ChoiceTwo();
 			}
 			if (eventDecisionChoice == 3)
 			{
-				return AddJournalEntry(newEvent.ChoiceThree());
+				return newEvent.ChoiceThree();
 			}
-			return "";
+			return null;
 		}
 
         public string NewTurn()
