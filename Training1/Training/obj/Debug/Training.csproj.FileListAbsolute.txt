@@ -1,0 +1,39 @@
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\bin\Debug\Locations\ListOfCities.txt
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\bin\Debug\Training.exe.config
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\bin\Debug\Training.exe
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\bin\Debug\Training.pdb
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\obj\Debug\Training.Properties.Resources.resources
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\obj\Debug\Training.WorldUI.resources
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\obj\Debug\Training.csproj.GenerateResource.Cache
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\obj\Debug\Training.exe
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\obj\Debug\Training.pdb
+C:\Users\Christopher Mullen.PURPLE\documents\visual studio 2012\Projects\Training\Training\obj\Debug\Training.csprojResolveAssemblyReference.cache
+F:\NewRepository\Training\Training\bin\Debug\Training.exe.config
+F:\NewRepository\Training\Training\obj\Debug\Training.exe
+F:\NewRepository\Training\Training\obj\Debug\Training.pdb
+F:\NewRepository\Training\Training\bin\Debug\Locations\ListOfCities.txt
+F:\NewRepository\Training\Training\bin\Debug\Training.exe
+F:\NewRepository\Training\Training\bin\Debug\Training.pdb
+F:\NewRepository\Training\Training\obj\Debug\Training.csprojResolveAssemblyReference.cache
+F:\NewRepository\Training\Training\obj\Debug\Training.Properties.Resources.resources
+F:\NewRepository\Training\Training\obj\Debug\Training.WorldUI.resources
+F:\NewRepository\Training\Training\obj\Debug\Training.csproj.GenerateResource.Cache
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\bin\Debug\Training.exe.config
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\obj\Debug\Training.exe
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\obj\Debug\Training.pdb
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\obj\Debug\Training.csprojResolveAssemblyReference.cache
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\obj\Debug\Training.Properties.Resources.resources
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\obj\Debug\Training.WorldUI.resources
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\obj\Debug\Training.csproj.GenerateResource.Cache
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\bin\Debug\Locations\ListOfCities.txt
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\bin\Debug\Training.exe
+C:\Users\Christopher Mullen.PURPLE\Documents\Visual Studio 2012\Projects\Training1\Training\bin\Debug\Training.pdb
+F:\NewRepository\Training1\Training\bin\Debug\Locations\ListOfCities.txt
+F:\NewRepository\Training1\Training\bin\Debug\Training.exe.config
+F:\NewRepository\Training1\Training\bin\Debug\Training.exe
+F:\NewRepository\Training1\Training\bin\Debug\Training.pdb
+F:\NewRepository\Training1\Training\obj\Debug\Training.Properties.Resources.resources
+F:\NewRepository\Training1\Training\obj\Debug\Training.WorldUI.resources
+F:\NewRepository\Training1\Training\obj\Debug\Training.csproj.GenerateResource.Cache
+F:\NewRepository\Training1\Training\obj\Debug\Training.exe
+F:\NewRepository\Training1\Training\obj\Debug\Training.pdb
